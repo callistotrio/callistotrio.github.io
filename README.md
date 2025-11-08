@@ -1,2 +1,2 @@
-# callistotrio.github.io
-Official website for Callistó Trio
+# triocallisto.github.io
+Official website for Trio Callistó
