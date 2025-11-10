@@ -3,25 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Trio Callistó</title>
+  <title>About – Trio Callistó</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; background: #f9f9f9; }
-    nav a { margin-right: 1rem; text-decoration: none; color: #333; }
-    nav { margin-bottom: 2rem; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .trio-photo {
+      width: 100%;
+      max-width: 900px;
+      display: block;
+      margin: 0 auto 2rem auto;
+      border-radius: 6px;
+      background: #ddd; 
+      height: 300px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .bio-section {
+      max-width: 900px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .member {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .member-photo {
+      width: 180px;
+      height: 180px;
+      background: #ddd;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .member-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
   </style>
 </head>
 <body>
 
   <nav>
-  <a href="home.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="concerts.html">Concerts</a>
-  <a href="contact.html">Contact</a>
-</nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="concerts.html">Concerts</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
   <h1>About Trio Callistó</h1>
-  <p>Hello Merx xD This page will introduce the ensemble. Here, one can find an up-to-date biography of the trio, plus short individual biographies with photographs of us all.</p>
+
+  <!-- Trio photo placeholder -->
+  <div class="trio-photo">Trio photo coming soon</div>
+
+  <!-- Main trio biography -->
+  <div class="bio-section">
+    <p>
+      This is where your main trio biography will go. Write a paragraph about how the trio formed,
+      your artistic focus, your repertoire interests, or anything else you want visitors to know.
+    </p>
+  </div>
+
+  <!-- Member 1 -->
+  <div class="member">
+    <div class="member-photo">Photo coming soon</div>
+    <div class="member-text">
+      <h2>Musician Name</h2>
+      <p>
+        Short biographical paragraph about the first musician. Education, awards, musical interests,
+        etc. Keep it concise and warm.
+      </p>
+    </div>
+  </div>
+
+  <!-- Member 2 -->
+  <div class="member">
+    <div class="member-photo">Photo coming soon</div>
+    <div class="member-text">
+      <h2>Musician Name</h2>
+      <p>
+        Short biographical paragraph about the second musician.
+      </p>
+    </div>
+  </div>
+
+  <!-- Member 3 -->
+  <div class="member">
+    <div class="member-photo">Photo coming soon</div>
+    <div class="member-text">
+      <h2>Musician Name</h2>
+      <p>
+        Short biographical paragraph about the third musician.
+      </p>
+    </div>
+  </div>
 
 </body>
 </html>
