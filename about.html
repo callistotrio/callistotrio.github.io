@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About – Trio Callistó</title>
 
-  <!-- GFS Didot Font -->
+  <!-- Load GFS Didot -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
@@ -19,7 +19,9 @@
     }
 
     /* NAVIGATION */
-    nav { margin-bottom: 2rem; }
+    nav {
+      margin-bottom: 2rem;
+    }
     nav a {
       margin: 0 0.8rem;
       text-decoration: none;
@@ -43,66 +45,93 @@
       width: 100%;
     }
 
-    /* TITLE */
-    .site-title { position: relative; padding-top: 2rem; }
-    .site-title h1 { font-size: 2.6rem; margin: 0; z-index: 2; position: relative; }
+    /* TITLE BLOCK */
+    .site-title {
+      position: relative;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .site-title h1 {
+      font-size: 2.6rem;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
     .greek-title {
       font-size: 5rem;
-      color: rgba(30, 30, 30, 0.06);
+      color: rgba(30,30,30,0.06);
       position: absolute;
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
       pointer-events: none;
-      z-index: 1;
     }
 
-    /* SECTION HEADINGS */
-    h2 {
-      font-size: 2rem;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
+    /* MOBILE FIX */
+    @media (max-width: 600px) {
+      .greek-title { font-size: 3rem; top: -10px; }
+      .site-title h1 { font-size: 2rem; }
     }
 
-    /* BIO LAYOUT */
-    .bio-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* GROUP PHOTO */
+    .group-photo {
+      width: 100%;
       max-width: 900px;
-      margin: 0 auto 3rem;
-      gap: 2rem;
+      height: auto;
+      margin: 2rem auto 4rem auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* TEXT SECTIONS */
+    .about-section {
+      max-width: 900px;
+      margin: auto;
       text-align: left;
       line-height: 1.7;
+      font-size: 1.15rem;
     }
 
-    /* Reverse layout for alternating rows */
-    .bio-block.reverse { flex-direction: row-reverse; }
-
-    .bio-block img {
-      width: 250px;
-      height: auto;
-      border-radius: 4px;
-      object-fit: cover;
-    }
-
-    /* Subtle divider line */
     hr {
       border: none;
       border-top: 1px solid #d4cec6;
       margin: 3rem auto;
-      width: 80%;
+      width: 60%;
     }
 
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 700px) {
-      .bio-block, .bio-block.reverse {
+    /* BIO BLOCKS */
+    .bio-block {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem auto;
+      max-width: 900px;
+    }
+
+    .bio-block img {
+      width: 260px;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .bio-text {
+      flex: 1;
+    }
+
+    /* RIGHT ALTERNATING */
+    .bio-right {
+      flex-direction: row-reverse;
+    }
+
+    /* MOBILE STACK */
+    @media (max-width: 800px) {
+      .bio-block {
         flex-direction: column !important;
         text-align: center;
       }
-      .bio-block img {
-        width: 70%;
+      .bio-text {
+        text-align: center;
       }
     }
 
@@ -111,11 +140,13 @@
 
 <body>
 
+  <!-- TITLE -->
   <div class="site-title">
     <div class="greek-title">Τρίο Καλλιστώ</div>
     <h1>Trio Callistó</h1>
   </div>
 
+  <!-- NAV -->
   <nav>
     <a href="home.html">Home</a>
     <a href="about.html" class="active">About</a>
@@ -125,42 +156,42 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <h2>About Us</h2>
-  <p style="max-width: 750px; margin: 0 auto; line-height: 1.8;">
-    [Insert your trio description paragraph here — who you are, where you met, what repertoire you love,
-    what makes your sound, future engagements, awards, mentors, institutions, etc.]
-  </p>
+  <!-- GROUP PHOTO PLACEHOLDER -->
+  <img src="TrioAbout.jpg" alt="Trio Callistó" class="group-photo">
 
-  <hr>
-
-  <!-- Player 1 -->
-  <div class="bio-block">
-    <img src="photo1.jpg" alt="Musician 1">
-    <div>
-      <h3>[Name – Instrument]</h3>
-      <p>[Biography text goes here. Paste full bio. Can be multiple paragraphs.]</p>
-    </div>
+  <!-- TRIO TEXT -->
+  <div class="about-section">
+    <p>
+      [Write your main trio biography paragraph here — approximately 6–10 sentences.]
+    </p>
   </div>
 
   <hr>
 
-  <!-- Player 2 (reversed layout) -->
-  <div class="bio-block reverse">
-    <img src="photo2.jpg" alt="Musician 2">
-    <div>
-      <h3>[Name – Instrument]</h3>
-      <p>[Biography text goes here. Paste full bio.]</p>
+  <!-- BIO 1 -->
+  <div class="bio-block bio-left">
+    <img src="YourPhoto1.jpg" alt="Musician Name">
+    <div class="bio-text">
+      <h2>Musician Name</h2>
+      <p>[Insert bio text here.]</p>
     </div>
   </div>
 
-  <hr>
+  <!-- BIO 2 (RIGHT ALIGNED) -->
+  <div class="bio-block bio-right">
+    <img src="YourPhoto2.jpg" alt="Musician Name">
+    <div class="bio-text">
+      <h2>Musician Name</h2>
+      <p>[Insert bio text here.]</p>
+    </div>
+  </div>
 
-  <!-- Player 3 -->
-  <div class="bio-block">
-    <img src="photo3.jpg" alt="Musician 3">
-    <div>
-      <h3>[Name – Instrument]</h3>
-      <p>[Biography text goes here. Paste full bio.]</p>
+  <!-- BIO 3 -->
+  <div class="bio-block bio-left">
+    <img src="YourPhoto3.jpg" alt="Musician Name">
+    <div class="bio-text">
+      <h2>Musician Name</h2>
+      <p>[Insert bio text here.]</p>
     </div>
   </div>
 
