@@ -5,67 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trio Callistó</title>
 
-  <!-- FONT: GFS Didot -->
+  <!-- Load GFS Didot font -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      padding: 2rem;
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 2rem; 
+      background: #f9f9f9; 
+    }
+
+    nav a { 
+      margin-right: 1rem; 
+      text-decoration: none; 
+      color: #333; 
       font-family: 'GFS Didot', serif;
-      background: #f9f9f9;
+      font-size: 1.1rem;
+    }
+
+    nav { 
+      margin-bottom: 2rem; 
       text-align: center;
     }
 
-    /* TITLE */
+    /* TITLE BLOCK */
     .site-title {
-      margin-bottom: 2rem;
       position: relative;
-    }
-
-    .greek-title {
-      font-size: 3rem;
-      color: rgba(0,0,0,0.07);
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      pointer-events: none;
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
     }
 
     .site-title h1 {
-      font-size: 2.5rem;
+      font-family: 'GFS Didot', serif;
+      font-size: 2.8rem;
       margin: 0;
       position: relative;
       z-index: 2;
+      color: #222;
     }
 
-    /* NAV BAR */
-    nav {
-      margin-bottom: 2.5rem;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #333;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      border-bottom: 2px solid #333;
-    }
-
-    /* CURRENT PAGE UNDERLINE */
-    .current-page {
-      border-bottom: 2px solid #333;
+    .greek-title {
+      font-family: 'GFS Didot', serif;
+      font-size: 5rem;
+      color: rgba(0,0,0,0.06);
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      pointer-events: none;
+      white-space: nowrap;
     }
 
   </style>
 </head>
+
 <body>
 
   <div class="site-title">
@@ -74,7 +69,7 @@
   </div>
 
   <nav>
-    <a href="index.html" class="current-page">Home</a>
+    <a href="home.html">Home</a>
     <a href="about.html">About</a>
     <a href="gallery.html">Gallery</a>
     <a href="concerts.html">Concerts</a>
