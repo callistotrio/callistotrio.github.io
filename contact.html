@@ -1,144 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Trio Callistó</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Trio Callistó</title>
 
-  <!-- GFS Didot -->
+  <!-- Load GFS Didot -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
-  <style>
-    /* Base */
-    :root{
-      --bg:#f8f6f2;          /* warm off-white */
-      --text:#1e1e1e;        /* near-black */
-      --accent:#8b5e3c;      /* subtle bronze for underline */
-      --line:#d4cec6;        /* soft divider */
-    }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    html, body { margin:0; padding:0; }
+  <style>
     body {
       font-family: 'GFS Didot', serif;
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
       padding: 2rem;
+      background: #f8f6f2;
+      color: #1e1e1e;
+      text-align: center;
     }
 
-    /* Title block */
+    /* NAVIGATION */
+    nav {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 0.8rem;
+      text-decoration: none;
+      color: #1e1e1e;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0%;
+      height: 1px;
+      background-color: #8b5e3c;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* TITLE */
     .site-title {
       position: relative;
-      text-align: center;
       padding-top: 2rem;
       padding-bottom: 1rem;
     }
     .site-title h1 {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       margin: 0;
       position: relative;
       z-index: 2;
-      color: var(--text);
-      letter-spacing: 0.5px;
     }
     .greek-title {
       font-size: 5rem;
       color: rgba(30,30,30,0.06);
       position: absolute;
-      top: -20px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1;
-      pointer-events: none;
       white-space: nowrap;
+      pointer-events: none;
     }
 
-    /* Nav */
-    nav {
-      text-align: center;
-      margin: 0 0 2rem;
-    }
-    nav a {
-      display: inline-block;
-      margin: 0 0.75rem;
-      text-decoration: none;
-      color: var(--text);
-      position: relative;
-      padding-bottom: 4px;
-      font-size: 1.1rem;
-    }
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:0; bottom:-2px;
-      width:0%; height:1px;
-      background: var(--accent);
-      transition: width .3s ease;
-    }
-    nav a:hover::after,
-    nav a.active::after { width:100%; }
-
-    /* Page content */
-    .container{
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-    h2{
-      font-size: 2rem;
-      margin: 0 0 1rem;
-      letter-spacing: .3px;
-    }
-    p{ line-height: 1.6; font-size: 1.1rem; }
-
-    .card{
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 1.5rem;
-      border-radius: 8px;
+    /* CONTACT TEXT */
+    .contact-container {
+      margin-top: 4rem;
+      line-height: 1.9;
+      font-size: 1.3rem;
     }
 
-    .contact-grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+    /* ICONS */
+    .social-icons {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+    }
+    .social-icons a {
+      color: #1e1e1e;
+      margin: 0 0.7rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #8b5e3c;
     }
 
-    /* Simple form (optional) */
-    form label{
-      display:block; font-size: 0.95rem; margin: .5rem 0 .25rem;
-    }
-    input, textarea{
-      width:100%; font-family:'GFS Didot', serif; font-size:1rem;
-      padding:.65rem .75rem; border:1px solid var(--line); border-radius:6px;
-      background:#fff; color:var(--text);
-    }
-    textarea{ min-height: 130px; resize: vertical; }
-    button{
-      margin-top: .75rem;
-      padding:.6rem 1rem; border:1px solid var(--accent); border-radius:6px;
-      background:transparent; color:var(--text); cursor:pointer;
-    }
-    button:hover{ background: rgba(139,94,60,0.08); }
-
-    hr{
-      border:none; border-top:1px solid var(--line); margin:2rem 0;
-    }
-
-    /* Mobile tweaks */
-    @media (min-width: 700px){
-      .contact-grid{ grid-template-columns: 1.1fr .9fr; }
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- Title -->
+  <!-- TITLE -->
   <div class="site-title">
     <div class="greek-title">Τρίο Καλλιστώ</div>
     <h1>Trio Callistó</h1>
   </div>
 
-  <!-- Nav (set the active page here) -->
+  <!-- NAV -->
   <nav>
     <a href="home.html">Home</a>
     <a href="about.html">About</a>
@@ -148,46 +114,19 @@
     <a href="contact.html" class="active">Contact</a>
   </nav>
 
-  <div class="container">
+  <!-- CONTACT INFO -->
+  <div class="contact-container">
     <h2>Contact</h2>
-    <div class="contact-grid">
-      <!-- Left: Message / Form -->
-      <div class="card">
-        <p>For bookings, press, and general enquiries:</p>
-        <p><strong>Email:</strong> <a href="mailto:info@triocallisto.com">info@triocallisto.com</a></p>
-        <hr>
-        <!-- Optional contact form.
-             To make it work later with Formspree:
-             - Replace action="#" with your Formspree endpoint.
-             - Keep method="POST".
-        -->
-        <form action="#" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
+    <p>Email: <a href="mailto:info@triocallisto.com">info@triocallisto.com</a></p>
+    <p>+372 0000 0000 (Violin)</p>
+    <p>+372 0000 0000 (Cello)</p>
+  </div>
 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-
-          <button type="submit">Send message</button>
-        </form>
-      </div>
-
-      <!-- Right: Other details -->
-      <div class="card">
-        <p><strong>Management / Press kit:</strong><br>
-        Available on request.</p>
-
-        <p><strong>Social:</strong><br>
-        <a href="#" aria-label="Instagram">Instagram</a> ·
-        <a href="#" aria-label="YouTube">YouTube</a> ·
-        <a href="#" aria-label="Facebook">Facebook</a></p>
-
-        <p><strong>Based in:</strong> [City / Country]</p>
-      </div>
-    </div>
+  <!-- SOCIAL ICONS -->
+  <div class="social-icons">
+    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
   </div>
 
 </body>
