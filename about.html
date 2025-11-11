@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About – Trio Callistó</title>
 
-  <!-- Load GFS Didot -->
+  <!-- GFS Didot -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
@@ -15,13 +15,10 @@
       padding: 2rem;
       background: #f8f6f2;
       color: #1e1e1e;
-      text-align: center;
     }
 
-    /* NAVIGATION */
-    nav {
-      margin-bottom: 2rem;
-    }
+    /* NAV */
+    nav { text-align: center; margin-bottom: 2rem; }
     nav a {
       margin: 0 0.8rem;
       text-decoration: none;
@@ -33,108 +30,94 @@
     nav a::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0%;
-      height: 1px;
+      left: 0; bottom: -2px;
+      width: 0%; height: 1px;
       background-color: #8b5e3c;
       transition: width 0.3s ease;
     }
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
+    nav a:hover::after, nav a.active::after { width: 100%; }
 
-    /* TITLE BLOCK */
+    /* TITLE */
     .site-title {
       position: relative;
+      text-align: center;
       padding-top: 2rem;
       padding-bottom: 1rem;
     }
-    .site-title h1 {
-      font-size: 2.6rem;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-    }
+    .site-title h1 { font-size: 2.8rem; margin: 0; position: relative; z-index: 2; }
     .greek-title {
       font-size: 5rem;
       color: rgba(30,30,30,0.06);
       position: absolute;
-      top: -18px;
-      left: 50%;
+      top: -18px; left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
       pointer-events: none;
+      z-index: 1;
     }
 
-    /* MOBILE FIX */
-    @media (max-width: 600px) {
-      .greek-title { font-size: 3rem; top: -10px; }
-      .site-title h1 { font-size: 2rem; }
+    /* RESPONSIVE GREY TITLE ON MOBILE */
+    @media(max-width: 600px) {
+      .greek-title { font-size: 3.5rem; top: -10px; }
+      .site-title h1 { font-size: 2.2rem; }
     }
 
     /* GROUP PHOTO */
-    .group-photo {
+    .hero-photo {
       width: 100%;
       max-width: 900px;
-      height: auto;
-      margin: 2rem auto 4rem auto;
+      aspect-ratio: 16/9;  /* This enforces a *landscape* shape */
+      background: #ddd;
+      margin: 2rem auto;
       display: block;
-      border-radius: 6px;
+      object-fit: cover;
     }
 
-    /* TEXT SECTIONS */
-    .about-section {
-      max-width: 900px;
-      margin: auto;
-      text-align: left;
-      line-height: 1.7;
-      font-size: 1.15rem;
+    /* GROUP TEXT */
+    .group-description {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.8;
     }
 
     hr {
       border: none;
       border-top: 1px solid #d4cec6;
       margin: 3rem auto;
-      width: 60%;
+      width: 80%;
     }
 
-    /* BIO BLOCKS */
-    .bio-block {
+    /* INDIVIDUAL BIOS */
+    .bio-section {
+      max-width: 900px;
+      margin: 3rem auto;
       display: flex;
       align-items: center;
       gap: 2rem;
-      margin: 3rem auto;
-      max-width: 900px;
     }
 
-    .bio-block img {
-      width: 260px;
+    .bio-section img {
+      width: 230px;
       height: auto;
-      border-radius: 4px;
+      object-fit: cover;
     }
 
     .bio-text {
       flex: 1;
+      font-size: 1.15rem;
+      line-height: 1.7;
     }
 
-    /* RIGHT ALTERNATING */
-    .bio-right {
-      flex-direction: row-reverse;
-    }
+    /* Alternate layout (image right) */
+    .reverse { flex-direction: row-reverse; }
 
-    /* MOBILE STACK */
-    @media (max-width: 800px) {
-      .bio-block {
-        flex-direction: column !important;
-        text-align: center;
-      }
-      .bio-text {
-        text-align: center;
-      }
+    /* Mobile layout */
+    @media(max-width: 700px) {
+      .bio-section, .reverse { flex-direction: column; text-align: center; }
+      .bio-section img { width: 65%; }
     }
-
   </style>
 </head>
 
@@ -156,42 +139,50 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- GROUP PHOTO PLACEHOLDER -->
-  <img src="TrioAbout.jpg" alt="Trio Callistó" class="group-photo">
+  <!-- GROUP PHOTO -->
+  <img src="TrioAbout.jpg" alt="Trio Callistó" class="hero-photo">
 
-  <!-- TRIO TEXT -->
-  <div class="about-section">
-    <p>
-      [Write your main trio biography paragraph here — approximately 6–10 sentences.]
-    </p>
+  <!-- GROUP DESCRIPTION -->
+  <div class="group-description">
+    <p><em>Write 1–2 elegant paragraphs here introducing the trio — origin, musical approach, where you are based, notable performances, etc.</em></p>
   </div>
 
   <hr>
 
-  <!-- BIO 1 -->
-  <div class="bio-block bio-left">
-    <img src="YourPhoto1.jpg" alt="Musician Name">
+  <!-- MEMBER 1 -->
+  <div class="bio-section">
+    <img src="Member1.jpg" alt="Member Name">
     <div class="bio-text">
-      <h2>Musician Name</h2>
-      <p>[Insert bio text here.]</p>
+      <h2>Merily Leotoots – Violin</h2>
+      <p>Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.
+She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.
+She has also studied at distinguished institutions such as the Guildhall School of Music and Drama in London under Professor Ofer Falk and the Musik und Kunst Privatuniversität der Stadt Wien with Lidia Baich. Merily has participated in numerous masterclasses led by acclaimed professors including Kolja Blacher, Pavel Berman, Petru Munteanu, Natalia Lomeiko, and Sophia Jaffé. In 2025 she was selected for the prestigious Sarasate Academy in Spain, which invites outstanding string players from around the world. She has also refined her skills in Italy through the Young Classic Europe courses.
+Chamber music lies at the heart of her artistic identity. She performs actively with several ensembles, including the violin–cello Duo EnPassant, a violin–piano duo with Joonatan Jürgenson, the piano trio Trio Callistó, and the piano quartet Quattuor Artium. With the latter, she appeared in February 2025 at the renowned Wye Valley Chamber Music Festival in England, giving the world premiere of Estonian composer Artur Lemba’s Piano Quartet. Her development as a chamber musician has been shaped by distinguished mentors such as Marje Lohuaru, Evgeny Sinaisky, Matthew Jones, and Jacqueline Ross.
+Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.
+Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.
+</p>
     </div>
   </div>
 
-  <!-- BIO 2 (RIGHT ALIGNED) -->
-  <div class="bio-block bio-right">
-    <img src="YourPhoto2.jpg" alt="Musician Name">
+  <hr>
+
+  <!-- MEMBER 2 -->
+  <div class="bio-section reverse">
+    <img src="Member2.jpg" alt="Member Name">
     <div class="bio-text">
-      <h2>Musician Name</h2>
-      <p>[Insert bio text here.]</p>
+      <h2>Member Name – Instrument</h2>
+      <p>Insert biography text here…</p>
     </div>
   </div>
 
-  <!-- BIO 3 -->
-  <div class="bio-block bio-left">
-    <img src="YourPhoto3.jpg" alt="Musician Name">
+  <hr>
+
+  <!-- MEMBER 3 -->
+  <div class="bio-section">
+    <img src="Member3.jpg" alt="Member Name">
     <div class="bio-text">
-      <h2>Musician Name</h2>
-      <p>[Insert bio text here.]</p>
+      <h2>Member Name – Instrument</h2>
+      <p>Insert biography text here…</p>
     </div>
   </div>
 
