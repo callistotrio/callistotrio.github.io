@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -31,8 +31,7 @@
       content: "";
       position: absolute;
       left: 0; bottom: -2px;
-      width: 0%;
-      height: 1px;
+      width: 0%; height: 1px;
       background-color: #8b5e3c;
       transition: width 0.3s ease;
     }
@@ -52,25 +51,25 @@
       position: absolute;
       top: -18px; left: 50%;
       transform: translateX(-50%);
-      pointer-events: none;
       white-space: nowrap;
+      pointer-events: none;
       z-index: 1;
     }
 
     @media(max-width: 600px) {
-      .greek-title { font-size: 3.5rem; top: -8px; }
+      .greek-title { font-size: 3.5rem; top: -10px; }
       .site-title h1 { font-size: 2.2rem; }
     }
 
     /* GROUP PHOTO */
     .hero-photo {
       width: 100%;
-      max-width: 1050px;
+      max-width: 1100px;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 4px;
       margin: 2.5rem auto;
       display: block;
-      border-radius: 4px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
     }
 
     /* GROUP TEXT */
@@ -78,14 +77,14 @@
       max-width: 800px;
       margin: 2rem auto;
       text-align: center;
-      font-size: 1.23rem;
-      line-height: 1.75;
+      font-size: 1.25rem;
+      line-height: 1.8;
     }
 
     hr {
       border: none;
       border-top: 1px solid #d4cec6;
-      margin: 3.5rem auto;
+      margin: 3rem auto;
       width: 80%;
     }
 
@@ -95,59 +94,59 @@
       margin: 4rem auto;
       display: flex;
       align-items: flex-start;
-      gap: 2.5rem;
+      gap: 2rem;
       opacity: 0;
-      transform: translateY(35px);
+      transform: translateY(30px);
       transition: opacity 1s ease, transform 1s ease;
     }
+
     .bio-section.show {
       opacity: 1;
       transform: translateY(0);
     }
 
     .bio-section img {
-      width: 320px;
+      width: 280px;
       height: auto;
+      object-fit: cover;
       border-radius: 3px;
-      display: block;
+      flex-shrink: 0;
     }
 
     .bio-text {
       flex: 1;
-      font-size: 1.17rem;
-      line-height: 1.75;
+      font-size: 1.15rem;
+      line-height: 1.7;
     }
 
     .bio-text h2 {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 1.75rem;
+      font-size: 1.8rem;
     }
 
-    /* Alternating layout */
     .reverse { flex-direction: row-reverse; }
 
-    /* Mobile layout */
-    @media(max-width: 750px) {
+    /* MOBILE FIX */
+    @media(max-width: 700px) {
       .bio-section, .reverse {
-        flex-direction: column !important;
+        flex-direction: column;
         text-align: center;
+        align-items: center;
       }
       .bio-section img {
-        width: 80%;
-        margin: 0 auto 1rem auto;
+        width: 75%;
+        margin-bottom: 1rem;
       }
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      margin-top: 5rem;
-      padding-top: 1.5rem;
-      padding-bottom: 1rem;
-      font-size: 0.95rem;
-      color: #6a6761;
-      border-top: 1px solid #d4cec6;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
@@ -175,32 +174,30 @@
 
   <!-- GROUP DESCRIPTION -->
   <div class="group-description">
-    <p><em>Your introduction paragraph(s) stay here — no change needed.</em></p>
+    <p><em>Your introduction text here.</em></p>
   </div>
 
   <hr>
 
   <!-- MERILY -->
-<div class="bio-section">
-  <img src="Merx.jpg" alt="Merily Leotoots">
-  <div class="bio-text">
-    <h2>Merily Leotoots – Violin</h2>
+  <div class="bio-section">
+    <img src="Merx.jpg" alt="Merily Leotoots">
+    <div class="bio-text">
+      <h2>Merily Leotoots – Violin</h2>
+      <!-- your paragraphs remain exactly as you already had them -->
+      <p>Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.</p>
 
-    <p>Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.</p>
+<p>She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.</p>
 
-    <p>She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.</p>
+<p>She has also studied at distinguished institutions such as the Guildhall School of Music and Drama in London under Professor Ofer Falk and the Musik und Kunst Privatuniversität der Stadt Wien with Lidia Baich. Merily has participated in numerous masterclasses led by acclaimed professors including Kolja Blacher, Pavel Berman, Petru Munteanu, Natalia Lomeiko, and Sophia Jaffé. In 2025 she was selected for the prestigious Sarasate Academy in Spain, which invites outstanding string players from around the world. She has also refined her skills in Italy through the Young Classic Europe courses.</p>
 
-    <p>She has also studied at distinguished institutions such as the Guildhall School of Music and Drama in London under Professor Ofer Falk and the Musik und Kunst Privatuniversität der Stadt Wien with Lidia Baich. Merily has participated in numerous masterclasses led by acclaimed professors including Kolja Blacher, Pavel Berman, Petru Munteanu, Natalia Lomeiko, and Sophia Jaffé. In 2025 she was selected for the prestigious Sarasate Academy in Spain, which invites outstanding string players from around the world. She has also refined her skills in Italy through the Young Classic Europe courses.</p>
+<p>Chamber music lies at the heart of her artistic identity. She performs actively with several ensembles, including the violin–cello Duo EnPassant, a violin–piano duo with Joonatan Jürgenson, the piano trio Trio Callistó, and the piano quartet Quattuor Artium. With the latter, she appeared in February 2025 at the renowned Wye Valley Chamber Music Festival in England, giving the world premiere of Estonian composer Artur Lemba’s Piano Quartet. Her development as a chamber musician has been shaped by distinguished mentors such as Marje Lohuaru, Evgeny Sinaisky, Matthew Jones, and Jacqueline Ross.</p>
 
-    <p>Chamber music lies at the heart of her artistic identity. She performs actively with several ensembles, including the violin–cello Duo EnPassant, a violin–piano duo with Joonatan Jürgenson, the piano trio Trio Callistó, and the piano quartet Quattuor Artium. With the latter, she appeared in February 2025 at the renowned Wye Valley Chamber Music Festival in England, giving the world premiere of Estonian composer Artur Lemba’s Piano Quartet. Her development as a chamber musician has been shaped by distinguished mentors such as Marje Lohuaru, Evgeny Sinaisky, Matthew Jones, and Jacqueline Ross.</p>
+<p>Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.</p>
 
-    <p>Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.</p>
-
-    <p>Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.</p>
-
+<p>Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.</p>
+    </div>
   </div>
-</div>
-
 
   <hr>
 
@@ -218,7 +215,6 @@
 <p>Anna also performs with the Kings Chamber Orchestra, appearing throughout the United Kingdom, including the Île Joyeuse Summer Festival on Jersey in 2022. In recent seasons she has worked as a freelance musician with several Estonian orchestras and has appeared in chamber collaborations with Estonian artists including Merily Leotoots, Hans Christian Aavik, Marten Meibaum, and Joonatan Jürgenson.</p>
 
 <p>Dividing her time between London and Tallinn, Anna maintains an active and expanding career across the United Kingdom, Estonia, and Finland.</p>
-
     </div>
   </div>
 
@@ -238,14 +234,11 @@
 <p>Her festival appearances include Piano City Milano in Italy and Festival Afekt in Estonia, with notable performances at Théâtre des Bouffes du Nord in Paris, Carnegie Weill Hall in New York, and Murray Edwards College, Cambridge.</p>
 
 <p>Viola is a prizewinner at numerous international competitions in France, China, the United States, Italy, Finland, Switzerland, and other countries. In 2019 she received the EMCY Prize, awarded to exceptional young European musicians.</p>
-
     </div>
   </div>
 
   <!-- FOOTER -->
-  <footer>
-    © 2025 Trio Callistó — All Rights Reserved
-  </footer>
+  <footer>© Trio Callistó</footer>
 
   <!-- FADE-IN SCRIPT -->
   <script>
