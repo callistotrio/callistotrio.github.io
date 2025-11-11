@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact – Trio Callistó</title>
 
-  <!-- Load GFS Didot -->
+  <!-- GFS Didot -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <!-- Icons -->
@@ -72,14 +72,25 @@
       pointer-events: none;
     }
 
-    /* CONTACT TEXT */
+    /* CONTACT CONTENT */
     .contact-container {
       margin-top: 4rem;
       line-height: 1.9;
       font-size: 1.3rem;
     }
 
-    /* ICONS */
+    /* FIXED EMAIL LINK COLOUR */
+    .contact-container a,
+    .contact-container a:visited {
+      color: #8b5e3c;   /* warm bronze highlight */
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* SOCIAL ICONS */
     .social-icons {
       margin-top: 2rem;
       font-size: 1.8rem;
@@ -92,16 +103,6 @@
     .social-icons a:hover {
       color: #8b5e3c;
     }
-/* Contact page link colour */
-.contact-info a {
-  color: #8b5e3c;   /* your warm bronze accent */
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
 
   </style>
 </head>
@@ -114,7 +115,7 @@
     <h1>Trio Callistó</h1>
   </div>
 
-  <!-- NAV -->
+  <!-- NAVIGATION -->
   <nav>
     <a href="home.html">Home</a>
     <a href="about.html">About</a>
@@ -124,10 +125,10 @@
     <a href="contact.html" class="active">Contact</a>
   </nav>
 
-  <!-- CONTACT INFO -->
+  <!-- CONTACT INFORMATION -->
   <div class="contact-container">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:info@triocallisto.com">info@triocallisto.com</a></p>
+    <p><a href="mailto:info@triocallisto.com">info@triocallisto.com</a></p>
     <p>+372 56944159</p>
     <p>+44 7901140836</p>
   </div>
