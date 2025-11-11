@@ -56,24 +56,24 @@
       z-index: 1;
     }
 
-    /* RESPONSIVE GREY TITLE ON MOBILE */
+    /* Mobile adjustments */
     @media(max-width: 600px) {
       .greek-title { font-size: 3.5rem; top: -10px; }
       .site-title h1 { font-size: 2.2rem; }
     }
 
-    /* GROUP PHOTO */
+    /* Group Photo */
     .hero-photo {
       width: 100%;
       max-width: 900px;
-      aspect-ratio: 16/9;  /* This enforces a *landscape* shape */
+      aspect-ratio: 16/9;
       background: #ddd;
       margin: 2rem auto;
       display: block;
       object-fit: cover;
     }
 
-    /* GROUP TEXT */
+    /* Group Text */
     .group-description {
       max-width: 800px;
       margin: 2rem auto;
@@ -89,19 +89,28 @@
       width: 80%;
     }
 
-    /* INDIVIDUAL BIOS */
+    /* BIO SECTIONS */
     .bio-section {
       max-width: 900px;
-      margin: 3rem auto;
+      margin: 4rem auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .bio-section.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .bio-section img {
-      width: 230px;
+      width: 270px;
       height: auto;
       object-fit: cover;
+      border-radius: 2px;
     }
 
     .bio-text {
@@ -110,13 +119,17 @@
       line-height: 1.7;
     }
 
-    /* Alternate layout (image right) */
+    .bio-text h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
     .reverse { flex-direction: row-reverse; }
 
-    /* Mobile layout */
     @media(max-width: 700px) {
       .bio-section, .reverse { flex-direction: column; text-align: center; }
-      .bio-section img { width: 65%; }
+      .bio-section img { width: 70%; margin-bottom: 1rem; }
     }
   </style>
 </head>
@@ -144,12 +157,12 @@
 
   <!-- GROUP DESCRIPTION -->
   <div class="group-description">
-    <p><em>Write 1–2 elegant paragraphs here introducing the trio — origin, musical approach, where you are based, notable performances, etc.</em></p>
+    <p><em>Write your group introduction here.</em></p>
   </div>
 
   <hr>
 
-  <!-- MEMBER 1 -->
+  <!-- MERILY -->
   <div class="bio-section">
     <img src="Merx.jpg" alt="Merily Leotoots">
     <div class="bio-text">
@@ -171,7 +184,7 @@
 
   <hr>
 
-  <!-- MEMBER 2 -->
+  <!-- ANNA -->
   <div class="bio-section reverse">
     <img src="Anja.jpg" alt="Anna Ryland-Jones">
     <div class="bio-text">
@@ -191,7 +204,7 @@
 
   <hr>
 
-  <!-- MEMBER 3 -->
+  <!-- VIOLA -->
   <div class="bio-section">
     <img src="Viola.JPG" alt="Viola Asoskova">
     <div class="bio-text">
@@ -210,4 +223,17 @@
   </div>
 
 </body>
+
+<!-- FADE-IN SCRIPT -->
+<script>
+  const bios = document.querySelectorAll('.bio-section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.2 });
+
+  bios.forEach(bio => observer.observe(bio));
+</script>
+
 </html>
