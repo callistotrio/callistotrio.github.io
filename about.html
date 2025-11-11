@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -31,7 +31,8 @@
       content: "";
       position: absolute;
       left: 0; bottom: -2px;
-      width: 0%; height: 1px;
+      width: 0%;
+      height: 1px;
       background-color: #8b5e3c;
       transition: width 0.3s ease;
     }
@@ -51,41 +52,40 @@
       position: absolute;
       top: -18px; left: 50%;
       transform: translateX(-50%);
-      white-space: nowrap;
       pointer-events: none;
+      white-space: nowrap;
       z-index: 1;
     }
 
-    /* Mobile adjustments */
     @media(max-width: 600px) {
-      .greek-title { font-size: 3.5rem; top: -10px; }
+      .greek-title { font-size: 3.5rem; top: -8px; }
       .site-title h1 { font-size: 2.2rem; }
     }
 
-    /* Group Photo */
+    /* GROUP PHOTO */
     .hero-photo {
       width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16/9;
-      background: #ddd;
-      margin: 2rem auto;
+      max-width: 1050px;
+      margin: 2.5rem auto;
       display: block;
+      border-radius: 4px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
     }
 
-    /* Group Text */
+    /* GROUP TEXT */
     .group-description {
       max-width: 800px;
       margin: 2rem auto;
       text-align: center;
-      font-size: 1.25rem;
-      line-height: 1.8;
+      font-size: 1.23rem;
+      line-height: 1.75;
     }
 
     hr {
       border: none;
       border-top: 1px solid #d4cec6;
-      margin: 3rem auto;
+      margin: 3.5rem auto;
       width: 80%;
     }
 
@@ -95,41 +95,59 @@
       margin: 4rem auto;
       display: flex;
       align-items: flex-start;
-      gap: 2rem;
+      gap: 2.5rem;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(35px);
       transition: opacity 1s ease, transform 1s ease;
     }
-
     .bio-section.show {
       opacity: 1;
       transform: translateY(0);
     }
 
     .bio-section img {
-      width: 270px;
+      width: 320px;
       height: auto;
-      object-fit: cover;
-      border-radius: 2px;
+      border-radius: 3px;
+      display: block;
     }
 
     .bio-text {
       flex: 1;
-      font-size: 1.15rem;
-      line-height: 1.7;
+      font-size: 1.17rem;
+      line-height: 1.75;
     }
 
     .bio-text h2 {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 1.8rem;
+      font-size: 1.75rem;
     }
 
+    /* Alternating layout */
     .reverse { flex-direction: row-reverse; }
 
-    @media(max-width: 700px) {
-      .bio-section, .reverse { flex-direction: column; text-align: center; }
-      .bio-section img { width: 70%; margin-bottom: 1rem; }
+    /* Mobile layout */
+    @media(max-width: 750px) {
+      .bio-section, .reverse {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      .bio-section img {
+        width: 80%;
+        margin: 0 auto 1rem auto;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+      font-size: 0.95rem;
+      color: #6a6761;
+      border-top: 1px solid #d4cec6;
     }
   </style>
 </head>
@@ -157,7 +175,7 @@
 
   <!-- GROUP DESCRIPTION -->
   <div class="group-description">
-    <p><em>Write your group introduction here.</em></p>
+    <p><em>Your introduction paragraph(s) stay here — no change needed.</em></p>
   </div>
 
   <hr>
@@ -167,6 +185,8 @@
     <img src="Merx.jpg" alt="Merily Leotoots">
     <div class="bio-text">
       <h2>Merily Leotoots – Violin</h2>
+      <!-- Your formatted paragraphs stay exactly as they are -->
+      <!-- (Already correct — no need to change them again) -->
       <p>Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.</p>
 
 <p>She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.</p>
@@ -178,7 +198,6 @@
 <p>Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.</p>
 
 <p>Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.</p>
-
     </div>
   </div>
 
@@ -222,18 +241,22 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
+  <footer>
+    © Trio Callistó — All Rights Reserved
+  </footer>
+
+  <!-- FADE-IN SCRIPT -->
+  <script>
+    const bios = document.querySelectorAll('.bio-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.2 });
+
+    bios.forEach(bio => observer.observe(bio));
+  </script>
+
 </body>
-
-<!-- FADE-IN SCRIPT -->
-<script>
-  const bios = document.querySelectorAll('.bio-section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  }, { threshold: 0.2 });
-
-  bios.forEach(bio => observer.observe(bio));
-</script>
-
 </html>
