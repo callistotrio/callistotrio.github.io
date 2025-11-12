@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery – Trio Callistó</title>
 
   <!-- GFS Didot -->
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -30,6 +30,7 @@
       font-size: 1.1rem;
       position: relative;
       padding-bottom: 3px;
+      transition: color 0.2s ease;
     }
     nav a::after {
       content: "";
@@ -46,9 +47,38 @@
       width: 100%;
     }
 
+    /* DROPDOWN (click-to-open) */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      background-color: #f8f6f2;
+      min-width: 160px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 2px;
+      z-index: 5;
+      text-align: left;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #1e1e1e;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .dropdown-content a:hover {
+      background-color: #e8e2da;
+    }
+    .dropdown.open .dropdown-content { display: block; }
+
     /* TITLE */
     .site-title {
       position: relative;
+      text-align: center;
       padding-top: 2rem;
       padding-bottom: 1rem;
     }
@@ -60,61 +90,57 @@
     }
     .greek-title {
       font-size: 5rem;
-      color: rgba(30, 30, 30, 0.06);
+      color: rgba(30,30,30,0.06);
       position: absolute;
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
       pointer-events: none;
+      z-index: 1;
     }
-
-    @media (max-width: 600px) {
-      .greek-title {
-        font-size: 3.5rem;
-        top: -10px;
-      }
-      .site-title h1 {
-        font-size: 2.2rem;
-      }
+    @media(max-width:600px){
+      .greek-title{font-size:3.5rem;top:-10px;}
+      .site-title h1{font-size:2.2rem;}
     }
 
     /* GALLERY GRID */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
       max-width: 1000px;
       margin: 3rem auto;
+      padding: 0;
     }
-
     .gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 4px;
       opacity: 0;
-      transform: scale(0.97);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
     }
-
     .gallery img.show {
       opacity: 1;
-      transform: scale(1);
+      transform: translateY(0);
     }
 
     /* FOOTER */
     footer {
       margin-top: 4rem;
-      padding: 2rem 0 0.5rem;
-      font-size: 0.9rem;
-      color: #777;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 0.95rem;
+      color: #6a6a6a;
       border-top: 1px solid #d4cec6;
     }
   </style>
 </head>
 
 <body>
+
   <!-- TITLE -->
   <div class="site-title">
     <div class="greek-title">Τρίο Καλλιστώ</div>
@@ -126,38 +152,54 @@
     <a href="home.html">Home</a>
     <a href="about.html">About</a>
     <a href="gallery.html" class="active">Gallery</a>
-    <a href="concerts.html">Concerts</a>
+
+    <div class="dropdown">
+      <a href="#" id="concerts-toggle">Concerts ▾</a>
+      <div class="dropdown-content">
+        <a href="concerts-2025-2026.html">2025–2026</a>
+      </div>
+    </div>
+
     <a href="media.html">Media</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- GALLERY GRID -->
+  <!-- GALLERY SECTION -->
   <div class="gallery">
-    <img src="placeholder1.jpg" alt="Trio Callistó Photo 1" />
-    <img src="placeholder2.jpg" alt="Trio Callistó Photo 2" />
-    <img src="placeholder3.jpg" alt="Trio Callistó Photo 3" />
-    <img src="placeholder4.jpg" alt="Trio Callistó Photo 4" />
-    <img src="placeholder5.jpg" alt="Trio Callistó Photo 5" />
-    <img src="placeholder6.jpg" alt="Trio Callistó Photo 6" />
+    <img src="placeholder1.jpg" alt="Gallery placeholder 1">
+    <img src="placeholder2.jpg" alt="Gallery placeholder 2">
+    <img src="placeholder3.jpg" alt="Gallery placeholder 3">
+    <img src="placeholder4.jpg" alt="Gallery placeholder 4">
+    <img src="placeholder5.jpg" alt="Gallery placeholder 5">
+    <img src="placeholder6.jpg" alt="Gallery placeholder 6">
   </div>
 
   <!-- FOOTER -->
   <footer>
-    © 2025 Trio Callistó - All Rights Reserved
+    © 2025 Trio Callistó – All Rights Reserved
   </footer>
 
   <!-- FADE-IN SCRIPT -->
   <script>
-    const images = document.querySelectorAll(".gallery img");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-      },
-      { threshold: 0.2 }
-    );
-    images.forEach((img) => observer.observe(img));
+    const images = document.querySelectorAll('.gallery img');
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('show');
+      });
+    },{threshold:0.2});
+    images.forEach(img=>observer.observe(img));
+
+    /* Dropdown click toggle */
+    const toggle=document.getElementById('concerts-toggle');
+    const dropdown=toggle.parentElement;
+    toggle.addEventListener('click',e=>{
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click',e=>{
+      if(!dropdown.contains(e.target)) dropdown.classList.remove('open');
+    });
   </script>
+
 </body>
 </html>
