@@ -70,6 +70,18 @@
       transform: translateX(-50%);
       white-space: nowrap;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ✅ MOBILE FIX for Greek title */
+    @media (max-width: 600px) {
+      .greek-title {
+        font-size: 3.5rem;
+        top: -10px;
+      }
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
     }
 
     /* CONTACT TEXT */
@@ -81,7 +93,7 @@
 
     /* EMAIL STYLE */
     .contact-container a {
-      color: #8b5e3c;    /* your warm accent colour */
+      color: #8b5e3c;   /* your warm accent colour */
       text-decoration: none;
     }
     .contact-container a:hover {
@@ -149,7 +161,7 @@
 
   <!-- FOOTER -->
   <footer>
-    © 2025 Trio Callistó - All Rights Reserved
+    © 2025 Trio Callistó – All Rights Reserved
   </footer>
 
 </body>
