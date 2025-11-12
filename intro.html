@@ -2,63 +2,172 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trio Callistó</title>
+
+  <!-- GFS Didot -->
+  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: 'GFS Didot', serif;
+      background: #f8f6f2;
+      color: #1e1e1e;
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
       height: 100vh;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 600px;
-      padding: 1rem;
-    }
-
-    img {
       width: 100%;
-      max-width: 450px;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .hero img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75);
+    }
+
+    /* Text and button fade-in */
+    .hero-text {
+      position: relative;
+      text-align: center;
+      color: #f8f6f2;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .hero-text .greek {
+      font-size: 5rem;
+      opacity: 0.15;
+      margin-bottom: -1.5rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 1px;
     }
 
     .enter-button {
-      display: inline-block;
-      padding: 0.7rem 1.5rem;
-      background: #ffffff;
-      color: #000;
-      border-radius: 4px;
+      margin-top: 2.5rem;
+      padding: 0.7rem 2rem;
+      font-family: 'GFS Didot', serif;
+      font-size: 1.2rem;
+      color: #1e1e1e;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid #8b5e3c;
+      border-radius: 2px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: 0.2s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s ease forwards;
+      animation-delay: 1s;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .enter-button:hover {
-      background: #dcdcdc;
+      background-color: #8b5e3c;
+      color: #f8f6f2;
+    }
+
+    /* Reviews carousel */
+    .review-container {
+      position: absolute;
+      bottom: 3rem;
+      width: 100%;
+      text-align: center;
+      color: #f8f6f2;
+      font-size: 1.3rem;
+      font-style: italic;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .review {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transition: opacity 1.5s ease;
+      padding: 0 1rem;
+    }
+
+    .review.active {
+      opacity: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile adjustments */
+    @media(max-width:600px){
+      .hero-text .greek {font-size: 3rem;}
+      .hero-text h1 {font-size: 2rem;}
+      .enter-button {font-size: 1rem; padding: 0.6rem 1.4rem;}
+      .review-container {font-size: 1rem; bottom: 2rem;}
     }
   </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <img src="your-photo.jpg" alt="Trio Callistó">
-    <h1>Trio Callistó</h1>
-    <a href="home.html" class="enter-button">Enter</a>
+  <div class="hero">
+    <img src="TrioAbout.jpg" alt="Trio Callistó">
+
+    <div class="hero-text">
+      <div class="greek">Τρίο Καλλιστώ</div>
+      <h1>Trio Callistó</h1>
+      <a href="home.html" class="enter-button">Enter Site</a>
+    </div>
+
+    <!-- Review quotes -->
+    <div class="review-container" id="reviewContainer">
+      <div class="review active">“A beautifully balanced trio of rare musical sensitivity.” – The Times</div>
+      <div class="review">“Three voices speaking with one soul.” – BBC Music Magazine</div>
+      <div class="review">“Performances of luminous clarity and poetic conviction.” – Postimees</div>
+    </div>
   </div>
+
+  <script>
+    const reviews = document.querySelectorAll('.review');
+    let current = 0;
+    let interval;
+
+    function startCarousel() {
+      interval = setInterval(() => {
+        reviews[current].classList.remove('active');
+        current = (current + 1) % reviews.length;
+        reviews[current].classList.add('active');
+      }, 6000); // change quote every 6s
+    }
+
+    function stopCarousel() {
+      clearInterval(interval);
+    }
+
+    // Start carousel and pause on hover
+    startCarousel();
+    const container = document.getElementById('reviewContainer');
+    container.addEventListener('mouseenter', stopCarousel);
+    container.addEventListener('mouseleave', startCarousel);
+  </script>
 
 </body>
 </html>
