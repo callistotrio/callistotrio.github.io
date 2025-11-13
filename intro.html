@@ -17,78 +17,78 @@
       margin: 0;
       font-family: 'GFS Didot', serif;
       background: #f8f6f2;
-      color: #ffffff;
+      color: #f8f6f2;
       overflow: hidden;
     }
 
+    /* HERO AREA */
     .hero {
       position: relative;
       height: 100vh;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;   /* pushes text toward BOTTOM */
+      align-items: center;
+      text-align: center;
+      padding-bottom: 10vh;        /* adjust this to move all text lower */
     }
 
-    /* --- PERFECT CROP — DO NOT TOUCH --- */
     .hero img {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 12%; /* perfect */
+
+      /* ★ DO NOT CHANGE — PERFECT CROP ★ */
+      object-position: center 12%;
+
       filter: brightness(0.65);
       z-index: 1;
     }
 
-    /* --- ENTER BUTTON (now above text) --- */
+    /* TEXT BLOCK */
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .greek {
+      font-size: 4.8rem;
+      opacity: 0.22;
+      margin-bottom: -2.3rem;  /* overlap */
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      margin: 0;
+    }
+
+    /* BUTTON — SMALLER + PERFECTLY CENTERED */
     .enter-button {
-  display: inline-block;
-  margin-top: 6vh;
-  padding: 0.5rem 1.4rem;  /* smaller button */
-  font-size: 1rem;         /* smaller text */
-  color: #1e1e1e;
-  background-color: rgba(255,255,255,0.9);
-  border: 1px solid #8b5e3c;
-  border-radius: 3px;
-  text-decoration: none;
+      display: block;
+      margin: 2.5rem auto 0 auto;   /* this ensures PERFECT centering */
+      padding: 0.6rem 1.6rem;       /* smaller size */
+      font-size: 1.1rem;
+      color: #1e1e1e;
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid #8b5e3c;
+      border-radius: 3px;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s ease forwards;
+      animation-delay: 0.6s;
+      transition: all 0.3s ease;
+      z-index: 3;
+    }
 
-  /* ★ PERFECT CENTERING FIX ★ */
-  margin-left: auto;
-  margin-right: auto;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1.5s ease forwards;
-  animation-delay: 1s;
-  transition: all 0.3s ease;
-  z-index: 3;
-}
     .enter-button:hover {
       background-color: #8b5e3c;
       color: #f8f6f2;
     }
 
-    /* --- TEXT BLOCK AT BOTTOM --- */
-    .bottom-text {
-      position: absolute;
-      bottom: 6vh;   /* move this number up/down */
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 3;
-      animation: fadeUp 1.5s ease forwards;
-    }
-
-    .greek {
-      font-size: 5rem;
-      opacity: 0.22;
-      margin-bottom: -3rem; /* beautiful overlap */
-    }
-
-    h1 {
-      font-size: 3.8rem;
-      margin: 0;
-    }
-
+    /* ANIMATION */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -96,10 +96,23 @@
 
     /* MOBILE */
     @media (max-width: 600px) {
-      .greek { font-size: 3.2rem; margin-bottom: -2.5rem; }
-      h1 { font-size: 2.4rem; }
-      .bottom-text { bottom: 7vh; }
-      .enter-button { top: 45%; font-size: 1.1rem; padding: 0.6rem 1.3rem; }
+      .hero {
+        padding-bottom: 12vh;
+      }
+
+      .greek {
+        font-size: 3.2rem;
+        margin-bottom: -1.8rem;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .enter-button {
+        font-size: 1rem;
+        padding: 0.5rem 1.3rem;
+      }
     }
   </style>
 </head>
@@ -109,14 +122,12 @@
   <div class="hero">
     <img src="TrioIntro.jpg" alt="Trio Callistó">
 
-    <!-- Button ABOVE text -->
-    <a href="home.html" class="enter-button">Enter Site</a>
-
-    <!-- Text at bottom -->
-    <div class="bottom-text">
+    <div class="hero-text">
       <div class="greek">Τρίο Καλλιστώ</div>
       <h1>Trio Callistó</h1>
+      <a href="home.html" class="enter-button">Enter Site</a>
     </div>
+
   </div>
 
 </body>
