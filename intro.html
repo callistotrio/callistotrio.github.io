@@ -49,7 +49,7 @@
       position: relative;
       z-index: 2;
       animation: fadeUp 1.5s ease forwards;
-      margin-top: 12vh; /* moves text down even more */
+      margin-top: 20vh; /* moves text down even more */
     }
 
     .greek {
@@ -69,7 +69,7 @@
 
     .enter-button {
       display: inline-block;
-      margin-top: 2.5rem; /* lower button */
+      margin-top: 4rem; /* lower button */
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
@@ -155,23 +155,6 @@
       <h1>Trio Callistó</h1>
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
-
-    <div class="review-container">
-      <div class="review active">“A beautifully balanced trio of rare musical sensitivity.” – The Times</div>
-      <div class="review">“Three voices speaking with one soul.” – BBC Music Magazine</div>
-      <div class="review">“Performances of luminous clarity and poetic conviction.” – Postimees</div>
-    </div>
-  </div>
-
-  <script>
-    const reviews = document.querySelectorAll('.review');
-    let current = 0;
-    setInterval(() => {
-      reviews[current].classList.remove('active');
-      current = (current + 1) % reviews.length;
-      reviews[current].classList.add('active');
-    }, 6000);
-  </script>
 
 </body>
 </html>
