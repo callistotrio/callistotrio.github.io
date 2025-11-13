@@ -28,12 +28,16 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      overflow: hidden;
     }
 
+    /* LOWER IMAGE slightly by shifting upward background focal point */
     .hero img {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: -60px;      /* ⬅ LOWER IMAGE by moving it UP less (was -120 or more by auto cropping) */
+      left: 0;
+      width: 100%;
+      height: calc(100% + 120px); /* adds headroom so sliding it doesn't expose blank edges */
       object-fit: cover;
       filter: brightness(0.7);
       z-index: 1;
@@ -44,23 +48,24 @@
       z-index: 2;
       color: #f8f6f2;
       animation: fadeUp 1.5s ease forwards;
+      margin-top: 80px;  /* ⬅ pushes the text downward */
     }
 
     .greek {
       font-size: 5rem;
-      opacity: 0.15;
-      margin-bottom: -0.8rem;
+      opacity: 0.16;
+      margin-bottom: -1.2rem;
     }
 
     h1 {
-      font-size: 3.4rem;
+      font-size: 3.6rem;
       margin: 0;
       letter-spacing: 1px;
     }
 
     .enter-button {
       display: inline-block;
-      margin-top: 2rem;
+      margin-top: 2.2rem;
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
@@ -104,17 +109,19 @@
     }
 
     @media (max-width: 600px) {
-      .greek { font-size: 3.3rem; }
-      h1 { font-size: 2.2rem; }
+      .hero img { top: -40px; height: calc(100% + 80px); }
+
+      .hero-text { margin-top: 60px; }
+      .greek { font-size: 3.4rem; }
+      h1 { font-size: 2.4rem; }
       .enter-button { font-size: 1rem; padding: 0.6rem 1.3rem; }
-      .review-container { font-size: 1rem; bottom: 2rem; }
+      .review-container { font-size: 1rem; bottom: 1.7rem; }
     }
   </style>
 </head>
 
 <body>
   <div class="hero">
-    <!-- Replace this placeholder once your photo is ready -->
     <img src="TrioIntro.jpg" alt="Trio Callistó">
 
     <div class="hero-text">
