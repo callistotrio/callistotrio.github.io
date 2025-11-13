@@ -21,14 +21,14 @@
       overflow: hidden;
     }
 
+    /* HERO SECTION */
     .hero {
       position: relative;
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-end;   /* pushes text block downward */
+      align-items: center;
       text-align: center;
-      padding-bottom: 10vh;    /* lowers everything nicely */
     }
 
     .hero img {
@@ -38,7 +38,7 @@
       height: 100%;
       object-fit: cover;
 
-      /* ★★ DO NOT CHANGE — PERFECT CROP ★★ */
+      /* ★ DO NOT CHANGE — PERFECT CROP ★ */
       object-position: center 12%;
 
       filter: brightness(0.65);
@@ -49,12 +49,15 @@
       position: relative;
       z-index: 2;
       animation: fadeUp 1.5s ease forwards;
+
+      /* ★ LOWER TEXT (increase number to move down) ★ */
+      margin-top: 35vh;
     }
 
     .greek {
       font-size: 5rem;
       opacity: 0.22;
-      margin-bottom: -3rem; /* forces overlap */
+      margin-bottom: -3rem; /* creates overlap */
       position: relative;
       z-index: 2;
     }
@@ -68,7 +71,10 @@
 
     .enter-button {
       display: inline-block;
-      margin-top: 4rem; /* slightly lowered more */
+
+      /* ★ LOWER BUTTON (increase number to move down) ★ */
+      margin-top: 9rem;
+
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
@@ -94,27 +100,26 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE ADJUSTMENTS — NO CROP CHANGE */
+    /* MOBILE */
     @media (max-width: 600px) {
 
-      .hero {
-        align-items: flex-end;
-        padding-bottom: 12vh;
+      .hero-text {
+        margin-top: 25vh;  /* lowered */
       }
 
       .greek {
-        font-size: 3.2rem;
-        margin-bottom: -4rem; /* overlap preserved */
+        font-size: 3.3rem;
+        margin-bottom: -3rem;
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
       }
 
       .enter-button {
+        margin-top: 6rem;
         font-size: 1rem;
         padding: 0.6rem 1.3rem;
-        margin-top: 3rem;
       }
     }
   </style>
@@ -128,6 +133,7 @@
     <div class="hero-text">
       <div class="greek">Τρίο Καλλιστώ</div>
       <h1>Trio Callistó</h1>
+
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
 
