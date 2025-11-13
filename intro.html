@@ -23,13 +23,15 @@
 
     /* HERO SECTION */
     .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;  /* stack text downward */
+  justify-content: flex-start;  /* start at the top */
+  align-items: center; 
+  text-align: center;
+  padding-top: 10vh; /* you can adjust this later */
+}
 
     .hero img {
       position: absolute;
