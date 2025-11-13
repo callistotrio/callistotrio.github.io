@@ -41,24 +41,43 @@
     }
 
     /* BUTTON ABOVE TEXT (centered) */
-    .enter-button {
-      position: absolute;
-      top: 55vh;              /* ↓ move UP/DOWN here if needed */
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0.5rem 1.5rem; /* smaller button */
-      font-size: 1.1rem;
-      color: #1e1e1e;
-      background-color: rgba(255,255,255,0.9);
-      border: 1px solid #8b5e3c;
-      border-radius: 3px;
-      text-decoration: none;
-      opacity: 0;
-      animation: fadeUp 1.4s ease forwards;
-      animation-delay: 0.6s;
-      z-index: 3;
-      transition: all 0.3s ease;
-    }
+.enter-button {
+  position: absolute;
+  top: 55vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  color: #1e1e1e;
+  background-color: rgba(255,255,255,0.9);
+  border: 1px solid #8b5e3c;
+  border-radius: 3px;
+  text-decoration: none;
+
+  opacity: 0;
+  animation: fadeUp 1.4s ease forwards;
+
+  /* BUTTON FADES IN AFTER TEXT —— changed from 0.6s */
+  animation-delay: 2.6s;
+
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+/* TEXT BLOCK AT BOTTOM */
+.hero-text {
+  position: absolute;
+  bottom: 6vh;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+
+  opacity: 0;
+  animation: fadeUp 1.5s ease forwards;
+
+  /* TEXT FADES IN BEFORE BUTTON —— unchanged unless you want earlier */
+  animation-delay: 1s;
+}
 
     .enter-button:hover {
       background-color: #8b5e3c;
