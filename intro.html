@@ -21,6 +21,7 @@
       overflow: hidden;
     }
 
+    /* HERO */
     .hero {
       position: relative;
       height: 100vh;
@@ -28,53 +29,54 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 5vh;   /* shifts everything slightly DOWN */
+      overflow: hidden;
     }
 
     .hero img {
       position: absolute;
-      top: 0; left: 0;
+      top: -80px; /* Moves image down so heads are visible */
+      left: 0;
       width: 100%;
-      height: 100%;
+      height: calc(100% + 80px);
       object-fit: cover;
-
-      /* ★★ THE FIX ★★ */
-      object-position: center 20%;
-      /* You can adjust 20% → try 10%, 15%, 25% if needed */
-
-      filter: brightness(0.65);
+      filter: brightness(0.72);
       z-index: 1;
     }
 
+    /* TEXT BLOCK */
     .hero-text {
       position: relative;
       z-index: 2;
       animation: fadeUp 1.5s ease forwards;
-      margin-top: 5vh;  /* moves text further DOWN */
     }
 
+    /* GREEK TITLE */
     .greek {
       font-size: 4.8rem;
-      opacity: 0.18;
-      margin-bottom: -1rem;
-      position: relative;
-      z-index: 2;
+      opacity: 0.14;
+      margin: 0;
+      margin-bottom: -1.7rem; /* Pulls Greek closer for overlap */
+      transform: translateY(25px); /* Overlap amount */
+      letter-spacing: 1px;
     }
 
+    /* ENGLISH TITLE */
     h1 {
-      font-size: 3.6rem;
+      font-size: 3.4rem;
       margin: 0;
+      letter-spacing: 1px;
       position: relative;
       z-index: 3;
     }
 
+    /* ENTER BUTTON */
     .enter-button {
       display: inline-block;
       margin-top: 2rem;
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
-      background-color: rgba(255,255,255,0.9);
+      background-color: rgba(255,255,255,0.85);
       border: 1px solid #8b5e3c;
       border-radius: 3px;
       text-decoration: none;
@@ -83,7 +85,6 @@
       animation: fadeUp 1.5s ease forwards;
       animation-delay: 1s;
       transition: all 0.3s ease;
-      z-index: 3;
     }
 
     .enter-button:hover {
@@ -91,11 +92,13 @@
       color: #f8f6f2;
     }
 
+    /* REVIEW ROTATOR */
     .review-container {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 3rem;
       width: 100%;
       text-align: center;
+      color: #f8f6f2;
       font-size: 1.3rem;
       font-style: italic;
       z-index: 2;
@@ -108,54 +111,51 @@
     }
     .review.active { opacity: 1; }
 
+    /* FADE ANIMATION */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE ADJUSTMENTS */
+    /* MOBILE */
     @media (max-width: 600px) {
-      .hero {
-        padding-top: 8vh;
-      }
-
-      .hero img {
-        object-position: center 25%; /* a little more down on mobile */
-      }
-
       .greek {
-        font-size: 3rem;
-        opacity: 0.18;
+        font-size: 3.2rem;
+        transform: translateY(18px);
+        margin-bottom: -1rem;
       }
-
       h1 {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
       }
-
       .enter-button {
         font-size: 1rem;
         padding: 0.6rem 1.3rem;
       }
-
       .review-container {
         font-size: 1rem;
-        bottom: 1.8rem;
+        bottom: 2rem;
+      }
+      .hero img {
+        top: -50px;
+        height: calc(100% + 50px);
       }
     }
   </style>
 </head>
 
 <body>
-
   <div class="hero">
+    <!-- Your intro page image -->
     <img src="TrioIntro.jpg" alt="Trio Callistó">
 
+    <!-- TITLE TEXT -->
     <div class="hero-text">
       <div class="greek">Τρίο Καλλιστώ</div>
       <h1>Trio Callistó</h1>
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
 
+    <!-- REVIEW ROTATION -->
     <div class="review-container">
       <div class="review active">“A beautifully balanced trio of rare musical sensitivity.” – The Times</div>
       <div class="review">“Three voices speaking with one soul.” – BBC Music Magazine</div>
@@ -172,6 +172,5 @@
       reviews[current].classList.add('active');
     }, 6000);
   </script>
-
 </body>
 </html>
