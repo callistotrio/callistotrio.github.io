@@ -26,9 +26,9 @@
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;   /* pushes text block downward */
       text-align: center;
-      padding-top: 10vh; /* LOWER ALL TEXT */
+      padding-bottom: 10vh;    /* lowers everything nicely */
     }
 
     .hero img {
@@ -38,7 +38,7 @@
       height: 100%;
       object-fit: cover;
 
-      /* KEEP THIS EXACT CROP — DO NOT CHANGE */
+      /* ★★ DO NOT CHANGE — PERFECT CROP ★★ */
       object-position: center 12%;
 
       filter: brightness(0.65);
@@ -49,12 +49,11 @@
       position: relative;
       z-index: 2;
       animation: fadeUp 1.5s ease forwards;
-      margin-top: 28vh; /* moves text down even more */
     }
 
     .greek {
       font-size: 5rem;
-      opacity: 0.22; /* slightly stronger so it's always visible */
+      opacity: 0.22;
       margin-bottom: -3rem; /* forces overlap */
       position: relative;
       z-index: 2;
@@ -69,7 +68,7 @@
 
     .enter-button {
       display: inline-block;
-      margin-top: 8rem; /* lower button */
+      margin-top: 4rem; /* slightly lowered more */
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
@@ -90,23 +89,6 @@
       color: #f8f6f2;
     }
 
-    .review-container {
-      position: absolute;
-      bottom: 2.5rem;
-      width: 100%;
-      text-align: center;
-      font-size: 1.3rem;
-      font-style: italic;
-      z-index: 2;
-    }
-
-    .review {
-      opacity: 0;
-      transition: opacity 1.5s ease;
-      padding: 0 1rem;
-    }
-    .review.active { opacity: 1; }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -114,17 +96,14 @@
 
     /* MOBILE ADJUSTMENTS — NO CROP CHANGE */
     @media (max-width: 600px) {
-      .hero {
-        padding-top: 14vh; /* move text lower on mobile */
-      }
 
-      .hero-text {
-        margin-top: 14vh;
+      .hero {
+        align-items: flex-end;
+        padding-bottom: 12vh;
       }
 
       .greek {
         font-size: 3.2rem;
-        opacity: 0.22; 
         margin-bottom: -4rem; /* overlap preserved */
       }
 
@@ -135,11 +114,7 @@
       .enter-button {
         font-size: 1rem;
         padding: 0.6rem 1.3rem;
-      }
-
-      .review-container {
-        font-size: 1rem;
-        bottom: 1.8rem;
+        margin-top: 3rem;
       }
     }
   </style>
@@ -155,6 +130,8 @@
       <h1>Trio Callistó</h1>
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
+
+  </div>
 
 </body>
 </html>
