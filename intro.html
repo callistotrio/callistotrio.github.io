@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trio Callistó</title>
 
-  <!-- GFS Didot -->
+  <!-- GFS Didot font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 8vh; /* lower text & increase headroom */
+      padding-top: 10vh; /* LOWER ALL TEXT */
     }
 
     .hero img {
@@ -38,39 +38,38 @@
       height: 100%;
       object-fit: cover;
 
-      /* ★ FIX: only crop bottom, NOT the top ★ */
-      object-position: center 0%; 
+      /* KEEP THIS EXACT CROP — DO NOT CHANGE */
+      object-position: center 12%;
 
       filter: brightness(0.65);
       z-index: 1;
     }
 
-    /* TEXT BLOCK */
     .hero-text {
       position: relative;
-      z-index: 3;
+      z-index: 2;
       animation: fadeUp 1.5s ease forwards;
-      margin-top: 6vh; /* moves titles lower */
+      margin-top: 12vh; /* moves text down even more */
     }
 
     .greek {
       font-size: 5rem;
-      opacity: 0.20;
-      margin-bottom: -1.2rem;
-      z-index: 3;
+      opacity: 0.22; /* slightly stronger so it's always visible */
+      margin-bottom: -2rem; /* forces overlap */
       position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 3.8rem;
+      font-size: 3.7rem;
       margin: 0;
-      z-index: 4; /* above Greek text */
       position: relative;
+      z-index: 3;
     }
 
     .enter-button {
       display: inline-block;
-      margin-top: 2rem;
+      margin-top: 2.5rem; /* lower button */
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
@@ -83,7 +82,7 @@
       animation: fadeUp 1.5s ease forwards;
       animation-delay: 1s;
       transition: all 0.3s ease;
-      z-index: 4;
+      z-index: 3;
     }
 
     .enter-button:hover {
@@ -91,7 +90,6 @@
       color: #f8f6f2;
     }
 
-    /* REVIEWS */
     .review-container {
       position: absolute;
       bottom: 2.5rem;
@@ -99,7 +97,7 @@
       text-align: center;
       font-size: 1.3rem;
       font-style: italic;
-      z-index: 3;
+      z-index: 2;
     }
 
     .review {
@@ -114,16 +112,25 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE */
+    /* MOBILE ADJUSTMENTS — NO CROP CHANGE */
     @media (max-width: 600px) {
-      .hero { padding-top: 10vh; }
-
-      .hero img {
-        object-position: center 5%; /* again: crop bottom only */
+      .hero {
+        padding-top: 14vh; /* move text lower on mobile */
       }
 
-      .greek { font-size: 3.4rem; }
-      h1 { font-size: 2.4rem; }
+      .hero-text {
+        margin-top: 14vh;
+      }
+
+      .greek {
+        font-size: 3.2rem;
+        opacity: 0.22; 
+        margin-bottom: -1rem; /* overlap preserved */
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
 
       .enter-button {
         font-size: 1rem;
@@ -132,7 +139,7 @@
 
       .review-container {
         font-size: 1rem;
-        bottom: 1.6rem;
+        bottom: 1.8rem;
       }
     }
   </style>
