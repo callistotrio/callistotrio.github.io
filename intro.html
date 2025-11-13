@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trio Callistó</title>
 
-  <!-- Load GFS Didot font -->
+  <!-- GFS Didot font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'GFS Didot', serif;
@@ -23,21 +25,17 @@
       position: relative;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      overflow: hidden;
     }
 
     .hero img {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      filter: brightness(0.75);
+      filter: brightness(0.7);
       z-index: 1;
     }
 
@@ -48,34 +46,33 @@
       animation: fadeUp 1.5s ease forwards;
     }
 
-    .hero-text .greek {
+    .greek {
       font-size: 5rem;
       opacity: 0.15;
-      margin-bottom: -1rem;
+      margin-bottom: -0.8rem;
     }
 
-    .hero-text h1 {
-      font-size: 3.2rem;
+    h1 {
+      font-size: 3.4rem;
       margin: 0;
       letter-spacing: 1px;
     }
 
     .enter-button {
-      margin-top: 2.5rem;
-      padding: 0.7rem 2rem;
-      font-family: 'GFS Didot', serif;
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
       font-size: 1.2rem;
       color: #1e1e1e;
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255,255,255,0.85);
       border: 1px solid #8b5e3c;
-      border-radius: 2px;
+      border-radius: 3px;
       text-decoration: none;
-      z-index: 3;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 1.5s ease forwards;
       animation-delay: 1s;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .enter-button:hover {
@@ -91,58 +88,34 @@
       color: #f8f6f2;
       font-size: 1.3rem;
       font-style: italic;
-      z-index: 3;
+      z-index: 2;
     }
 
     .review {
       opacity: 0;
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
       transition: opacity 1.5s ease;
       padding: 0 1rem;
     }
-
-    .review.active {
-      opacity: 1;
-    }
+    .review.active { opacity: 1; }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    @media(max-width: 600px) {
-      .hero-text .greek {
-        font-size: 3.3rem;
-        margin-bottom: -0.5rem;
-      }
-      .hero-text h1 {
-        font-size: 2rem;
-      }
-      .enter-button {
-        font-size: 1rem;
-        padding: 0.6rem 1.4rem;
-      }
-      .review-container {
-        font-size: 1rem;
-        bottom: 2rem;
-      }
+    @media (max-width: 600px) {
+      .greek { font-size: 3.3rem; }
+      h1 { font-size: 2.2rem; }
+      .enter-button { font-size: 1rem; padding: 0.6rem 1.3rem; }
+      .review-container { font-size: 1rem; bottom: 2rem; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="hero">
-    <img src="TrioAbout.jpg" alt="Trio Callistó">
+    <!-- Replace this placeholder once your photo is ready -->
+    <img src="TrioIntro.jpg" alt="Trio Callistó">
 
     <div class="hero-text">
       <div class="greek">Τρίο Καλλιστώ</div>
@@ -150,7 +123,7 @@
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
 
-    <div class="review-container" id="reviewContainer">
+    <div class="review-container">
       <div class="review active">“A beautifully balanced trio of rare musical sensitivity.” – The Times</div>
       <div class="review">“Three voices speaking with one soul.” – BBC Music Magazine</div>
       <div class="review">“Performances of luminous clarity and poetic conviction.” – Postimees</div>
@@ -166,6 +139,5 @@
       reviews[current].classList.add('active');
     }, 6000);
   </script>
-
 </body>
 </html>
