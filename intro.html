@@ -6,8 +6,6 @@
   <title>Trio Callistó</title>
 
   <!-- GFS Didot font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
@@ -21,17 +19,17 @@
       overflow: hidden;
     }
 
-    /* HERO SECTION */
+    /* ---------------------------------------------------
+       HERO SECTION
+    --------------------------------------------------- */
     .hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;  /* stack text downward */
-  justify-content: flex-start;  /* start at the top */
-  align-items: center; 
-  text-align: center;
-  padding-top: 10vh; /* you can adjust this later */
-}
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;   /* start so margin-top works properly */
+      text-align: center;
+    }
 
     .hero img {
       position: absolute;
@@ -40,30 +38,35 @@
       height: 100%;
       object-fit: cover;
 
-      /* ★ DO NOT CHANGE — PERFECT CROP ★ */
+      /* ★ PERFECT CROP — DO NOT CHANGE ★ */
       object-position: center 12%;
 
       filter: brightness(0.65);
       z-index: 1;
     }
 
+    /* ---------------------------------------------------
+       TEXT BLOCK (THIS NOW MOVES!)
+    --------------------------------------------------- */
     .hero-text {
       position: relative;
       z-index: 2;
       animation: fadeUp 1.5s ease forwards;
 
-      /* ★ LOWER TEXT (increase number to move down) ★ */
-      margin-top: 40vh;
+      /* ★ LOWER THIS NUMBER TO MOVE TEXT DOWN ★ */
+      margin-top: 32vh;
     }
 
+    /* GREEK TITLE */
     .greek {
       font-size: 5rem;
       opacity: 0.22;
-      margin-bottom: -3rem; /* creates overlap */
+      margin-bottom: -3rem; /* overlap */
       position: relative;
       z-index: 2;
     }
 
+    /* ENGLISH TITLE */
     h1 {
       font-size: 3.7rem;
       margin: 0;
@@ -71,11 +74,14 @@
       z-index: 3;
     }
 
+    /* ---------------------------------------------------
+       BUTTON
+    --------------------------------------------------- */
     .enter-button {
       display: inline-block;
 
-      /* ★ LOWER BUTTON (increase number to move down) ★ */
-      margin-top: 12rem;
+      /* ★ LOWER BUTTON — increase to push further down ★ */
+      margin-top: 10rem;
 
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
@@ -102,26 +108,29 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* MOBILE */
+    /* ---------------------------------------------------
+       MOBILE ADJUSTMENTS — SAME CROP, LOWER TEXT
+    --------------------------------------------------- */
     @media (max-width: 600px) {
 
       .hero-text {
-        margin-top: 25vh;  /* lowered */
+        margin-top: 36vh; /* lower on mobile */
       }
 
       .greek {
-        font-size: 3.3rem;
-        margin-bottom: -3rem;
+        font-size: 3.2rem;
+        margin-bottom: -4rem;
       }
 
       h1 {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
       }
 
       .enter-button {
-        margin-top: 6rem;
         font-size: 1rem;
         padding: 0.6rem 1.3rem;
+
+        margin-top: 8rem;  /* lower on mobile */
       }
     }
   </style>
@@ -135,10 +144,8 @@
     <div class="hero-text">
       <div class="greek">Τρίο Καλλιστώ</div>
       <h1>Trio Callistó</h1>
-
       <a href="home.html" class="enter-button">Enter Site</a>
     </div>
-
   </div>
 
 </body>
