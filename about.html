@@ -127,6 +127,18 @@
       object-position: center top;
     }
 
+    /* FADE-IN for big group photo */
+.hero-photo {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.hero-photo.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     /* GROUP TEXT */
     .group-description {
       max-width: 800px;
@@ -307,6 +319,16 @@
 
   <!-- FADE-IN SCRIPT -->
   <script>
+    // FADE IN GROUP PHOTO
+const heroPhoto = document.querySelector('.hero-photo');
+const photoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+}, { threshold: 0.2 });
+
+photoObserver.observe(heroPhoto);
+    
     const bios = document.querySelectorAll('.bio-section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
