@@ -6,11 +6,11 @@
   <title>Gallery – Trio Callistó</title>
 
   <!-- FAVICON -->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" href="favicon.ico">
 
   <!-- GFS Didot -->
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
@@ -26,10 +26,7 @@
     }
 
     /* NAVIGATION */
-    nav {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+    nav { margin-bottom: 2rem; }
     nav a {
       margin: 0 0.8rem;
       text-decoration: none;
@@ -54,11 +51,8 @@
       width: 100%;
     }
 
-    /* DROPDOWN (click-to-open) */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+    /* DROPDOWN */
+    .dropdown { position: relative; display: inline-block; }
     .dropdown-content {
       display: none;
       position: absolute;
@@ -77,24 +71,11 @@
       text-decoration: none;
       font-size: 1rem;
     }
-    .dropdown-content a:hover {
-      background-color: #e8e2da;
-    }
     .dropdown.open .dropdown-content { display: block; }
 
     /* TITLE */
-    .site-title {
-      position: relative;
-      text-align: center;
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-    }
-    .site-title h1 {
-      font-size: 2.8rem;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-    }
+    .site-title { position: relative; padding-top: 2rem; padding-bottom: 1rem; }
+    .site-title h1 { font-size: 2.8rem; margin: 0; }
     .greek-title {
       font-size: 5rem;
       color: rgba(30,30,30,0.06);
@@ -103,8 +84,6 @@
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      pointer-events: none;
-      z-index: 1;
     }
     @media(max-width:600px){
       .greek-title{font-size:3.5rem;top:-10px;}
@@ -118,13 +97,13 @@
       gap: 1.5rem;
       max-width: 1000px;
       margin: 3rem auto;
-      padding: 0;
     }
     .gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 4px;
+      cursor: pointer;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1s ease, transform 1s ease;
@@ -133,6 +112,56 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* LIGHTBOX OVERLAY */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 1rem;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    /* ARROWS */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.5rem 1rem;
+    }
+    .arrow:hover { color: #d5c3a3; }
+
+    .arrow.left  { left: 20px; }
+    .arrow.right { right: 20px; }
+
+    /* CLOSE BUTTON */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    .close-btn:hover { color: #d5c3a3; }
 
     /* FOOTER */
     footer {
@@ -171,14 +200,21 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- GALLERY SECTION -->
+  <!-- GALLERY GRID -->
   <div class="gallery">
-    <img src="placeholder1.jpg" alt="Gallery placeholder 1">
-    <img src="placeholder2.jpg" alt="Gallery placeholder 2">
-    <img src="placeholder3.jpg" alt="Gallery placeholder 3">
-    <img src="placeholder4.jpg" alt="Gallery placeholder 4">
-    <img src="placeholder5.jpg" alt="Gallery placeholder 5">
-    <img src="placeholder6.jpg" alt="Gallery placeholder 6">
+    <img src="Gallery1.jpg" alt="">
+    <img src="Gallery2.jpg" alt="">
+    <img src="Gallery3.jpg" alt="">
+    <img src="Gallery4.jpg" alt="">
+    <img src="Gallery5.jpg" alt="">
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <span class="arrow left" id="prevBtn">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span class="arrow right" id="nextBtn">&#10095;</span>
   </div>
 
   <!-- FOOTER -->
@@ -186,8 +222,9 @@
     © 2025 Trio Callistó – All Rights Reserved
   </footer>
 
-  <!-- FADE-IN SCRIPT -->
+  <!-- SCRIPT -->
   <script>
+    /* Fade-in */
     const images = document.querySelectorAll('.gallery img');
     const observer = new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
@@ -196,7 +233,62 @@
     },{threshold:0.2});
     images.forEach(img=>observer.observe(img));
 
-    /* Dropdown click toggle */
+    /* Lightbox */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('closeBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    let currentIndex = 0;
+
+    function openLightbox(index){
+      currentIndex = index;
+      lightboxImg.src = images[index].src;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('active');
+    }
+
+    function showNext(){
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    function showPrev(){
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    /* Click image → open */
+    images.forEach((img, index)=>{
+      img.addEventListener('click', ()=> openLightbox(index));
+    });
+
+    /* Close */
+    closeBtn.addEventListener('click', closeLightbox);
+
+    /* Arrows */
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+
+    /* Keyboard support */
+    document.addEventListener('keydown', e=>{
+      if(!lightbox.classList.contains('active')) return;
+
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowRight') showNext();
+      if(e.key === 'ArrowLeft') showPrev();
+    });
+
+    /* Click outside closes */
+    lightbox.addEventListener('click', e=>{
+      if(e.target === lightbox) closeLightbox();
+    });
+
+    /* Dropdown */
     const toggle=document.getElementById('concerts-toggle');
     const dropdown=toggle.parentElement;
     toggle.addEventListener('click',e=>{
