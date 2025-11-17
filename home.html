@@ -131,6 +131,13 @@
       line-height: 1.8;
     }
 
+    /* HOMEPAGE — big hero container */
+.hero-wrapper {
+  max-width: 1200px;   /* <-- change this number to make image bigger/smaller */
+  margin: 0 auto;
+  padding: 0;
+}
+
     /* HOMEPAGE — allow full-width hero photo */
 .homepage-full {
   max-width: none;
@@ -194,8 +201,11 @@
 
   <!-- MAIN SECTION -->
   <main>
-   <img src="TrioHome.jpg" alt="Trio Callistó" class="home-hero homepage-full">
-  </main>
+   <div class="hero-wrapper">
+  <img src="TrioHome.jpg" alt="Trio Callistó" class="home-hero">
+</div>
+  <!-- later your scrolling reviews will go here -->
+</main>
 
   <!-- FOOTER -->
   <footer>
