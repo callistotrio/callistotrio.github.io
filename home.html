@@ -131,11 +131,20 @@
       line-height: 1.8;
     }
 
+    /* HOMEPAGE — allow full-width hero photo */
+.homepage-full {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
     /* HOMEPAGE HERO PHOTO (fade-in) */
 .home-hero {
   width: 100%;
+  max width: none;
   display: block;
-  margin: 2rem auto;
+  margin: 0 auto;
 
   opacity: 0;
   transform: translateY(30px);
@@ -185,7 +194,7 @@
 
   <!-- MAIN SECTION -->
   <main>
-   <img src="TrioHome.jpg" alt="Trio Callistó" class="home-hero">
+   <img src="TrioHome.jpg" alt="Trio Callistó" class="home-hero homepage-full">
   </main>
 
   <!-- FOOTER -->
