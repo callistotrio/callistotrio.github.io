@@ -131,6 +131,23 @@
       line-height: 1.8;
     }
 
+    /* HOMEPAGE HERO PHOTO (fade-in) */
+.home-hero {
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  display: block;
+  margin: 2rem auto;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.home-hero.show {
+  opacity: 1;
+  transform: translateY(0);
+}
     /* FOOTER */
     footer {
       margin-top: 4rem;
@@ -170,13 +187,24 @@
 
   <!-- MAIN SECTION -->
   <main>
-    <p>Welcome to the official website of Trio Callistó.</p>
+   <img src="TrioHome.jpg" alt="Trio Callistó" class="home-hero">
   </main>
 
   <!-- FOOTER -->
   <footer>
     © 2025 Trio Callistó – All Rights Reserved
   </footer>
+
+  <script>
+  const homePhoto = document.querySelector('.hero-photo');
+  const homeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.2 });
+
+  homeObserver.observe(homePhoto);
+</script>
 
   <!-- DROPDOWN SCRIPT -->
   <script>
