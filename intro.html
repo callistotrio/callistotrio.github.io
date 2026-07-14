@@ -46,12 +46,14 @@
       object-position: center 12%; /* KEEP THIS */
       filter: brightness(0.65);
       z-index: 1;
+
+      animation: slowZoom 18s ease-out forwards;
     }
 
 .enter-button {
   position: absolute;
-  top: 55vh;
-  left: 47%;
+  top: 78%;
+  left: 50%;
   
   padding: 0.5rem 1.3rem;         /* small button */
   font-size: 1.05rem;
@@ -92,15 +94,18 @@
 
     /* TEXT BLOCK AT BOTTOM */
     .hero-text {
-      position: absolute;
-      bottom: 6vh;              /* move text lower/higher here */
-      width: 100%;
-      text-align: center;
-      z-index: 3;
-      animation: fadeUp 1.5s ease forwards;
-      opacity: 0;
-      animation-delay: 1s;
-    }
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+
+  opacity: 0;
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 1s;
+}
 
     .greek {
       font-size: 5.5rem;
