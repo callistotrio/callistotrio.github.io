@@ -1,177 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trio Callistó</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FAVICON -->
+<title>Trio Callistó</title>
+
+<!-- FAVICON -->
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="shortcut icon" href="favicon.ico">
-<link rel="icon" href="favicon.ico" sizes="any">
 
-  <!-- GFS Didot -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
 
-    body {
-      margin: 0;
-      font-family: 'GFS Didot', serif;
-      background: #f8f6f2;
-      color: #f8f6f2;
-      overflow: hidden;
-    }
-
-    .hero {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    /* PERFECT CROP — DO NOT CHANGE */
-    .hero img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 12%; /* KEEP THIS */
-      filter: brightness(0.65);
-      z-index: 1;
-
-      animation: slowZoom 18s ease-out forwards;
-    }
-
-.enter-button {
-  position: absolute;
-  top: 78%;
-  left: 50%;
-  
-  padding: 0.5rem 1.3rem;         /* small button */
-  font-size: 1.05rem;
-  color: #1e1e1e;
-  background-color: rgba(255,255,255,0.9);
-  border: 1px solid #8b5e3c;
-  border-radius: 3px;
-  text-decoration: none;
-
-  display: inline-block;
-  opacity: 0;
-  z-index: 3;
-
-  animation: fadeUp 1.4s ease forwards;
-  animation-delay: 2.6s;         /* ← fades in AFTER text */
-  transition: all 0.3s ease;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* TEXT BLOCK AT BOTTOM */
-.hero-text {
-  position: absolute;
-  bottom: 6vh;
-  width: 100%;
-  text-align: center;
-  z-index: 3;
-
-  opacity: 0;
-  animation: fadeUp 1.5s ease forwards;
-
-  /* TEXT FADES IN BEFORE BUTTON —— unchanged unless you want earlier */
-  animation-delay: 1s;
+body{
+    overflow:hidden;
+    font-family:'GFS Didot', serif;
+    background:#f8f6f2;
 }
 
-    .enter-button:hover {
-      background-color: #8b5e3c;
-      color: #f8f6f2;
-    }
-
-    /* TEXT BLOCK AT BOTTOM */
-    .hero-text {
-  position: absolute;
-  top: 66%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  z-index: 3;
-
-  opacity: 0;
-  animation: fadeUp 1.5s ease forwards;
-  animation-delay: 1s;
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
 }
 
-    .greek {
-      font-size: 5.5rem;
-      opacity: 0.20;
-      margin-bottom: -3.5rem; /* overlap */
+/* BACKGROUND IMAGE */
+
+.hero img{
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center 12%;
+
+    filter:brightness(0.65);
+
+    animation:slowZoom 30s ease-out forwards;
+
+    z-index:1;
+
+}
+
+/* CONTENT */
+
+.content{
+
+    position:absolute;
+
+    width:100%;
+
+    top:68%;
+
+    text-align:center;
+
+    z-index:3;
+
+    animation:fadeUp 1.5s ease forwards;
+
+    opacity:0;
+
+    animation-delay:0.8s;
+
+}
+
+/* GREEK */
+
+.greek{
+
+    font-size:5.5rem;
+
+    opacity:0.20;
+
+    color:white;
+
+    margin-bottom:-3.5rem;
+
+}
+
+/* ENGLISH */
+
+h1{
+
+    color:white;
+
+    font-size:4.1rem;
+
+    font-weight:normal;
+
+}
+
+/* BUTTON */
+
+.enter-button{
+
+    display:inline-block;
+
+    margin-top:2rem;
+
+    padding:10px 24px;
+
+    background:rgba(255,255,255,.92);
+
+    color:#222;
+
+    text-decoration:none;
+
+    border:1px solid #8b5e3c;
+
+    border-radius:3px;
+
+    font-size:1.05rem;
+
+    transition:.3s;
+
+    opacity:0;
+
+    animation:fadeButton 1.2s ease forwards;
+
+    animation-delay:2.4s;
+
+}
+
+.enter-button:hover{
+
+    background:#8b5e3c;
+
+    color:white;
+
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
     }
 
-    h1 {
-      font-size: 4.1rem;
-      margin: 0;
-      color: #ffffff;
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(25px); }
-      to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeButton{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
     }
-    @keyframes mobilePan {
-      0%   { object-position: 30% center; }
-      50%  { object-position: 38% center; }
-      100% {object-position: 30% center; }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
     }
 
-    /* MOBILE TWEAKS (DON’T WORRY ABOUT PERFECT NOW) */
-    @media (max-width: 600px) {
-      .hero img {
-        animation: mobilePan 40s ease-in-out infinite;
-        object-fit: cover;
-      }
-      .enter-button {
-        top: 52vh;
-        left: 39%;
-        font-size: 1rem;
-        padding: 0.5rem 1.1rem;
-      }
+}
 
-      .hero-text {
-        bottom: 16vh;
-      }
+@keyframes slowZoom{
 
-      .greek {
-        font-size: 3rem;
-        margin-bottom: -1.4rem;
-      }
+    from{
 
-      h1 {
-        font-size: 2.2rem;
-      }
+        transform:scale(1);
+
     }
-  </style>
+
+    to{
+
+        transform:scale(1.05);
+
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <div class="hero">
-    <img src="TrioIntro.JPG" alt="Trio Callistó">
+<div class="hero">
 
-    <!-- BUTTON ABOVE TEXT -->
-    <a href="home.html" class="enter-button">Enter</a>
+<img src="TrioIntro.JPG" alt="Trio Callistó">
 
-    <!-- TEXT AT BOTTOM -->
-    <div class="hero-text">
-      <div class="greek">Τρίο Καλλιστώ</div>
-      <h1>Trio Callistó</h1>
-    </div>
-  </div>
+<div class="content">
+
+<div class="greek">Τρίο Καλλιστώ</div>
+
+<h1>Trio Callistó</h1>
+
+<a href="home.html" class="enter-button">Enter</a>
+
+</div>
+
+</div>
 
 </body>
+
 </html>
