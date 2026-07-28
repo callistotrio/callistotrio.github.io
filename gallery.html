@@ -91,22 +91,25 @@
       .site-title h1{font-size:2.2rem;}
     }
 
-   /* GALLERY */
+/* GALLERY */
+
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 80px;
-  gap: 1rem;
+  column-count: 3;
+  column-gap: 1.2rem;
   max-width: 1200px;
   margin: 3rem auto;
 }
 
 .gallery img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  margin-bottom: 1.2rem;
+
   border-radius: 4px;
   cursor: pointer;
+
+  break-inside: avoid;
 
   opacity: 0;
   transform: translateY(30px);
@@ -118,45 +121,20 @@
   transform: translateY(0);
 }
 
-/* Different image sizes */
+/* Tablets */
 
-.wide {
-  grid-column: span 8;
-  grid-row: span 3;
-}
-
-.medium {
-  grid-column: span 4;
-  grid-row: span 3;
-}
-
-.tall {
-  grid-column: span 4;
-  grid-row: span 6;
-}
-
-.large {
-  grid-column: span 8;
-  grid-row: span 6;
-}
-
-/* Mobile */
-
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 120px;
+    column-count: 2;
   }
+}
 
-  .wide,
-  .medium,
-  .tall,
-  .large {
-    grid-column: span 2;
-    grid-row: span 2;
+/* Phones */
+
+@media (max-width: 600px) {
+  .gallery {
+    column-count: 1;
   }
-
 }
 
     /* LIGHTBOX OVERLAY */
