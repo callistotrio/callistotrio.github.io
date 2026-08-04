@@ -19,8 +19,20 @@
   font-family: 'GFS Didot', serif;
   margin: 0;
   color: white;
+  opacity: 0;
+  animation: pageFadeIn 1.2s ease forwards;
 }
 
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
     /* ABOUT PAGE BACKGROUND */
 
 .about-page {
