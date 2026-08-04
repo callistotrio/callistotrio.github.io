@@ -250,8 +250,15 @@ h1{
 <div class="hero">
 
 <picture>
-  <source media="(max-width: 768px)" srcset="TrioMobile.JPG">
+
+  <!-- Portrait phones & portrait tablets -->
+  <source
+    media="(orientation: portrait)"
+    srcset="TrioMobile.JPG">
+
+  <!-- Everything else (landscape tablets & desktop) -->
   <img src="TrioIntro.JPG" alt="Trio Callistó">
+
 </picture>
 
 <div class="content">
