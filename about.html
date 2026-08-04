@@ -129,32 +129,33 @@
       display: block;
     }
 
-    /* TITLE */
-    .site-title {
-      position: relative;
-      text-align: center;
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-    }
+        /* TITLE */
+.site-title {
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
 
-    .site-title h1 {
-      font-size: 2.8rem;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    .greek-title {
-      font-size: 5rem;
-      color: rgba(30,30,30,0.06);
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 1;
-    }
+.site-title h1 {
+  font-size: 3rem;
+  margin: -0.4rem 0 0 0;
+  font-weight: normal;
+  position: relative;
+  z-index: 2;
+}
+.greek-title {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  color: rgba(255,255,255,0.15);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
 
     @media(max-width: 600px) {
       .greek-title { font-size: 3.5rem; top: -10px; }
