@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 
   <style>
-   body {
+  body {
   font-family: 'GFS Didot', serif;
   margin: 0;
   color: white;
@@ -31,6 +31,17 @@
 
   to {
     opacity: 1;
+  }
+}
+
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }
     /* ABOUT PAGE BACKGROUND */
@@ -374,7 +385,7 @@ and the Vienna Musikverein.</p>
     © 2026 Trio Callistó – All Rights Reserved
   </footer>
 
-  <!-- FADE-IN SCRIPT -->
+    <!-- FADE-IN SCRIPT -->
   <script>
     
     const bios = document.querySelectorAll('.bio-section');
@@ -398,6 +409,36 @@ and the Vienna Musikverein.</p>
     document.addEventListener('click', (e) => {
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
     });
+  </script>
+
+
+  <!-- PAGE TRANSITION SCRIPT -->
+  <script>
+    document.querySelectorAll('a').forEach(link => {
+
+      link.addEventListener('click', function(e) {
+
+        if (this.hostname === window.location.hostname && this.getAttribute('href') !== '#') {
+          e.preventDefault();
+
+          document.body.style.animation = "pageFadeOut 0.8s ease forwards";
+
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 800);
+
+        }
+
+      });
+
+    });
+  </script>
+
+
+</section>
+  
+</body>
+</html>
   </script>
 
 </section>
