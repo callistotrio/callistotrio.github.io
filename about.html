@@ -180,16 +180,21 @@
     }
 
     /* BIO SECTIONS */
-    .bio-section {
-      max-width: 900px;
-      margin: 4rem auto;
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
+   .bio-section {
+  max-width: 900px;
+  margin: 4rem auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+
+.bio-section:first-of-type {
+  margin-top: 45vh;
+}
 
     .bio-section.show {
       opacity: 1;
@@ -273,13 +278,6 @@
     <a href="media.html">Media</a>
     <a href="contact.html">Contact</a>
   </nav>
-
-  <!-- GROUP DESCRIPTION -->
-  <div class="group-description">
-    
-  </div>
-
-  <hr>
 
   <!-- MERILY -->
   <div class="bio-section">
