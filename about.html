@@ -160,28 +160,6 @@
       .site-title h1 { font-size: 2.2rem; }
     }
 
-    /* GROUP PHOTO */
-    .hero-photo {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  margin: 2rem auto;
-  display: block;
-  object-fit: contain;
-}
-
-    /* FADE-IN for big group photo */
-.hero-photo {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-.hero-photo.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
     /* GROUP TEXT */
     .group-description {
       max-width: 800px;
@@ -293,9 +271,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- GROUP PHOTO -->
-  <img src="TrioAbout.JPG" alt="Trio Callistó" class="hero-photo">
-
   <!-- GROUP DESCRIPTION -->
   <div class="group-description">
     <p><em>Formed in Tallinn, Estonia, in 2025, Trio Callistó is an exciting new ensemble with a fresh approach to piano trio performance and programming. Their name, evoking Jupiter’s moon Callisto, Greek mythology, and the idea of beauty, reflects their artistic ethos. The trio brings together lesser-known and contemporary works with established classics of the repertoire, seeking to communicate their passion for music to every audience.</em></p>
@@ -383,15 +358,6 @@ and the Vienna Musikverein.</p>
 
   <!-- FADE-IN SCRIPT -->
   <script>
-    // FADE IN GROUP PHOTO
-const heroPhoto = document.querySelector('.hero-photo');
-const photoObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
-  });
-}, { threshold: 0.2 });
-
-photoObserver.observe(heroPhoto);
     
     const bios = document.querySelectorAll('.bio-section');
     const observer = new IntersectionObserver(entries => {
