@@ -22,13 +22,37 @@
     }
 
     body {
-      margin: 0;
-      font-family: 'GFS Didot', serif;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
+  margin: 0;
+  font-family: 'GFS Didot', serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
 
+  opacity: 0;
+  animation: pageFadeIn 1.2s ease forwards;
+}
+
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
     /* FULL PAGE HERO IMAGE */
     .hero {
       position: relative;
@@ -289,6 +313,30 @@ document.addEventListener('click', (e) => {
 
 </script>
 
+  <!-- PAGE TRANSITION SCRIPT -->
+<script>
+
+document.querySelectorAll('a').forEach(link => {
+
+  link.addEventListener('click', function(e) {
+
+    if (this.hostname === window.location.hostname && this.getAttribute('href') !== '#') {
+
+      e.preventDefault();
+
+      document.body.style.animation = "pageFadeOut 0.8s ease forwards";
+
+      setTimeout(() => {
+        window.location.href = this.href;
+      }, 800);
+
+    }
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
