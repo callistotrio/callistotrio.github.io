@@ -315,6 +315,10 @@ window.addEventListener("load", () => {
   overlay.classList.remove("active");
 });
 
+window.addEventListener("pageshow", () => {
+  overlay.classList.remove("active");
+});
+
 document.querySelectorAll("a").forEach(link => {
 
   link.addEventListener("click", function(e) {
