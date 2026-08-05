@@ -30,37 +30,32 @@ body{
     overflow:hidden;
     font-family:'GFS Didot', serif;
     background:#f8f6f2;
+}
+
+
+/* PAGE TRANSITION */
+
+.transition-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:#171513;
 
     opacity:0;
-    animation:pageFadeIn 1.2s ease forwards;
-}
+    pointer-events:none;
 
+    transition:opacity .6s ease;
 
-@keyframes pageFadeIn{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
+    z-index:9999;
 
 }
 
+.transition-overlay.active{
 
-@keyframes pageFadeOut{
-
-    from{
-        opacity:1;
-    }
-
-    to{
-        opacity:0;
-    }
+    opacity:1;
 
 }
-
 .hero{
     position:relative;
     width:100%;
@@ -293,6 +288,8 @@ h1{
 
 <body>
 
+<div class="transition-overlay"></div>
+
 <div class="hero">
 
 <picture>
@@ -325,32 +322,38 @@ h1{
 <!-- PAGE TRANSITION SCRIPT -->
 <script>
 
-document.querySelectorAll('a').forEach(link => {
+const overlay = document.querySelector(".transition-overlay");
 
-  link.addEventListener('click', function(e) {
+window.addEventListener("load", () => {
 
-    if (this.hostname === window.location.hostname && this.getAttribute('href') !== '#') {
+    overlay.classList.remove("active");
 
-      e.preventDefault();
+});
 
-      document.body.style.animation = "pageFadeOut 0.8s ease forwards";
+document.querySelectorAll("a").forEach(link => {
 
-      setTimeout(() => {
-        window.location.href = this.href;
-      }, 800);
+    link.addEventListener("click", function(e) {
 
-    }
+        if (this.hostname === location.hostname &&
+            this.getAttribute("href") !== "#") {
 
-  });
+            e.preventDefault();
+
+            overlay.classList.add("active");
+
+            setTimeout(() => {
+
+                location.href = this.href;
+
+            }, 600);
+
+        }
+
+    });
 
 });
 
 </script>
-
-
-</body>
-
-</html>
 
 </body>
 
