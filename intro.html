@@ -322,16 +322,13 @@ h1{
 <!-- PAGE TRANSITION SCRIPT -->
 <script>
 
-const overlay = document.querySelector(".transition-overlay");
-
 window.addEventListener("load", () => {
-
-    overlay.classList.remove("active");
-
+  overlay.classList.remove("active");
 });
 
-document.querySelectorAll("a").forEach(link => {
-
+window.addEventListener("pageshow", () => {
+  overlay.classList.remove("active");
+});
     link.addEventListener("click", function(e) {
 
         if (this.hostname === location.hostname &&
