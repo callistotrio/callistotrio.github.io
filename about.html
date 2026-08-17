@@ -19,31 +19,8 @@
   font-family: 'GFS Didot', serif;
   margin: 0;
   color: white;
-  opacity: 0;
-  animation: pageFadeIn 1.2s ease forwards;
 }
 
-
-@keyframes pageFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-
-@keyframes pageFadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
     /* ABOUT PAGE BACKGROUND */
 
 .about-page {
@@ -409,36 +386,6 @@ and the Vienna Musikverein.</p>
     document.addEventListener('click', (e) => {
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
     });
-  </script>
-
-
-  <!-- PAGE TRANSITION SCRIPT -->
-  <script>
-    document.querySelectorAll('a').forEach(link => {
-
-      link.addEventListener('click', function(e) {
-
-        if (this.hostname === window.location.hostname && this.getAttribute('href') !== '#') {
-          e.preventDefault();
-
-          document.body.style.animation = "pageFadeOut 0.8s ease forwards";
-
-          setTimeout(() => {
-            window.location.href = this.href;
-          }, 800);
-
-        }
-
-      });
-
-    });
-  </script>
-
-
-</section>
-  
-</body>
-</html>
   </script>
 
 </section>
