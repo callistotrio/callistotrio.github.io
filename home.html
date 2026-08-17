@@ -29,22 +29,6 @@
   overflow-x: hidden;
 }
 
-
-/* PAGE TRANSITION */
-
-.transition-overlay {
-  position: fixed;
-  inset: 0;
-  background: #171513;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .6s ease;
-  z-index: 9999;
-}
-
-.transition-overlay.active {
-  opacity: 1;
-}
     /* FULL PAGE HERO IMAGE */
     .hero {
       position: relative;
@@ -229,8 +213,6 @@ footer {
 
 <body>
 
-<div class="transition-overlay"></div>
-
 <section class="hero">
 
 
@@ -305,41 +287,6 @@ document.addEventListener('click', (e) => {
 });
 
 </script>
-
- <!-- PAGE TRANSITION SCRIPT -->
-<script>
-
-const overlay = document.querySelector(".transition-overlay");
-
-window.addEventListener("load", () => {
-  overlay.classList.remove("active");
-});
-
-window.addEventListener("pageshow", () => {
-  overlay.classList.remove("active");
-});
-
-document.querySelectorAll("a").forEach(link => {
-
-  link.addEventListener("click", function(e) {
-
-    if (this.hostname === location.hostname &&
-        this.getAttribute("href") !== "#") {
-
-      e.preventDefault();
-
-      overlay.classList.add("active");
-
-      setTimeout(() => {
-        location.href = this.href;
-      }, 600);
-
-    }
-
-  });
-
-});
-
-</script>
+  
 </body>
 </html>
