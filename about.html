@@ -158,7 +158,34 @@
   text-align: center;
   font-size: 1.25rem;
   line-height: 1.8;
-  border-bottom: 1px solid rgba(255,255,255,0.45);
+ position: relative;
+}
+    .group-description::after {
+  content: "✦";
+  position: absolute;
+  bottom: -0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 0.8rem;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.8rem;
+  background: transparent;
+}
+
+.group-description::before {
+  content: "";
+  position: absolute;
+  bottom: -0.15rem;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.45) 15%,
+    rgba(255,255,255,0.45) 85%,
+    transparent
+  );
 }
 
     hr {
@@ -171,7 +198,7 @@
     /* BIO SECTIONS */
    .bio-section {
   max-width: 900px;
-  margin: 4rem auto;
+  margin: 1.5rem auto;
   display: flex;
   align-items: flex-start;
   gap: 2rem;
