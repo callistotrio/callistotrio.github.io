@@ -160,17 +160,6 @@
   line-height: 1.8;
  position: relative;
 }
-    .group-description::after {
-  content: "✦";
-  position: absolute;
-  bottom: -0.55rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0 0.8rem;
-  color: rgba(255,255,255,0.65);
-  font-size: 0.8rem;
-  background: transparent;
-}
 
 .group-description::before {
   content: "";
@@ -196,7 +185,7 @@
     }
 
     /* BIO SECTIONS */
-   .bio-section {
+.bio-section {
   max-width: 900px;
   margin: 1.5rem auto;
   display: flex;
@@ -207,17 +196,18 @@
   transition: opacity 1s ease, transform 1s ease;
 }
 
-
 .first-bio {
-  margin-top: 1.5rem;
+  margin-top: 0.8rem;
+  opacity: 1;
+  transform: translateY(0);
 }
-   .bio-section.show {
+
+.bio-section.show {
   opacity: 1;
   transform: translateY(0);
 }
 
 .first-bio {
-  margin-top: 45vh;
   opacity: 1;
   transform: translateY(0);
 }
