@@ -179,26 +179,57 @@ footer {
 }
 
 
-    @media(max-width:600px) {
+   @media(max-width:600px) {
 
-      .site-title h1 {
-        font-size: 2.2rem;
-      }
+  .hero {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
 
-      .greek-title {
-        font-size: 3.5rem;
-      }
+  .hero::before {
+    position: fixed;
+    background-attachment: fixed;
+  }
 
-      nav a {
-        display: inline-block;
-        margin: 0.4rem;
-      }
+  .site-title h1 {
+    font-size: 2.2rem;
+  }
 
-      main {
-        font-size: 1.05rem;
-        bottom: 5%;
-      }
-    }
+  .greek-title {
+    font-size: 3.5rem;
+  }
+
+  nav {
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0.4rem 0.45rem;
+    font-size: 1.05rem;
+  }
+
+  main {
+    position: relative;
+    bottom: auto;
+    max-width: 850px;
+    margin: 2.5rem auto 0;
+    padding: 0 1.5rem 5rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 0;
+    padding: 0 1.5rem 2rem;
+    font-size: 0.8rem;
+  }
+
+}
 
 
   </style>
