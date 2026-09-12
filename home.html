@@ -118,6 +118,18 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
+    .menu-button.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 
     /* FULL MENU OVERLAY */
 
@@ -236,6 +248,36 @@ footer {
   .hero {
     min-height: 100vh;
     overflow: visible;
+  }
+
+    /* FULL-SCREEN MENU ON PHONES */
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(15, 13, 12, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    transform: none;
+  }
+
+  .menu-overlay.open {
+    transform: none;
+  }
+
+  .menu-content {
+    text-align: center;
   }
 
   .site-title h1 {
@@ -390,6 +432,7 @@ const concertSeasons = document.getElementById('concert-seasons');
 
 menuButton.addEventListener('click', () => {
   menuOverlay.classList.toggle('open');
+  menuButton.classList.toggle('open');
 
   if (menuOverlay.classList.contains('open')) {
     menuButton.setAttribute('aria-label', 'Close menu');
@@ -417,9 +460,9 @@ const menuLinks = menuOverlay.querySelectorAll(
 menuLinks.forEach(link => {
   link.addEventListener('click', () => {
     menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
   });
 });
-
 </script>
   
 </body>
