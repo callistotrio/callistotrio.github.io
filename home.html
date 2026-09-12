@@ -37,13 +37,12 @@
   overflow-x: hidden;
 }
 
-/* Fixed background image, like the About page */
 .hero picture {
-  position: fixed;
-  inset: 0;
+  position: relative;
+  display: block;
   width: 100%;
-  height: 100%;
-  z-index: -2;
+  height: calc(100vh - 90px);
+  z-index: 0;
 }
 
 .hero picture img {
@@ -55,12 +54,12 @@
 }
 
 /* subtle dark overlay */
-.hero::after {
+.hero picture::after {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.20);
-  z-index: -1;
+  pointer-events: none;
 }
 
 
@@ -220,17 +219,23 @@
       opacity: 0.8;
     }
 
-   /* INTRO TEXT OVER IMAGE */
+  .content-section {
+  position: relative;
+  background: #f7f3eb;
+  color: #211e1b;
+  min-height: 300px;
+  padding: 5rem 2rem 4rem;
+  z-index: 2;
+}
+
 main {
   position: relative;
   max-width: 850px;
   margin: 0 auto;
-  padding: 0 2rem 5rem;
+  padding: 0;
   font-size: 1.25rem;
   line-height: 1.8;
-  z-index: 2;
 }
-
     /* FOOTER */
 footer {
   position: absolute;
@@ -249,6 +254,10 @@ footer {
     min-height: 100vh;
     overflow: visible;
   }
+
+  .hero picture {
+  height: calc(100vh - 70px);
+}
 
     /* FULL-SCREEN MENU ON PHONES */
 
@@ -303,32 +312,17 @@ footer {
     margin: 0.6rem 0;
   }
 
-  /* INTRODUCTION */
-  main {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    width: auto;
-    max-width: 850px;
-    max-height: none;
-    margin: 45vh auto 0;
-    padding: 0 1.5rem 6rem;
-    overflow: visible;
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
 
   /* FOOTER */
-  footer {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    width: auto;
-    margin: 0;
-    padding: 0 1.5rem 2rem;
-    font-size: 0.8rem;
-  }
+ footer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  margin-top: 3rem;
+  padding: 0;
+  font-size: 0.8rem;
+}
 
 }
 
@@ -396,7 +390,9 @@ footer {
 
   </div>
 
+</section>
 
+<section class="content-section">
 
   <!-- INTRO -->
   <main>
@@ -409,15 +405,12 @@ footer {
 
   </main>
 
-   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer>
     © 2026 Trio Callistó – All Rights Reserved
   </footer>
 
-
 </section>
-
-
 
 <script>
 
