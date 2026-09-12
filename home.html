@@ -121,42 +121,52 @@
 
     /* FULL MENU OVERLAY */
 
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 13, 12, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+   /* MENU PANEL */
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+.menu-overlay {
+  position: absolute;
+  top: 5.8rem;
+  right: 2rem;
 
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
+  width: 210px;
 
-      z-index: 10;
-    }
+  background: rgba(15, 13, 12, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-    .menu-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
+  padding: 1.2rem 1.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+
+  z-index: 10;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
 
     /* MENU CONTENT */
 
     .menu-content {
-      text-align: center;
+      text-align: left;
     }
 
     .menu-content a {
       display: block;
       color: white;
       text-decoration: none;
-      font-size: 1.5rem;
-      margin: 1.2rem 0;
+      font-size: 1.15rem;
+      margin: 0.8rem 0;
       position: relative;
     }
 
@@ -193,9 +203,9 @@
     }
 
     .concert-seasons a {
-      font-size: 1.1rem;
-      margin: 0.7rem 0;
-      opacity: 0.85;
+      font-size: 0.95rem;
+      margin: 0.55rem 0;
+      opacity: 0.8;
     }
 
    /* INTRO TEXT OVER IMAGE */
