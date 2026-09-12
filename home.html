@@ -94,65 +94,109 @@
 }
 
 
-    /* NAVIGATION */
-    nav {
-      margin-top: 0.5rem;
-      z-index: 2;
+       /* HAMBURGER MENU */
+
+    .menu-button {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 20;
     }
 
-    nav a {
-      margin: 0 0.8rem;
-      text-decoration: none;
+    .menu-button span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      margin: 6px auto;
+      background: white;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+
+    /* FULL MENU OVERLAY */
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 13, 12, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+
+      z-index: 10;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    /* MENU CONTENT */
+
+    .menu-content {
+      text-align: center;
+    }
+
+    .menu-content a {
+      display: block;
       color: white;
-      font-size: 1.1rem;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 1.2rem 0;
       position: relative;
-      padding-bottom: 3px;
     }
 
-
-    nav a::after {
+    .menu-content a::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0%;
+      left: 50%;
+      bottom: -5px;
+      width: 0;
       height: 1px;
-      background-color: white;
+      background: white;
+      transform: translateX(-50%);
       transition: width 0.3s ease;
     }
 
-
-    nav a:hover::after,
-    nav a.active::after {
+    .menu-content a:hover::after {
       width: 100%;
     }
 
 
-    /* DROPDOWN */
-    .dropdown {
-      position: relative;
-      display: inline-block;
+    /* CONCERTS */
+
+    .menu-concerts-toggle {
+      cursor: pointer;
     }
 
-    .dropdown-content {
+    .concert-seasons {
       display: none;
-      position: absolute;
-      left: 0;
-      background: rgba(0,0,0,0.7);
-      min-width: 160px;
-      text-align: left;
+      margin: -0.3rem 0 1rem;
     }
 
-    .dropdown-content a {
-      display: block;
-      padding: 0.7rem 1rem;
-      color: white;
-    }
-
-    .dropdown.open .dropdown-content {
+    .concert-seasons.open {
       display: block;
     }
 
+    .concert-seasons a {
+      font-size: 1.1rem;
+      margin: 0.7rem 0;
+      opacity: 0.85;
+    }
 
    /* INTRO TEXT OVER IMAGE */
 main {
@@ -192,14 +236,19 @@ footer {
     font-size: 3.5rem;
   }
 
-  nav {
-    margin-top: 0.5rem;
+   .menu-button {
+    top: 1.3rem;
+    right: 1.3rem;
   }
 
-  nav a {
-    display: inline-block;
-    margin: 0.4rem 0.45rem;
-    font-size: 1.05rem;
+  .menu-content a {
+    font-size: 1.35rem;
+    margin: 1rem 0;
+  }
+
+  .concert-seasons a {
+    font-size: 1rem;
+    margin: 0.6rem 0;
   }
 
   /* INTRODUCTION */
@@ -260,27 +309,40 @@ footer {
   </div>
 
 
-  <!-- NAV -->
-  <nav>
+    <!-- HAMBURGER BUTTON -->
 
-    <a href="home.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
+  <button class="menu-button" id="menu-button" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-    <div class="dropdown">
-      <a href="#" id="concerts-toggle">Concerts ▾</a>
 
-      <div class="dropdown-content">
+  <!-- MENU OVERLAY -->
+
+  <div class="menu-overlay" id="menu-overlay">
+
+    <div class="menu-content">
+
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+
+      <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
+        Concerts
+      </a>
+
+      <div class="concert-seasons" id="concert-seasons">
         <a href="concerts-2026-2027.html">2026–2027</a>
         <a href="concerts-2025-2026.html">2025–2026</a>
       </div>
 
+      <a href="media.html">Media</a>
+      <a href="contact.html">Contact</a>
+
     </div>
 
-    <a href="media.html">Media</a>
-    <a href="contact.html">Contact</a>
-
-  </nav>
+  </div>
 
 
 
@@ -307,20 +369,45 @@ footer {
 
 <script>
 
-const toggle = document.getElementById('concerts-toggle');
-const dropdown = toggle.parentElement;
+const menuButton = document.getElementById('menu-button');
+const menuOverlay = document.getElementById('menu-overlay');
+
+const concertsToggle = document.getElementById('concerts-toggle');
+const concertSeasons = document.getElementById('concert-seasons');
 
 
-toggle.addEventListener('click', (e) => {
-  e.preventDefault();
-  dropdown.classList.toggle('open');
+/* OPEN / CLOSE MAIN MENU */
+
+menuButton.addEventListener('click', () => {
+  menuOverlay.classList.toggle('open');
+
+  if (menuOverlay.classList.contains('open')) {
+    menuButton.setAttribute('aria-label', 'Close menu');
+  } else {
+    menuButton.setAttribute('aria-label', 'Open menu');
+    concertSeasons.classList.remove('open');
+  }
 });
 
 
-document.addEventListener('click', (e) => {
-  if (!dropdown.contains(e.target)) {
-    dropdown.classList.remove('open');
-  }
+/* OPEN / CLOSE CONCERT SEASONS */
+
+concertsToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  concertSeasons.classList.toggle('open');
+});
+
+
+/* CLOSE MENU WHEN A PAGE LINK IS SELECTED */
+
+const menuLinks = menuOverlay.querySelectorAll(
+  'a:not(#concerts-toggle)'
+);
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuOverlay.classList.remove('open');
+  });
 });
 
 </script>
