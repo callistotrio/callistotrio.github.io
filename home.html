@@ -48,7 +48,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 50%;
+  object-position: center top;
   display: block;
 }
 
@@ -488,9 +488,8 @@ footer {
 
     <!-- Portrait phones & portrait tablets -->
     <source
-      media="(orientation: portrait)"
-      srcset="HomeMobile.JPG">
-
+  media="(orientation: portrait) and (max-width: 1024px)"
+  srcset="HomeMobile.JPG">
     <!-- Landscape phones, landscape tablets & desktop -->
     <img src="TrioHome.JPG" alt="Trio Callistó">
 
