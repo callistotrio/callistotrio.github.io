@@ -84,11 +84,14 @@
   width: 28px;
   height: 1px;
   margin: 6px auto;
-  background: #8b5e3c;
+  background: white;
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
     background 0.3s ease;
+}
+    .menu-button.dark span {
+  background: #8b5e3c;
 }
 
 .menu-button.open span:nth-child(1) {
@@ -210,6 +213,7 @@
   font-weight: normal;
   position: relative;
   z-index: 2;
+  color: white;
 }
    .greek-title {
   position: absolute;
@@ -625,6 +629,24 @@ menuLinks.forEach(link => {
     menuButton.classList.remove('open');
   });
 });
+    /* CHANGE HAMBURGER COLOUR BELOW HERO */
+
+const hero = document.querySelector('.hero');
+
+function updateMenuButtonColour() {
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  const buttonMiddle = menuButton.getBoundingClientRect().top + 19;
+
+  if (buttonMiddle > heroBottom) {
+    menuButton.classList.add('dark');
+  } else {
+    menuButton.classList.remove('dark');
+  }
+}
+
+window.addEventListener('scroll', updateMenuButtonColour);
+window.addEventListener('resize', updateMenuButtonColour);
+updateMenuButtonColour();
   </script>
 
 </body>
