@@ -271,28 +271,54 @@
   margin: 0 auto 3rem;
 }
 
-.gallery img {
+.gallery-item {
+  position: relative;
+  display: inline-block;
   width: 100%;
-  height: auto;
-  display: block;
   margin-bottom: 1.2rem;
-  
+  overflow: hidden;
   border: 1px solid #211e1b;
   border-radius: 4px;
   cursor: pointer;
-
   break-inside: avoid;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.025);
+  filter: brightness(0.88);
+}
+
+.view-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'GFS Didot', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
-.gallery img.show {
-  opacity: 1;
-  transform: translateY(0);
+.gallery-item:hover .view-label {
+  opacity: 0.75;
+  transform: translate(-50%, -50%);
 }
-
     .video-section {
   max-width: 1200px;
   margin: 5rem auto 0;
@@ -518,15 +544,42 @@
 <h2 class="media-section-title">Gallery</h2>
   
   <!-- GALLERY GRID -->
-  <div class="gallery">
+ <div class="gallery">
 
-<img src="Gallery6.JPG" alt="">
-<img src="Gallery3.JPG" alt="">
-<img src="Gallery4.JPG" alt="">
-<img src="Gallery13.JPG" alt="">
-<img src="Gallery2.JPG" alt="">
-<img src="Gallery7.JPG" alt="">
-<img src="Gallery5.JPG" alt="">
+  <div class="gallery-item">
+    <img src="Gallery6.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery3.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery4.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery13.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery2.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery7.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
+
+  <div class="gallery-item">
+    <img src="Gallery5.JPG" alt="">
+    <span class="view-label">View</span>
+  </div>
 
 </div>
 
@@ -556,15 +609,8 @@
 
   <!-- SCRIPT -->
   <script>
-    /* Fade-in */
-    const images = document.querySelectorAll('.gallery img');
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting) entry.target.classList.add('show');
-      });
-    },{threshold:0.2});
-    images.forEach(img=>observer.observe(img));
-
+   const images = document.querySelectorAll('.gallery img');
+const galleryItems = document.querySelectorAll('.gallery-item');
     /* Lightbox */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -595,9 +641,10 @@
     }
 
     /* Click image → open */
-    images.forEach((img, index)=>{
-      img.addEventListener('click', ()=> openLightbox(index));
-    });
+    /* Click gallery item → open */
+galleryItems.forEach((item, index)=>{
+  item.addEventListener('click', ()=> openLightbox(index));
+});
 
     /* Close */
     closeBtn.addEventListener('click', closeLightbox);
