@@ -160,37 +160,53 @@
       opacity: 0.8;
     }
 
+    /* CONCERTS BANNER */
 
-    /* TITLE */
+.concerts-banner {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-top: -2rem;
 
-    .site-title {
-      position: relative;
-      text-align: center;
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-    }
+  min-height: 320px;
 
-    .site-title h1 {
-      font-size: 2.8rem;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-      font-weight: normal;
-    }
+  background: rgba(139, 94, 60, 0.72);
 
-    .greek-title {
-      font-size: 5rem;
-      color: rgba(30,30,30,0.06);
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 1;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
 
 
+   /* TITLE */
+
+.site-title {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.site-title h1 {
+  font-size: 3rem;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  font-weight: normal;
+  color: white;
+}
+
+.greek-title {
+  font-size: 5rem;
+  color: rgba(255,255,255,0.15);
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
     /* CONCERT LIST */
 
     .concerts-container {
@@ -323,12 +339,16 @@
 
 <body>
 
-  <!-- TITLE -->
+  <!-- CONCERTS BANNER -->
+
+<section class="concerts-banner">
 
   <div class="site-title">
     <div class="greek-title">Τρίο Καλλιστώ</div>
     <h1>Trio Callistó</h1>
   </div>
+
+</section>
 
 
   <!-- HAMBURGER BUTTON -->
