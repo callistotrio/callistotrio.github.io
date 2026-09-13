@@ -177,6 +177,16 @@
 
   position: relative;
 }
+    .banner-eyebrow {
+  position: absolute;
+  left: 4rem;
+  bottom: 9.2rem;
+
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
 
     .concerts-banner::after {
   content: "";
@@ -191,13 +201,22 @@
   .banner-page-title {
   position: absolute;
   left: 4rem;
-  bottom: 2.5rem;
+  bottom: 3rem;
 
   margin: 0;
   color: white;
-  font-size: 3.5rem;
+  font-size: 4.8rem;
   font-weight: normal;
   letter-spacing: 0;
+  line-height: 1;
+}
+    .banner-page-title::after {
+  content: "";
+  display: block;
+  width: 260px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.65);
+  margin-top: 1rem;
 }
    /* TITLE */
 
@@ -375,6 +394,7 @@
     <h1>Trio Callistó</h1>
   </div>
 
+  <div class="banner-eyebrow">TRIO CALLISTÓ</div>
   <h2 class="banner-page-title">Concerts</h2>
 
 </section>
