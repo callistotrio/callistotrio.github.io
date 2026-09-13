@@ -183,13 +183,14 @@
     }
 
     .menu-content a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      font-size: 1.15rem;
-      margin: 0.8rem 0;
-      position: relative;
-    }
+  display: block;
+  width: max-content;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15rem;
+  margin: 0.8rem 0;
+  position: relative;
+}
 
     .menu-content a::after {
       content: "";
@@ -203,9 +204,10 @@
       transition: width 0.3s ease;
     }
 
-    .menu-content a:hover::after {
-      width: 100%;
-    }
+    .menu-content a:hover::after,
+.menu-content a.active::after {
+  width: 100%;
+}
 
 
     /* CONCERTS */
@@ -479,9 +481,9 @@ footer {
   }
 
   .menu-content a {
-    font-size: 1.35rem;
-    margin: 1rem 0;
-  }
+  font-size: 1.35rem;
+  margin: 1rem auto;
+}
 
   .concert-seasons a {
     font-size: 1rem;
@@ -540,7 +542,7 @@ footer {
 
     <div class="menu-content">
 
-      <a href="home.html">Home</a>
+      <a href="home.html" class="active">Home</a>
       <a href="gallery.html">Gallery</a>
 
       <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
