@@ -238,6 +238,21 @@
       .site-title h1{font-size:2.2rem;}
     }
 
+    /* MEDIA TITLE */
+
+.media-intro {
+  max-width: 850px;
+  margin: 3.5rem auto 2rem;
+  text-align: center;
+}
+
+.media-intro h2 {
+  font-size: 3.6rem;
+  font-weight: normal;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
 /* GALLERY */
 
 .gallery {
@@ -306,6 +321,14 @@
 /* Phones */
 
 @media (max-width: 600px) {
+
+  .media-intro {
+  margin-top: 3rem;
+}
+
+.media-intro h2 {
+  font-size: 1.7rem;
+}
 
   .gallery {
     column-count: 1;
@@ -462,7 +485,7 @@
   <div class="menu-content">
 
     <a href="home.html">Home</a>
-    <a href="Media.html" class="active">Media</a>
+    <a href="media.html" class="active">Media</a>
 
     <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
       Concerts
@@ -478,6 +501,11 @@
   </div>
 
 </div>
+
+  <section class="media-intro">
+  <h2>Media</h2>
+</section>
+  
   <!-- GALLERY GRID -->
   <div class="gallery">
 
