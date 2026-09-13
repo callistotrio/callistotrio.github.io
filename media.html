@@ -439,6 +439,21 @@
   border: 1px solid rgba(139, 94, 60, 0.45);
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
+    .lightbox-counter {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: 'GFS Didot', serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+
+  color: rgba(139, 94, 60, 0.60);
+
+  pointer-events: none;
+}
 
     /* ARROWS */
     .arrow {
@@ -618,8 +633,11 @@
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <span class="close-btn" id="closeBtn">&times;</span>
-   <span class="arrow left" id="prevBtn">←</span>
-<img id="lightbox-img" src="">
+    <span class="arrow left" id="prevBtn">←</span>
+    
+    <img id="lightbox-img" src="">
+    <span class="lightbox-counter" id="lightbox-counter"></span>
+    
 <span class="arrow right" id="nextBtn">→</span>
   </div>
 
@@ -638,28 +656,32 @@ const galleryItems = document.querySelectorAll('.gallery-item');
     const closeBtn = document.getElementById('closeBtn');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
+    const lightboxCounter = document.getElementById('lightbox-counter');
 
     let currentIndex = 0;
 
-    function openLightbox(index){
-      currentIndex = index;
-      lightboxImg.src = images[index].src;
-      lightbox.classList.add('active');
-    }
+   function openLightbox(index){
+  currentIndex = index;
+  lightboxImg.src = images[index].src;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  lightbox.classList.add('active');
+}
 
     function closeLightbox(){
       lightbox.classList.remove('active');
     }
 
-    function showNext(){
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = images[currentIndex].src;
-    }
+   function showNext(){
+  currentIndex = (currentIndex + 1) % images.length;
+  lightboxImg.src = images[currentIndex].src;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+}
 
     function showPrev(){
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = images[currentIndex].src;
-    }
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  lightboxImg.src = images[currentIndex].src;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+}
 
     /* Click image → open */
     /* Click gallery item → open */
