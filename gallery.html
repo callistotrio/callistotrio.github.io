@@ -211,59 +211,61 @@
 /* Phones */
 
 @media (max-width: 600px) {
+
   .gallery {
     column-count: 1;
   }
+
+  .menu-button {
+    top: 1.3rem;
+    right: 1.3rem;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+
+    background: rgba(139, 94, 60, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    transform: none;
+    z-index: 25;
+  }
+
+  .menu-overlay.open {
+    transform: none;
+  }
+
+  .menu-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-content a {
+    font-size: 1.35rem;
+    margin: 1rem auto;
+  }
+
+  .concert-seasons a {
+    font-size: 1rem;
+    margin: 0.6rem auto;
+  }
+
+  /* white X while full-screen menu is open */
+  .menu-button.open span {
+    background: white;
+  }
+
 }
-    .menu-button {
-  top: 1.3rem;
-  right: 1.3rem;
-}
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100dvh;
-
-  background: rgba(139, 94, 60, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 2rem;
-
-  transform: none;
-  z-index: 25;
-}
-
-.menu-overlay.open {
-  transform: none;
-}
-
-.menu-content {
-  width: 100%;
-  text-align: center;
-}
-
-.menu-content a {
-  font-size: 1.35rem;
-  margin: 1rem auto;
-}
-
-.concert-seasons a {
-  font-size: 1rem;
-  margin: 0.6rem auto;
-}
-
-/* white X while full-screen menu is open */
-.menu-button.open span {
-  background: white;
-}
-
     /* LIGHTBOX OVERLAY */
     .lightbox {
       position: fixed;
