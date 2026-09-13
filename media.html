@@ -442,17 +442,29 @@
 
     /* ARROWS */
     .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 3rem;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      padding: 0.5rem 1rem;
-    }
-    .arrow:hover { color: #d5c3a3; }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 
+  font-family: 'GFS Didot', serif;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1;
+
+  color: rgba(139, 94, 60, 0.45);
+
+  cursor: pointer;
+  user-select: none;
+  padding: 1rem;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.arrow:hover {
+  color: rgba(139, 94, 60, 0.75);
+}
     .arrow.left  { left: 20px; }
     .arrow.right { right: 20px; }
 
@@ -596,9 +608,9 @@
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <span class="close-btn" id="closeBtn">&times;</span>
-    <span class="arrow left" id="prevBtn">&#10094;</span>
-    <img id="lightbox-img" src="">
-    <span class="arrow right" id="nextBtn">&#10095;</span>
+   <span class="arrow left" id="prevBtn">←</span>
+<img id="lightbox-img" src="">
+<span class="arrow right" id="nextBtn">→</span>
   </div>
 
   <!-- FOOTER -->
