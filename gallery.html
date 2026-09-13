@@ -21,59 +21,138 @@
       font-family: 'GFS Didot', serif;
       margin: 0;
       padding: 2rem;
-      background: #f8f6f2;
+      background: #f7f3eb;
       color: #1e1e1e;
       text-align: center;
     }
 
-    /* NAVIGATION */
-    nav { margin-bottom: 2rem; }
-    nav a {
-      margin: 0 0.8rem;
-      text-decoration: none;
-      color: #1e1e1e;
-      font-size: 1.1rem;
-      position: relative;
-      padding-bottom: 3px;
-      transition: color 0.2s ease;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0%;
-      height: 1px;
-      background-color: #8b5e3c;
-      transition: width 0.3s ease;
-    }
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
+   /* HAMBURGER MENU */
 
-    /* DROPDOWN */
-    .dropdown { position: relative; display: inline-block; }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      left: 0;
-      background-color: #f8f6f2;
-      min-width: 160px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      border-radius: 2px;
-      z-index: 5;
-      text-align: left;
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 0.6rem 1rem;
-      color: #1e1e1e;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .dropdown.open .dropdown-content { display: block; }
+.menu-button {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 30;
+}
 
+.menu-button span {
+  display: block;
+  width: 28px;
+  height: 1px;
+  margin: 6px auto;
+  background: #8b5e3c;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+.menu-button.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* MENU PANEL */
+
+.menu-overlay {
+  position: fixed;
+  top: 5.8rem;
+  right: 2rem;
+  width: 175px;
+
+  background: rgba(139, 94, 60, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 1.2rem 1.25rem;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+
+  z-index: 25;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* MENU CONTENT */
+
+.menu-content {
+  text-align: left;
+}
+
+.menu-content a {
+  display: block;
+  width: max-content;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15rem;
+  margin: 0.8rem 0;
+  position: relative;
+}
+
+.menu-content a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background: white;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.menu-content a:hover::after,
+.menu-content a.active::after {
+  width: 100%;
+}
+
+
+/* CONCERT SEASONS */
+
+.menu-concerts-toggle {
+  cursor: pointer;
+}
+
+.concert-seasons {
+  display: none;
+  margin: -0.3rem 0 1rem;
+}
+
+.concert-seasons.open {
+  display: block;
+}
+
+.concert-seasons a {
+  font-size: 0.95rem;
+  margin: 0.55rem 0;
+  opacity: 0.8;
+}
     /* TITLE */
     .site-title { position: relative; padding-top: 2rem; padding-bottom: 1rem; }
     .site-title h1 { font-size: 2.8rem; margin: 0; }
@@ -136,6 +215,54 @@
     column-count: 1;
   }
 }
+    .menu-button {
+  top: 1.3rem;
+  right: 1.3rem;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+
+  background: rgba(139, 94, 60, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+
+  transform: none;
+  z-index: 25;
+}
+
+.menu-overlay.open {
+  transform: none;
+}
+
+.menu-content {
+  width: 100%;
+  text-align: center;
+}
+
+.menu-content a {
+  font-size: 1.35rem;
+  margin: 1rem auto;
+}
+
+.concert-seasons a {
+  font-size: 1rem;
+  margin: 0.6rem auto;
+}
+
+/* white X while full-screen menu is open */
+.menu-button.open span {
+  background: white;
+}
 
     /* LIGHTBOX OVERLAY */
     .lightbox {
@@ -146,7 +273,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 20;
+      z-index: 100;
       padding: 1rem;
     }
 
@@ -207,24 +334,39 @@
     <h1>Trio Callistó</h1>
   </div>
 
-  <!-- NAV -->
-  <nav>
+ <!-- HAMBURGER BUTTON -->
+
+<button class="menu-button" id="menu-button" aria-label="Open menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+
+<!-- MENU OVERLAY -->
+
+<div class="menu-overlay" id="menu-overlay">
+
+  <div class="menu-content">
+
     <a href="home.html">Home</a>
-    <a href="about.html">About</a>
     <a href="gallery.html" class="active">Gallery</a>
 
-    <div class="dropdown">
-      <a href="#" id="concerts-toggle">Concerts ▾</a>
-      <div class="dropdown-content">
-        <a href="concerts-2026-2027.html">2026–2027</a>
-        <a href="concerts-2025-2026.html">2025–2026</a>
-      </div>
+    <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
+      Concerts
+    </a>
+
+    <div class="concert-seasons" id="concert-seasons">
+      <a href="concerts-2026-2027.html">2026–2027</a>
+      <a href="concerts-2025-2026.html">2025–2026</a>
     </div>
 
     <a href="media.html">Media</a>
     <a href="contact.html">Contact</a>
-  </nav>
 
+  </div>
+
+</div>
   <!-- GALLERY GRID -->
   <div class="gallery">
 
@@ -316,16 +458,62 @@
       if(e.target === lightbox) closeLightbox();
     });
 
-    /* Dropdown */
-    const toggle=document.getElementById('concerts-toggle');
-    const dropdown=toggle.parentElement;
-    toggle.addEventListener('click',e=>{
-      e.preventDefault();
-      dropdown.classList.toggle('open');
-    });
-    document.addEventListener('click',e=>{
-      if(!dropdown.contains(e.target)) dropdown.classList.remove('open');
-    });
+    /* HAMBURGER MENU */
+
+const menuButton = document.getElementById('menu-button');
+const menuOverlay = document.getElementById('menu-overlay');
+
+const concertsToggle = document.getElementById('concerts-toggle');
+const concertSeasons = document.getElementById('concert-seasons');
+
+
+/* OPEN / CLOSE MAIN MENU */
+
+menuButton.addEventListener('click', () => {
+  menuOverlay.classList.toggle('open');
+  menuButton.classList.toggle('open');
+
+  if (menuOverlay.classList.contains('open')) {
+    menuButton.setAttribute('aria-label', 'Close menu');
+  } else {
+    menuButton.setAttribute('aria-label', 'Open menu');
+    concertSeasons.classList.remove('open');
+  }
+});
+
+
+/* CLOSE DESKTOP MENU WHEN MOUSE LEAVES IT */
+
+menuOverlay.addEventListener('mouseleave', () => {
+  if (window.innerWidth > 600) {
+    menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
+    concertSeasons.classList.remove('open');
+    menuButton.setAttribute('aria-label', 'Open menu');
+  }
+});
+
+
+/* OPEN / CLOSE CONCERT SEASONS */
+
+concertsToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  concertSeasons.classList.toggle('open');
+});
+
+
+/* CLOSE MENU WHEN A PAGE LINK IS SELECTED */
+
+const menuLinks = menuOverlay.querySelectorAll(
+  'a:not(#concerts-toggle)'
+);
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
+  });
+});
   </script>
 
 </body>
