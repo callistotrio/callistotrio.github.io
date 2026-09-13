@@ -104,7 +104,7 @@
        /* HAMBURGER MENU */
 
     .menu-button {
-      position: absolute;
+      position: fixed;
       top: 2rem;
       right: 2rem;
       width: 38px;
@@ -122,7 +122,10 @@
   height: 1px;
   margin: 6px auto;
   background: white;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+    .menu-button.dark span {
+  background: #211e1b;
 }
     .menu-button.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
@@ -722,6 +725,22 @@ menuLinks.forEach(link => {
     menuButton.classList.remove('open');
   });
 });
+  function updateMenuButtonColour() {
+  const hero = document.querySelector('.hero');
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  const buttonRect = menuButton.getBoundingClientRect();
+  const buttonMiddle = buttonRect.top + (buttonRect.height / 2);
+
+  if (buttonMiddle > heroBottom) {
+    menuButton.classList.add('dark');
+  } else {
+    menuButton.classList.remove('dark');
+  }
+}
+
+window.addEventListener('scroll', updateMenuButtonColour);
+window.addEventListener('resize', updateMenuButtonColour);
+updateMenuButtonColour();
 </script>
   
 </body>
