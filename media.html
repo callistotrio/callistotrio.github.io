@@ -451,7 +451,7 @@
   font-weight: normal;
   line-height: 1;
 
-  color: rgba(139, 94, 60, 0.45);
+  color: rgba(139, 94, 60, 0.60);
 
   cursor: pointer;
   user-select: none;
@@ -470,16 +470,26 @@
 
     /* CLOSE BUTTON */
     .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2.5rem;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-    }
-    .close-btn:hover { color: #d5c3a3; }
+  position: absolute;
+  top: 20px;
+  right: 20px;
 
+  font-family: 'GFS Didot', serif;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1;
+
+  color: rgba(139, 94, 60, 0.60);
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: color 0.25s ease;
+}
+
+.close-btn:hover {
+  color: rgba(139, 94, 60, 0.75);
+}
     /* FOOTER */
     footer {
       margin-top: 4rem;
