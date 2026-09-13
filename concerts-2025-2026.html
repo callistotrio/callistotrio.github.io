@@ -178,7 +178,27 @@
   position: relative;
 }
 
+    .concerts-banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #211e1b;
+}
 
+  .banner-page-title {
+  position: absolute;
+  left: 4rem;
+  bottom: 2.5rem;
+
+  margin: 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
    /* TITLE */
 
 .site-title {
@@ -210,18 +230,19 @@
     /* CONCERT LIST */
 
     .concerts-container {
-      max-width: 800px;
-      margin: 3rem auto;
+  max-width: 800px;
+  margin: 4.5rem auto 3rem;
       text-align: center;
       font-size: 1.25rem;
       line-height: 1.8;
     }
 
     .concerts-container h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-weight: normal;
-    }
+  font-size: 3rem;
+  font-weight: normal;
+  margin: 0 0 3.5rem;
+  letter-spacing: 0;
+}
 
     .concert-item {
       margin-bottom: 2.2rem;
@@ -279,6 +300,12 @@
       .site-title h1 {
         font-size: 2.2rem;
       }
+
+      .banner-page-title {
+  left: 2rem;
+  bottom: 2rem;
+  font-size: 1.6rem;
+}
 
       .menu-button {
         top: 1.3rem;
@@ -339,7 +366,7 @@
 
 <body>
 
-  <!-- CONCERTS BANNER -->
+ <!-- CONCERTS BANNER -->
 
 <section class="concerts-banner">
 
@@ -347,6 +374,8 @@
     <div class="greek-title">Τρίο Καλλιστώ</div>
     <h1>Trio Callistó</h1>
   </div>
+
+  <h2 class="banner-page-title">Concerts</h2>
 
 </section>
 
