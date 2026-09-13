@@ -722,6 +722,17 @@ menuButton.addEventListener('click', () => {
   }
 });
 
+  /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES IT */
+
+menuOverlay.addEventListener('mouseleave', () => {
+  if (window.innerWidth > 600) {
+    menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
+    concertSeasons.classList.remove('open');
+    menuButton.setAttribute('aria-label', 'Open menu');
+  }
+});
+
 
 /* OPEN / CLOSE CONCERT SEASONS */
 
