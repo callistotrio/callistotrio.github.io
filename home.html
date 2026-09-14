@@ -497,6 +497,36 @@
       text-align: center;
     }
 
+    /* SCROLL ARROW */
+
+.scroll-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  width: 13px;
+  height: 13px;
+  z-index: 5;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+
+  transform: translateX(-50%) rotate(45deg);
+
+  animation: scrollHint 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px) rotate(45deg);
+    opacity: 0.8;
+  }
+}
+
 
     /* =====================================================
        MOBILE
@@ -796,6 +826,9 @@
       </div>
 
     </div>
+
+    <!-- SCROLL ARROW -->
+<div class="scroll-arrow" aria-hidden="true"></div>
 
   </section>
 
