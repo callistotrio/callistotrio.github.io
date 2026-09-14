@@ -1,8 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Media – Trio Callistó</title>
 
   <!-- FAVICON -->
@@ -11,783 +15,1857 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="icon" href="favicon.ico" sizes="any">
 
   <!-- GFS Didot -->
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"
+    rel="stylesheet">
 
   <style>
 
     * {
-  box-sizing: border-box;
-}
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'GFS Didot', serif;
       margin: 0;
-      padding: 2rem;
-      background: #f7f3eb;
-      color: #1e1e1e;
+
+      font-family: 'GFS Didot', serif;
+
+      color: white;
+      text-align: center;
+
+      overflow-x: hidden;
+
+      background: #171513;
+    }
+
+
+    /* =====================================================
+       FIXED BACKGROUND IMAGE
+       ===================================================== */
+
+    .background-image {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100vh;
+
+      z-index: -3;
+
+      background: #171513;
+    }
+
+    .background-image picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .background-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      /* same crop position you had on Media */
+      object-position: center 5%;
+
+      display: block;
+    }
+
+    .background-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.12);
+
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       OPENING HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      width: 100%;
+      height: 100vh;
+    }
+
+
+    /* TITLE */
+
+    .site-title {
+      position: absolute;
+
+      top: 3rem;
+      left: 0;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+
+      text-align: center;
+
+      z-index: 2;
+    }
+
+    .site-title h1 {
+      font-size: 3rem;
+      font-weight: normal;
+
+      margin: -0.4rem 0 0;
+
+      position: relative;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    .greek-title {
+      position: absolute;
+
+      top: -35px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 5rem;
+
+      color: rgba(255, 255, 255, 0.15);
+
+      white-space: nowrap;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
+
+    .menu-button {
+      position: fixed;
+
+      top: 2rem;
+      right: 2rem;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 2px;
+
+      border: 1px solid rgba(255, 255, 255, 0.20);
+
+      background: rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      cursor: pointer;
+
+      z-index: 30;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .menu-button span {
+      display: block;
+
+      width: 28px;
+      height: 1px;
+
+      margin: 6px auto;
+
+      background: white;
+
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .menu-button.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+
+    /* =====================================================
+       FROSTED MENU
+       ===================================================== */
+
+    .menu-overlay {
+      position: fixed;
+
+      top: 5.8rem;
+      right: 2rem;
+
+      width: 175px;
+
+      background: rgba(255, 255, 255, 0.16);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      border: 1px solid rgba(255, 255, 255, 0.30);
+
+      padding: 1.2rem 1.25rem;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+      z-index: 25;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateY(0);
+    }
+
+
+    /* MENU CONTENT */
+
+    .menu-content {
+      text-align: left;
+    }
+
+    .menu-content a {
+      display: block;
+
+      width: max-content;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 1.15rem;
+
+      margin: 0.8rem 0;
+
+      position: relative;
+    }
+
+    .menu-content a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -5px;
+
+      width: 0;
+      height: 1px;
+
+      background: white;
+
+      transform: translateX(-50%);
+
+      transition: width 0.3s ease;
+    }
+
+    .menu-content a:hover::after,
+    .menu-content a.active::after {
+      width: 100%;
+    }
+
+
+    /* CONCERT SEASONS */
+
+    .menu-concerts-toggle {
+      cursor: pointer;
+    }
+
+    .concert-seasons {
+      display: none;
+
+      margin: -0.3rem 0 1rem;
+    }
+
+    .concert-seasons.open {
+      display: block;
+    }
+
+    .concert-seasons a {
+      font-size: 0.95rem;
+
+      margin: 0.55rem 0;
+
+      opacity: 0.75;
+    }
+
+
+    /* =====================================================
+       SCROLL ARROW
+       ===================================================== */
+
+    .scroll-arrow {
+      position: absolute;
+
+      left: 50%;
+      bottom: 1.8rem;
+
+      width: 20px;
+      height: 20px;
+
+      z-index: 5;
+
+      border-right:
+        1px solid rgba(255, 255, 255, 0.75);
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.75);
+
+      transform:
+        translateX(-50%)
+        rotate(45deg);
+
+      animation:
+        scrollHint
+        2.2s
+        ease-in-out
+        infinite;
+    }
+
+    @keyframes scrollHint {
+
+      0%,
+      100% {
+        transform:
+          translateX(-50%)
+          translateY(0)
+          rotate(45deg);
+
+        opacity: 0.45;
+      }
+
+      50% {
+        transform:
+          translateX(-50%)
+          translateY(6px)
+          rotate(45deg);
+
+        opacity: 0.8;
+      }
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .content-section {
+      position: relative;
+
+      width: 100%;
+
+      padding:
+        5rem
+        2rem
+        6rem;
+
+      background: transparent;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    main {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      padding: 0;
+    }
+
+
+    /* =====================================================
+       GLASS PANELS
+       ===================================================== */
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.20);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.36);
+
+      box-shadow:
+        0
+        12px
+        35px
+        rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =====================================================
+       MEDIA INTRO
+       ===================================================== */
+
+    .media-intro {
+      max-width: 900px;
+
+      margin: 0 auto 5rem;
+
+      padding: 3.5rem 4rem;
+
       text-align: center;
     }
 
-    /* HERO */
-
-.hero {
-  position: relative;
-  width: calc(100% + 4rem);
-  margin-left: -2rem;
-  margin-top: -2rem;
-  overflow: hidden;
-}
-   .hero::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #8b5e3c;
-  margin-top: 4px;
-}
-
-.hero picture {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: calc(100vh - 140px);
-}
-
-.hero picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 5%;
-  display: block;
-}
-
-/* subtle dark overlay */
-.hero picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.20);
-  pointer-events: none;
-}
-
-   /* HAMBURGER MENU */
-
-.menu-button {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  z-index: 30;
-}
-
-.menu-button span {
-  display: block;
-  width: 28px;
-  height: 1px;
-  margin: 6px auto;
-  background: white;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    background 0.3s ease;
-}
-    .menu-button.dark span {
-  background: #8b5e3c;
-}
-
-.menu-button.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.menu-button.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-button.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-
-/* MENU PANEL */
-
-.menu-overlay {
-  position: fixed;
-  top: 5.8rem;
-  right: 2rem;
-  width: 175px;
-
-  background: rgba(139, 94, 60, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  padding: 1.2rem 1.25rem;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    visibility 0.25s ease;
-
-  z-index: 25;
-}
-
-.menu-overlay.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-
-/* MENU CONTENT */
-
-.menu-content {
-  text-align: left;
-}
-
-.menu-content a {
-  display: block;
-  width: max-content;
-  color: white;
-  text-decoration: none;
-  font-size: 1.15rem;
-  margin: 0.8rem 0;
-  position: relative;
-}
-
-.menu-content a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -5px;
-  width: 0;
-  height: 1px;
-  background: white;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
-}
-
-.menu-content a:hover::after,
-.menu-content a.active::after {
-  width: 100%;
-}
-
-
-/* CONCERT SEASONS */
-
-.menu-concerts-toggle {
-  cursor: pointer;
-}
-
-.concert-seasons {
-  display: none;
-  margin: -0.3rem 0 1rem;
-}
-
-.concert-seasons.open {
-  display: block;
-}
-
-.concert-seasons a {
-  font-size: 0.95rem;
-  margin: 0.55rem 0;
-  opacity: 0.8;
-}
-    /* TITLE */
-    .site-title {
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  text-align: center;
-  z-index: 2;
-}
-
-.site-title h1 {
-  font-size: 3rem;
-  margin: -0.4rem 0 0 0;
-  font-weight: normal;
-  position: relative;
-  z-index: 2;
-  color: white;
-}
-   .greek-title {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 5rem;
-  color: rgba(255, 255, 255, 0.15);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-}
-    @media(max-width:600px){
-      .greek-title{font-size:3.5rem;top:-10px;}
-      .site-title h1{font-size:2.2rem;}
+    #media {
+      scroll-margin-top: 2rem;
     }
 
-    /* MEDIA TITLE */
+    .media-intro h2 {
+      font-size: 4rem;
 
-.media-intro {
-  max-width: 850px;
-  margin: 2.5rem auto 1.5rem;
-  text-align: center;
-}
+      font-weight: normal;
 
-.media-intro h2 {
-  font-size: 4rem;
-  font-weight: normal;
-  margin: 0;
-  letter-spacing: 0.04em;
-}
+      margin: 0;
+
+      letter-spacing: 0.015em;
+    }
+
+
+    /* =====================================================
+       GALLERY PANEL
+       ===================================================== */
+
+    .gallery-panel {
+      max-width: 1200px;
+
+      margin: 0 auto 5rem;
+
+      padding:
+        2.5rem
+        2.5rem
+        3rem;
+    }
 
     .media-section-title {
-  max-width: 1200px;
-  margin: 0 auto 1.5rem;
-  text-align: left;
-  font-size: 2rem;
-  font-weight: normal;
-  letter-spacing: 0.04em;
-  color: #8b5e3c;
+      margin:
+        0
+        0
+        2rem;
 
-  border-bottom: 1px solid rgba(139, 94, 60, 0.30);
-  padding-bottom: 0.6rem;
-}
-/* GALLERY */
+      padding-bottom: 0.7rem;
 
-.gallery {
-  column-count: 3;
-  column-gap: 1.2rem;
-  max-width: 1200px;
-  margin: 0 auto 3rem;
-}
+      text-align: left;
 
-.gallery-item {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 1.2rem;
-  overflow: hidden;
-  border: 1px solid #211e1b;
-  cursor: pointer;
-  break-inside: avoid;
-}
+      font-size: 2rem;
+      font-weight: normal;
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.45s ease, filter 0.45s ease;
-}
+      letter-spacing: 0.04em;
 
-.gallery-item:hover img {
-  transform: scale(1.025);
-  filter: brightness(0.88);
-}
+      color: rgba(224, 194, 169, 0.9);
 
-.view-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -45%);
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+    }
 
-  color: rgba(255, 255, 255, 0.75);
-  font-family: 'GFS Didot', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
 
-  opacity: 0;
-  pointer-events: none;
+    /* =====================================================
+       GALLERY
+       ===================================================== */
 
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
+    .gallery {
+      column-count: 3;
 
-.gallery-item:hover .view-label {
-  opacity: 0.75;
-  transform: translate(-50%, -50%);
-}
+      column-gap: 1.2rem;
+
+      width: 100%;
+
+      margin: 0;
+    }
+
+    .gallery-item {
+      position: relative;
+
+      display: inline-block;
+
+      width: 100%;
+
+      margin-bottom: 1.2rem;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+
+      cursor: pointer;
+
+      break-inside: avoid;
+    }
+
+    .gallery-item img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.025);
+
+      filter: brightness(0.88);
+    }
+
+
+    /* VIEW LABEL */
+
+    .view-label {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -45%);
+
+      color:
+        rgba(255, 255, 255, 0.75);
+
+      font-family:
+        'GFS Didot',
+        serif;
+
+      font-size: 0.85rem;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    .gallery-item:hover .view-label {
+      opacity: 0.75;
+
+      transform:
+        translate(-50%, -50%);
+    }
+
+
+    /* =====================================================
+       VIDEO PANEL
+       ===================================================== */
+
     .video-section {
-  max-width: 1200px;
-  margin: 5rem auto 0;
-  text-align: left;
-}
+      max-width: 1200px;
 
-.media-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(33, 30, 27, 0.28);
-  margin-bottom: 4rem;
-}
+      margin: 0 auto 5rem;
 
-.video-section h2 {
-  font-size: 2rem;
-  font-weight: normal;
-  margin: 0 0 2rem;
-  letter-spacing: 0.04em;
-  color: #8b5e3c;
-}
-.video-placeholder {
-  font-size: 1.1rem;
-  color: #6a6a6a;
-  margin: 0 0 4rem;
-}
+      padding:
+        2.5rem
+        2.5rem
+        3rem;
 
-/* Tablets */
+      text-align: left;
+    }
 
-@media (max-width: 900px) {
-  .gallery {
-    column-count: 2;
-  }
-}
+    .video-section h2 {
+      margin:
+        0
+        0
+        2rem;
 
-/* Phones */
+      padding-bottom: 0.7rem;
 
-@media (max-width: 600px) {
+      font-size: 2rem;
+      font-weight: normal;
 
-  .media-intro {
-  margin-top: 3rem;
-}
+      letter-spacing: 0.04em;
 
-.media-intro h2 {
-  font-size: 1.7rem;
-}
+      color: rgba(224, 194, 169, 0.9);
 
-  .gallery {
-    column-count: 1;
-  }
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+    }
 
-  .menu-button {
-    top: 1.3rem;
-    right: 1.3rem;
-  }
+    .video-placeholder {
+      margin: 0;
 
-  .menu-overlay {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100dvh;
+      font-size: 1.1rem;
 
-    background: rgba(139, 94, 60, 0.45);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+      color:
+        rgba(255, 255, 255, 0.72);
+    }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    padding: 2rem;
+    /* =====================================================
+       LIGHTBOX
+       ===================================================== */
 
-    transform: none;
-    z-index: 25;
-  }
-
-  .menu-overlay.open {
-    transform: none;
-  }
-
-  .menu-content {
-    width: 100%;
-    text-align: center;
-  }
-
-  .menu-content a {
-    font-size: 1.35rem;
-    margin: 1rem auto;
-  }
-
-  .concert-seasons a {
-    font-size: 1rem;
-    margin: 0.6rem auto;
-  }
-
-  /* white X while full-screen menu is open */
-  .menu-button.open span {
-    background: white;
-  }
-
-}
-    /* LIGHTBOX OVERLAY */
     .lightbox {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
       display: none;
+
       align-items: center;
       justify-content: center;
-      z-index: 100;
+
       padding: 1rem;
+
+      background:
+        rgba(0, 0, 0, 0.82);
+
+      z-index: 100;
     }
 
-    .lightbox.active { display: flex; }
+    .lightbox.active {
+      display: flex;
+    }
 
     .lightbox img {
-  max-width: 90%;
-  max-height: 85vh;
-  border: 1px solid rgba(139, 94, 60, 0.45);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-    .lightbox-counter {
-  position: absolute;
-  bottom: 3vh;
-  left: 50%;
-  transform: translateX(-50%);
+      max-width: 90%;
+      max-height: 85vh;
 
-  font-family: 'GFS Didot', serif;
-  font-size: 0.8rem;
-  font-style: italic;
-  letter-spacing: 0.08em;
+      border:
+        1px solid
+        rgba(139, 94, 60, 0.45);
 
-  color: rgba(139, 94, 60, 0.60);
-
-  pointer-events: none;
-}
-
-    /* ARROWS */
-    .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  font-family: 'GFS Didot', serif;
-  font-size: 2.4rem;
-  font-weight: normal;
-  line-height: 1;
-
-  color: rgba(139, 94, 60, 0.60);
-
-  cursor: pointer;
-  user-select: none;
-  padding: 1rem;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.arrow:hover {
-  color: rgba(139, 94, 60, 0.75);
-}
-    .arrow.left  { left: 20px; }
-    .arrow.right { right: 20px; }
-
-    /* CLOSE BUTTON */
-    .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  font-family: 'GFS Didot', serif;
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1;
-
-  color: rgba(139, 94, 60, 0.60);
-
-  cursor: pointer;
-  user-select: none;
-
-  transition: color 0.25s ease;
-}
-
-.close-btn:hover {
-  color: rgba(139, 94, 60, 0.75);
-}
-    /* FOOTER */
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      font-size: 0.95rem;
-      color: #6a6a6a;
-      border-top: 1px solid #d4cec6;
+      box-shadow:
+        0
+        0
+        20px
+        rgba(0, 0, 0, 0.4);
     }
+
+
+    /* LIGHTBOX COUNTER */
+
+    .lightbox-counter {
+      position: absolute;
+
+      bottom: 3vh;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-family:
+        'GFS Didot',
+        serif;
+
+      font-size: 0.8rem;
+
+      font-style: italic;
+
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(139, 94, 60, 0.60);
+
+      pointer-events: none;
+    }
+
+
+    /* LIGHTBOX ARROWS */
+
+    .arrow {
+      position: absolute;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      font-family:
+        'GFS Didot',
+        serif;
+
+      font-size: 2.4rem;
+
+      font-weight: normal;
+
+      line-height: 1;
+
+      color:
+        rgba(139, 94, 60, 0.60);
+
+      cursor: pointer;
+
+      user-select: none;
+
+      padding: 1rem;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .arrow:hover {
+      color:
+        rgba(139, 94, 60, 0.75);
+    }
+
+    .arrow.left {
+      left: 20px;
+    }
+
+    .arrow.right {
+      right: 20px;
+    }
+
+
+    /* LIGHTBOX CLOSE */
+
+    .close-btn {
+      position: absolute;
+
+      top: 20px;
+      right: 20px;
+
+      font-family:
+        'GFS Didot',
+        serif;
+
+      font-size: 2rem;
+
+      font-weight: normal;
+
+      line-height: 1;
+
+      color:
+        rgba(139, 94, 60, 0.60);
+
+      cursor: pointer;
+
+      user-select: none;
+
+      transition:
+        color 0.25s ease;
+    }
+
+    .close-btn:hover {
+      color:
+        rgba(139, 94, 60, 0.75);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      position: relative;
+
+      width: 100%;
+      max-width: 1100px;
+
+      margin:
+        4rem
+        auto
+        0;
+
+      padding:
+        2rem
+        1rem;
+
+      font-size: 0.95rem;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+
+      text-align: center;
+
+      background: transparent;
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+    }
+
+
+    /* =====================================================
+       TABLETS
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .gallery {
+        column-count: 2;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .hero {
+        height: 100svh;
+      }
+
+      .background-image {
+        height: 100svh;
+      }
+
+
+      /* TITLE */
+
+      .site-title {
+        top: 2rem;
+      }
+
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
+
+      .greek-title {
+        top: -20px;
+
+        font-size: 3.5rem;
+      }
+
+
+      /* HAMBURGER */
+
+      .menu-button {
+        top: 1.3rem;
+        right: 1.3rem;
+      }
+
+
+      /* FULL SCREEN FROSTED MENU */
+
+      .menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        width: 100vw;
+        height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 2rem;
+
+        background:
+          rgba(255, 255, 255, 0.18);
+
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        border: none;
+
+        transform: none;
+
+        z-index: 25;
+      }
+
+      .menu-overlay.open {
+        transform: none;
+      }
+
+      .menu-content {
+        width: 100%;
+
+        text-align: center;
+      }
+
+      .menu-content a {
+        font-size: 1.35rem;
+
+        margin: 1rem auto;
+      }
+
+      .concert-seasons a {
+        font-size: 1rem;
+
+        margin: 0.6rem auto;
+      }
+
+      .menu-button.open span {
+        background: white;
+      }
+
+
+      /* CONTENT */
+
+      .content-section {
+        padding:
+          3rem
+          1rem
+          4rem;
+      }
+
+
+      /* MEDIA TITLE */
+
+      .media-intro {
+        margin-bottom: 3rem;
+
+        padding:
+          2.5rem
+          1.5rem;
+      }
+
+      .media-intro h2 {
+        font-size: 2.4rem;
+      }
+
+
+      /* GALLERY */
+
+      .gallery-panel {
+        margin-bottom: 3rem;
+
+        padding:
+          1.5rem
+          1rem
+          2rem;
+      }
+
+      .media-section-title {
+        font-size: 1.7rem;
+      }
+
+      .gallery {
+        column-count: 1;
+      }
+
+
+      /* VIDEOS */
+
+      .video-section {
+        margin-bottom: 3rem;
+
+        padding:
+          1.5rem
+          1rem
+          2rem;
+      }
+
+      .video-section h2 {
+        font-size: 1.7rem;
+      }
+
+      .video-placeholder {
+        font-size: 1rem;
+      }
+
+
+      /* LIGHTBOX */
+
+      .arrow {
+        font-size: 2rem;
+
+        padding: 0.5rem;
+      }
+
+      .arrow.left {
+        left: 5px;
+      }
+
+      .arrow.right {
+        right: 5px;
+      }
+
+      .close-btn {
+        top: 14px;
+        right: 14px;
+      }
+
+      .lightbox-counter {
+        bottom: 2vh;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        margin-top: 3rem;
+
+        padding:
+          1.5rem
+          1rem;
+
+        font-size: 0.85rem;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
- <!-- HERO -->
-<section class="hero">
 
-  <picture>
-    <!-- Portrait phones & portrait tablets -->
-    <source
-      media="(orientation: portrait)"
-      srcset="TrioAbout.JPG">
+  <!-- ===================================================
+       FIXED BACKGROUND
+       =================================================== -->
 
-    <!-- Landscape / desktop -->
-    <img src="TrioAbout.JPG" alt="Trio Callistó">
-  </picture>
+  <div class="background-image">
 
-  <!-- TITLE -->
-  <div class="site-title">
-    <div class="greek-title">Τρίο Καλλιστώ</div>
-    <h1>Trio Callistó</h1>
+    <picture>
+
+      <source
+        media="(orientation: portrait) and (max-width: 1024px)"
+        srcset="TrioAbout.JPG">
+
+      <img
+        src="TrioAbout.JPG"
+        alt="Trio Callistó">
+
+    </picture>
+
   </div>
 
-</section>
 
- <!-- HAMBURGER BUTTON -->
+  <!-- ===================================================
+       HERO
+       =================================================== -->
 
-<button class="menu-button" id="menu-button" aria-label="Open menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+  <section class="hero">
 
 
-<!-- MENU OVERLAY -->
+    <!-- TITLE -->
 
-<div class="menu-overlay" id="menu-overlay">
+    <div class="site-title">
 
-  <div class="menu-content">
+      <div class="greek-title">
+        Τρίο Καλλιστώ
+      </div>
 
-    <a href="home.html">Home</a>
-    <a href="media.html" class="active">Media</a>
+      <h1>
+        Trio Callistó
+      </h1>
 
-    <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
-      Concerts
-    </a>
-
-    <div class="concert-seasons" id="concert-seasons">
-      <a href="concerts-2026-2027.html">2026–2027</a>
-      <a href="concerts-2025-2026.html">2025–2026</a>
     </div>
 
-    <a href="contact.html">Contact</a>
+
+    <!-- HAMBURGER -->
+
+    <button
+      class="menu-button"
+      id="menu-button"
+      aria-label="Open menu">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <!-- MENU -->
+
+    <div
+      class="menu-overlay"
+      id="menu-overlay">
+
+      <div class="menu-content">
+
+        <a href="home.html">
+          Home
+        </a>
+
+        <a
+          href="media.html"
+          class="active">
+          Media
+        </a>
+
+        <a
+          href="#"
+          class="menu-concerts-toggle"
+          id="concerts-toggle">
+          Concerts
+        </a>
+
+        <div
+          class="concert-seasons"
+          id="concert-seasons">
+
+          <a href="concerts-2026-2027.html">
+            2026–2027
+          </a>
+
+          <a href="concerts-2025-2026.html">
+            2025–2026
+          </a>
+
+        </div>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- SCROLL ARROW -->
+
+    <a
+      href="#media"
+      class="scroll-arrow"
+      aria-label="Scroll to Media">
+    </a>
+
+  </section>
+
+
+  <!-- ===================================================
+       CONTENT
+       =================================================== -->
+
+  <section class="content-section">
+
+    <main>
+
+
+      <!-- MEDIA TITLE -->
+
+      <section
+        class="media-intro glass-panel"
+        id="media">
+
+        <h2>
+          Media
+        </h2>
+
+      </section>
+
+
+      <!-- GALLERY PANEL -->
+
+      <section class="gallery-panel glass-panel">
+
+        <h2 class="media-section-title">
+          Gallery
+        </h2>
+
+
+        <div class="gallery">
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery6.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery3.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery4.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery13.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery2.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery7.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+          <div class="gallery-item">
+
+            <img
+              src="Gallery5.JPG"
+              alt="Trio Callistó">
+
+            <span class="view-label">
+              View
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- VIDEOS -->
+
+      <section class="video-section glass-panel">
+
+        <h2>
+          Videos
+        </h2>
+
+        <p class="video-placeholder">
+          Performance videos coming soon.
+        </p>
+
+      </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+      © 2026 Trio Callistó – All Rights Reserved
+    </footer>
+
+  </section>
+
+
+  <!-- ===================================================
+       LIGHTBOX
+       =================================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox">
+
+    <span
+      class="close-btn"
+      id="closeBtn">
+      &times;
+    </span>
+
+    <span
+      class="arrow left"
+      id="prevBtn">
+      ←
+    </span>
+
+    <img
+      id="lightbox-img"
+      src=""
+      alt="">
+
+    <span
+      class="lightbox-counter"
+      id="lightbox-counter">
+    </span>
+
+    <span
+      class="arrow right"
+      id="nextBtn">
+      →
+    </span>
 
   </div>
 
-</div>
 
- <section class="media-intro">
-  <h2>Media</h2>
-</section>
+  <!-- ===================================================
+       SCRIPT
+       =================================================== -->
 
-<h2 class="media-section-title">Gallery</h2>
-  
-  <!-- GALLERY GRID -->
- <div class="gallery">
-
-  <div class="gallery-item">
-    <img src="Gallery6.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery3.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery4.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery13.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery2.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery7.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-  <div class="gallery-item">
-    <img src="Gallery5.JPG" alt="">
-    <span class="view-label">View</span>
-  </div>
-
-</div>
-
-  <section class="video-section">
-
-  <div class="media-divider"></div>
-
-  <h2>Videos</h2>
-
-  <p class="video-placeholder">
-    Performance videos coming soon.
-  </p>
-
-</section>
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="closeBtn">&times;</span>
-    <span class="arrow left" id="prevBtn">←</span>
-    
-    <img id="lightbox-img" src="">
-    <span class="lightbox-counter" id="lightbox-counter"></span>
-    
-<span class="arrow right" id="nextBtn">→</span>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Trio Callistó – All Rights Reserved
-  </footer>
-
-  <!-- SCRIPT -->
   <script>
-   const images = document.querySelectorAll('.gallery img');
-const galleryItems = document.querySelectorAll('.gallery-item');
-    /* Lightbox */
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.getElementById('closeBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const lightboxCounter = document.getElementById('lightbox-counter');
+
+
+    /* ===================================================
+       GALLERY / LIGHTBOX
+       =================================================== */
+
+    const images =
+      document.querySelectorAll(
+        '.gallery img'
+      );
+
+    const galleryItems =
+      document.querySelectorAll(
+        '.gallery-item'
+      );
+
+
+    const lightbox =
+      document.getElementById(
+        'lightbox'
+      );
+
+    const lightboxImg =
+      document.getElementById(
+        'lightbox-img'
+      );
+
+    const closeBtn =
+      document.getElementById(
+        'closeBtn'
+      );
+
+    const nextBtn =
+      document.getElementById(
+        'nextBtn'
+      );
+
+    const prevBtn =
+      document.getElementById(
+        'prevBtn'
+      );
+
+    const lightboxCounter =
+      document.getElementById(
+        'lightbox-counter'
+      );
+
 
     let currentIndex = 0;
 
-   function openLightbox(index){
-  currentIndex = index;
-  lightboxImg.src = images[index].src;
-  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
-  lightbox.classList.add('active');
-}
 
-    function closeLightbox(){
-      lightbox.classList.remove('active');
+    function updateCounter() {
+
+      lightboxCounter.textContent =
+        `${currentIndex + 1} / ${images.length}`;
+
     }
 
-   function showNext(){
-  currentIndex = (currentIndex + 1) % images.length;
-  lightboxImg.src = images[currentIndex].src;
-  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
-}
 
-    function showPrev(){
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  lightboxImg.src = images[currentIndex].src;
-  lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
-}
+    function openLightbox(index) {
 
-    /* Click image → open */
-    /* Click gallery item → open */
-galleryItems.forEach((item, index)=>{
-  item.addEventListener('click', ()=> openLightbox(index));
-});
+      currentIndex = index;
 
-    /* Close */
-    closeBtn.addEventListener('click', closeLightbox);
+      lightboxImg.src =
+        images[currentIndex].src;
 
-    /* Arrows */
-    nextBtn.addEventListener('click', showNext);
-    prevBtn.addEventListener('click', showPrev);
+      lightboxImg.alt =
+        images[currentIndex].alt;
 
-    /* Keyboard support */
-    document.addEventListener('keydown', e=>{
-      if(!lightbox.classList.contains('active')) return;
+      updateCounter();
 
-      if(e.key === 'Escape') closeLightbox();
-      if(e.key === 'ArrowRight') showNext();
-      if(e.key === 'ArrowLeft') showPrev();
-    });
+      lightbox.classList.add(
+        'active'
+      );
 
-    /* Click outside closes */
-    lightbox.addEventListener('click', e=>{
-      if(e.target === lightbox) closeLightbox();
-    });
-
-    /* HAMBURGER MENU */
-
-const menuButton = document.getElementById('menu-button');
-const menuOverlay = document.getElementById('menu-overlay');
-
-const concertsToggle = document.getElementById('concerts-toggle');
-const concertSeasons = document.getElementById('concert-seasons');
+    }
 
 
-/* OPEN / CLOSE MAIN MENU */
+    function closeLightbox() {
 
-menuButton.addEventListener('click', () => {
-  menuOverlay.classList.toggle('open');
-  menuButton.classList.toggle('open');
+      lightbox.classList.remove(
+        'active'
+      );
 
-  if (menuOverlay.classList.contains('open')) {
-    menuButton.setAttribute('aria-label', 'Close menu');
-  } else {
-    menuButton.setAttribute('aria-label', 'Open menu');
-    concertSeasons.classList.remove('open');
-  }
-});
+    }
 
 
-/* CLOSE DESKTOP MENU WHEN MOUSE LEAVES IT */
+    function showNext() {
 
-menuOverlay.addEventListener('mouseleave', () => {
-  if (window.innerWidth > 600) {
-    menuOverlay.classList.remove('open');
-    menuButton.classList.remove('open');
-    concertSeasons.classList.remove('open');
-    menuButton.setAttribute('aria-label', 'Open menu');
-  }
-});
+      currentIndex =
+        (currentIndex + 1)
+        % images.length;
 
+      lightboxImg.src =
+        images[currentIndex].src;
 
-/* OPEN / CLOSE CONCERT SEASONS */
+      lightboxImg.alt =
+        images[currentIndex].alt;
 
-concertsToggle.addEventListener('click', (e) => {
-  e.preventDefault();
-  concertSeasons.classList.toggle('open');
-});
+      updateCounter();
+
+    }
 
 
-/* CLOSE MENU WHEN A PAGE LINK IS SELECTED */
+    function showPrev() {
 
-const menuLinks = menuOverlay.querySelectorAll(
-  'a:not(#concerts-toggle)'
-);
+      currentIndex =
+        (
+          currentIndex
+          - 1
+          + images.length
+        )
+        % images.length;
 
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menuOverlay.classList.remove('open');
-    menuButton.classList.remove('open');
-  });
-});
-    /* CHANGE HAMBURGER COLOUR BELOW HERO */
+      lightboxImg.src =
+        images[currentIndex].src;
 
-const hero = document.querySelector('.hero');
+      lightboxImg.alt =
+        images[currentIndex].alt;
 
-function updateMenuButtonColour() {
-  const heroBottom = hero.getBoundingClientRect().bottom;
-  const buttonMiddle = menuButton.getBoundingClientRect().top + 19;
+      updateCounter();
 
-  if (buttonMiddle > heroBottom) {
-    menuButton.classList.add('dark');
-  } else {
-    menuButton.classList.remove('dark');
-  }
-}
+    }
 
-window.addEventListener('scroll', updateMenuButtonColour);
-window.addEventListener('resize', updateMenuButtonColour);
-updateMenuButtonColour();
+
+    /* CLICK WHOLE IMAGE */
+
+    galleryItems.forEach(
+      (item, index) => {
+
+        item.addEventListener(
+          'click',
+          () => openLightbox(index)
+        );
+
+      }
+    );
+
+
+    /* CLOSE */
+
+    closeBtn.addEventListener(
+      'click',
+      closeLightbox
+    );
+
+
+    /* ARROWS */
+
+    nextBtn.addEventListener(
+      'click',
+      showNext
+    );
+
+    prevBtn.addEventListener(
+      'click',
+      showPrev
+    );
+
+
+    /* KEYBOARD */
+
+    document.addEventListener(
+      'keydown',
+      e => {
+
+        if (
+          !lightbox.classList.contains(
+            'active'
+          )
+        ) {
+          return;
+        }
+
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+
+        if (e.key === 'ArrowRight') {
+          showNext();
+        }
+
+        if (e.key === 'ArrowLeft') {
+          showPrev();
+        }
+
+      }
+    );
+
+
+    /* CLICK OUTSIDE IMAGE */
+
+    lightbox.addEventListener(
+      'click',
+      e => {
+
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+
+      }
+    );
+
+
+    /* ===================================================
+       HAMBURGER MENU
+       =================================================== */
+
+    const menuButton =
+      document.getElementById(
+        'menu-button'
+      );
+
+    const menuOverlay =
+      document.getElementById(
+        'menu-overlay'
+      );
+
+    const concertsToggle =
+      document.getElementById(
+        'concerts-toggle'
+      );
+
+    const concertSeasons =
+      document.getElementById(
+        'concert-seasons'
+      );
+
+
+    /* OPEN / CLOSE MAIN MENU */
+
+    menuButton.addEventListener(
+      'click',
+      () => {
+
+        menuOverlay.classList.toggle(
+          'open'
+        );
+
+        menuButton.classList.toggle(
+          'open'
+        );
+
+
+        if (
+          menuOverlay.classList.contains(
+            'open'
+          )
+        ) {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Close menu'
+          );
+
+        } else {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES */
+
+    menuOverlay.addEventListener(
+      'mouseleave',
+      () => {
+
+        if (window.innerWidth > 600) {
+
+          menuOverlay.classList.remove(
+            'open'
+          );
+
+          menuButton.classList.remove(
+            'open'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* OPEN / CLOSE CONCERT SEASONS */
+
+    concertsToggle.addEventListener(
+      'click',
+      e => {
+
+        e.preventDefault();
+
+        concertSeasons.classList.toggle(
+          'open'
+        );
+
+      }
+    );
+
+
+    /* CLOSE MENU WHEN LINK SELECTED */
+
+    const menuLinks =
+      menuOverlay.querySelectorAll(
+        'a:not(#concerts-toggle)'
+      );
+
+    menuLinks.forEach(
+      link => {
+
+        link.addEventListener(
+          'click',
+          () => {
+
+            menuOverlay.classList.remove(
+              'open'
+            );
+
+            menuButton.classList.remove(
+              'open'
+            );
+
+            concertSeasons.classList.remove(
+              'open'
+            );
+
+            menuButton.setAttribute(
+              'aria-label',
+              'Open menu'
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /* ===================================================
+       SLOW SCROLL TO MEDIA
+       =================================================== */
+
+    const scrollArrowLink =
+      document.querySelector(
+        '.scroll-arrow'
+      );
+
+
+    scrollArrowLink.addEventListener(
+      'click',
+      e => {
+
+        e.preventDefault();
+
+
+        const target =
+          document.getElementById(
+            'media'
+          );
+
+
+        const startPosition =
+          window.scrollY;
+
+
+        const scrollMargin =
+          parseFloat(
+            getComputedStyle(
+              target
+            ).scrollMarginTop
+          ) || 0;
+
+
+        const targetPosition =
+          target
+            .getBoundingClientRect()
+            .top
+          + window.scrollY
+          - scrollMargin;
+
+
+        const distance =
+          targetPosition
+          - startPosition;
+
+
+        const duration = 1200;
+
+        let startTime = null;
+
+
+        function animation(
+          currentTime
+        ) {
+
+          if (
+            startTime === null
+          ) {
+            startTime = currentTime;
+          }
+
+
+          const timeElapsed =
+            currentTime
+            - startTime;
+
+
+          const progress =
+            Math.min(
+              timeElapsed
+              / duration,
+              1
+            );
+
+
+          const ease =
+            progress < 0.5
+              ? 4
+                * progress
+                * progress
+                * progress
+              : 1
+                - Math.pow(
+                    -2
+                    * progress
+                    + 2,
+                    3
+                  )
+                  / 2;
+
+
+          window.scrollTo(
+            0,
+            startPosition
+            + distance
+            * ease
+          );
+
+
+          if (progress < 1) {
+
+            requestAnimationFrame(
+              animation
+            );
+
+          }
+
+        }
+
+
+        requestAnimationFrame(
+          animation
+        );
+
+      }
+    );
+
   </script>
 
 </body>
+
 </html>
