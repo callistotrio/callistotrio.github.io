@@ -1116,8 +1116,49 @@
 
     });
 
+/* SLOW, SMOOTH SCROLL TO ABOUT */
 
-    /* CHANGE HAMBURGER COLOUR AFTER HERO */
+const scrollArrowLink = document.querySelector('.scroll-arrow');
+
+scrollArrowLink.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const target = document.getElementById('about');
+
+  const startPosition = window.scrollY;
+  const scrollMargin = parseFloat(
+    getComputedStyle(target).scrollMarginTop
+  ) || 0;
+
+  const targetPosition =
+    target.getBoundingClientRect().top +
+    window.scrollY -
+    scrollMargin;
+
+  const distance = targetPosition - startPosition;
+  const duration = 1200;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+
+    const ease =
+      progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    window.scrollTo(0, startPosition + distance * ease);
+
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+});
   </script>
 
 </body>
