@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Trio Callistó</title>
 
   <!-- FAVICON -->
@@ -12,168 +15,226 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- Load GFS Didot font -->
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Italiana&display=swap" rel="stylesheet">
+  <!-- GFS Didot -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"
+    rel="stylesheet">
+
   <style>
 
     * {
       box-sizing: border-box;
     }
 
-  body {
-  margin: 0;
-  font-family: 'GFS Didot', serif;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-   /* HOMEPAGE BACKGROUND */
-.hero {
-  position: relative;
-  width: 100%;
-  overflow-x: hidden;
-}
+    body {
+      margin: 0;
+      font-family: 'GFS Didot', serif;
+      color: #211e1b;
+      text-align: center;
+      overflow-x: hidden;
+      background: #171513;
+    }
 
-.hero picture {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: calc(100vh - 140px);
-  z-index: 0;
-}
 
-.hero picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
-  display: block;
-}
+    /* =====================================================
+       FIXED BACKGROUND IMAGE
+       ===================================================== */
 
-/* subtle dark overlay */
-.hero picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.20);
-  pointer-events: none;
-}
-.hero::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #8b5e3c;
-  margin-top: 4px;
-}
+    .background-image {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -3;
+      background: #171513;
+    }
+
+    .background-image picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .background-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    /* subtle darkening over photograph */
+    .background-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       OPENING HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
 
     /* TITLE */
-.site-title {
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  text-align: center;
-  z-index: 2;
-}
 
-.site-title h1 {
-  font-size: 3rem;
-  margin: -0.4rem 0 0 0;
-  font-weight: normal;
-  position: relative;
-  z-index: 2;
-}
-.greek-title {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 5rem;
-  color: rgba(255,255,255,0.15);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-}
+    .site-title {
+      position: absolute;
+      top: 3rem;
+      left: 0;
+      width: 100%;
+
+      margin: 0;
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+
+      text-align: center;
+      z-index: 2;
+    }
+
+    .site-title h1 {
+      font-size: 3rem;
+      margin: -0.4rem 0 0;
+      font-weight: normal;
+      position: relative;
+      z-index: 2;
+      color: white;
+    }
+
+    .greek-title {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.15);
+
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1;
+    }
 
 
-       /* HAMBURGER MENU */
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
 
     .menu-button {
       position: fixed;
       top: 2rem;
       right: 2rem;
-      width: 38px;
-      height: 38px;
-      padding: 0;
-      border: none;
-      background: transparent;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
       cursor: pointer;
-      z-index: 20;
+      z-index: 30;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
     }
 
     .menu-button span {
-  display: block;
-  width: 28px;
-  height: 1px;
-  margin: 6px auto;
-  background: white;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-}
-   .menu-button.dark span {
-  background: #8b5e3c;
-}
+      display: block;
+
+      width: 28px;
+      height: 1px;
+
+      margin: 6px auto;
+
+      background: white;
+
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .menu-button.dark {
+      background: rgba(255, 255, 255, 0.20);
+      border-color: rgba(255, 255, 255, 0.38);
+    }
+
+    .menu-button.dark span {
+      background: #8b5e3c;
+    }
+
     .menu-button.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
+      transform: translateY(7px) rotate(45deg);
+    }
 
-.menu-button.open span:nth-child(2) {
-  opacity: 0;
-}
+    .menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
 
-.menu-button.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+    .menu-button.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
 
-    /* FULL MENU OVERLAY */
+    /* =====================================================
+       FROSTED MENU
+       ===================================================== */
 
-   /* MENU PANEL */
+    .menu-overlay {
+      position: fixed;
+      top: 5.8rem;
+      right: 2rem;
 
-.menu-overlay {
-  position: fixed;
-  top: 5.8rem;
-  right: 2rem;
+      width: 175px;
 
-  width: 175px;
+      background: rgba(255, 255, 255, 0.16);
 
-  background: rgba(139, 94, 60, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+      backdrop-filter:
+        blur(22px)
+        saturate(115%);
 
-  padding: 1.2rem 1.25rem;
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(115%);
 
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
+      border: 1px solid rgba(255, 255, 255, 0.30);
 
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    visibility 0.25s ease;
+      padding: 1.2rem 1.25rem;
 
-  z-index: 10;
-}
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
 
-.menu-overlay.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+      z-index: 25;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
 
     /* MENU CONTENT */
@@ -183,34 +244,42 @@
     }
 
     .menu-content a {
-  display: block;
-  width: max-content;
-  color: white;
-  text-decoration: none;
-  font-size: 1.15rem;
-  margin: 0.8rem 0;
-  position: relative;
-}
+      display: block;
+      width: max-content;
+
+      color: #211e1b;
+      text-decoration: none;
+
+      font-size: 1.15rem;
+
+      margin: 0.8rem 0;
+
+      position: relative;
+    }
 
     .menu-content a::after {
       content: "";
+
       position: absolute;
       left: 50%;
       bottom: -5px;
+
       width: 0;
       height: 1px;
-      background: white;
+
+      background: #8b5e3c;
+
       transform: translateX(-50%);
       transition: width 0.3s ease;
     }
 
     .menu-content a:hover::after,
-.menu-content a.active::after {
-  width: 100%;
-}
+    .menu-content a.active::after {
+      width: 100%;
+    }
 
 
-    /* CONCERTS */
+    /* CONCERT SEASONS */
 
     .menu-concerts-toggle {
       cursor: pointer;
@@ -228,276 +297,393 @@
     .concert-seasons a {
       font-size: 0.95rem;
       margin: 0.55rem 0;
-      opacity: 0.8;
+      opacity: 0.75;
     }
 
- .content-section {
-  position: relative;
-  background: #f7f3eb;
-  color: #211e1b;
-  padding: 3rem 2rem 6rem;
-  z-index: 2;
-}
 
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0;
-}
+    /* =====================================================
+       CONTENT OVER BACKGROUND
+       ===================================================== */
 
-/* TRIO INTRO */
+    .content-section {
+      position: relative;
+      width: 100%;
 
-.trio-intro {
-  max-width: 850px;
-  margin: 0 auto 5rem;
-  text-align: center;
-}
+      padding:
+        5rem
+        2rem
+        6rem;
 
-.trio-intro h2 {
-  font-size: 3.6rem;
-  font-weight: normal;
-  margin: 0 0 2rem;
-  letter-spacing: 0.015em;
-}
+      background: transparent;
 
-.musicians-title {
-  font-size: 2rem;
-  font-weight: normal;
-  margin: 0 0 5rem;
-  letter-spacing: 0.04em;
-  text-align: center;
-}
+      z-index: 2;
+    }
 
-.trio-intro p {
-  margin: 0;
-  font-size: 1.2rem;
-  line-height: 1.9;
-}
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0;
+    }
 
-.trio-intro p::first-letter {
-  float: left;
-  font-family: 'GFS Didot', serif;
-  font-size: 6rem;
-  line-height: 0.72;
-  padding: 0;
-  margin-right: -0.12em;
-  font-weight: normal;
-  color: #8b5e3c;
-}
 
-    .musicians-divider {
-  width: 100%;
-  max-width: 1000px;
-  height: 1px;
-  background: rgba(33, 30, 27, 0.45);
-  margin: 0 auto 5rem;
-}
+    /* =====================================================
+       FROSTED GLASS STYLE
+       ===================================================== */
 
-/* MUSICIANS */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.20);
 
-.musician {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 5rem;
-  align-items: start;
-  max-width: 1000px;
-  margin: 0 auto 4rem;
-  text-align: left;
-}
-   .musician:not(:last-of-type) {
-  border-bottom: 1px solid rgba(33, 30, 27, 0.28);
-  padding-bottom: 4rem;
-  margin-bottom: 4rem;
-}
-.musician:nth-of-type(even) {
-  grid-template-columns: 1fr 360px;
-}
+      backdrop-filter:
+        blur(22px)
+        saturate(110%);
 
-.musician:nth-of-type(even) .musician-photo {
-  order: 2;
-}
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(110%);
 
-.musician-photo {
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  display: block;
-  box-shadow: 18px 18px 0 rgba(139, 94, 60, 0.20);
-}
+      border: 1px solid rgba(255, 255, 255, 0.36);
 
-.musician-info h3 {
-  font-size: 2rem;
-  font-weight: normal;
-  margin: 0 0 0.4rem;
-}
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.08);
+    }
 
-.musician-instrument {
-  font-size: 1.1rem;
-  font-style: italic;
-  margin-bottom: 2rem;
-}
 
-.musician-info p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  margin: 0 0 1.4rem;
-}
+    /* =====================================================
+       TRIO INTRO
+       ===================================================== */
+
+    .trio-intro {
+      max-width: 900px;
+
+      margin: 0 auto 6rem;
+      padding: 3.5rem 4rem;
+
+      text-align: center;
+    }
+
+    .trio-intro h2 {
+      font-size: 3.6rem;
+      font-weight: normal;
+
+      margin: 0 0 2rem;
+
+      letter-spacing: 0.015em;
+    }
+
+    .trio-intro p {
+      margin: 0;
+
+      font-size: 1.2rem;
+      line-height: 1.9;
+    }
+
+    .trio-intro p::first-letter {
+      float: left;
+
+      font-family: 'GFS Didot', serif;
+      font-size: 6rem;
+      line-height: 0.72;
+
+      padding: 0;
+      margin-right: -0.12em;
+
+      font-weight: normal;
+
+      color: #8b5e3c;
+    }
+
+
+    /* =====================================================
+       MUSICIANS
+       ===================================================== */
+
+    .musician {
+      display: grid;
+
+      grid-template-columns:
+        360px
+        1fr;
+
+      gap: 5rem;
+
+      align-items: start;
+
+      max-width: 1100px;
+
+      margin: 0 auto 5rem;
+      padding: 3rem;
+
+      text-align: left;
+    }
+
+    .musician:nth-of-type(even) {
+      grid-template-columns:
+        1fr
+        360px;
+    }
+
+    .musician:nth-of-type(even) .musician-photo {
+      order: 2;
+    }
+
+    .musician-photo {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+
+      display: block;
+
+      box-shadow:
+        16px
+        16px
+        0
+        rgba(139, 94, 60, 0.18);
+    }
+
+    .musician-info h3 {
+      font-size: 2rem;
+      font-weight: normal;
+
+      margin: 0 0 0.4rem;
+    }
+
+    .musician-instrument {
+      font-size: 1.1rem;
+      font-style: italic;
+
+      margin-bottom: 2rem;
+
+      color: rgba(33, 30, 27, 0.75);
+    }
+
+    .musician-info p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+
+      margin: 0 0 1.4rem;
+    }
+
     .musician-info p:first-of-type::first-letter {
-  float: left;
-  font-family: 'GFS Didot', serif;
-  font-size: 4.5rem;
-  line-height: 0.72;
-  padding: 0;
-  margin-right: 0.06em;
-  color: #8b5e3c;
-  font-weight: normal;
-}
-/* FOOTER */
-footer {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  width: 100%;
-  margin-top: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  font-size: 0.95rem;
-  color: #6a6a6a;
-  border-top: 1px solid #d4cec6;
-  text-align: center;
-}
+      float: left;
+
+      font-family: 'GFS Didot', serif;
+      font-size: 4.5rem;
+      line-height: 0.72;
+
+      padding: 0;
+      margin-right: 0.06em;
+
+      color: #8b5e3c;
+
+      font-weight: normal;
+    }
 
 
-/* MOBILE PHONES */
-@media (max-width: 600px) {
+    /* =====================================================
+       FOOTER
+       ===================================================== */
 
-  .hero {
-    overflow: visible;
-  }
+    footer {
+      width: 100%;
+      max-width: 1100px;
 
-  .hero picture {
-  height: calc(100vh - 70px);
-}
+      margin: 5rem auto 0;
+      padding: 2rem;
 
-  .content-section {
-  padding: 3rem 1.5rem 5rem;
-}
+      font-size: 0.95rem;
 
-.trio-intro {
-  margin-bottom: 5rem;
-}
+      color: rgba(33, 30, 27, 0.70);
 
-.trio-intro h2 {
-  font-size: 1.7rem;
-  margin-bottom: 1.5rem;
-}
-
-.trio-intro p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-
-.trio-intro p::first-letter {
-  font-size: 4rem;
-}
-
-  .musicians-divider {
-  margin-bottom: 4rem;
-}
-
-.musician,
-.musician:nth-of-type(even) {
-  display: block;
-  max-width: 600px;
-  margin: 0 auto 6rem;
-  text-align: left;
-}
-
-.musician:nth-of-type(even) .musician-photo {
-  order: initial;
-}
-
-.musician-photo {
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto 2.5rem;
-}
-
-.musician-info h3 {
-  font-size: 1.8rem;
-}
-
-.musician-instrument {
-  margin-bottom: 1.5rem;
-}
-
-.musician-info p {
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-    /* FULL-SCREEN MENU ON PHONES */
-
- .menu-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100dvh;
-
-  background: rgba(139, 94, 60, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 2rem;
-
-  transform: none;
-  z-index: 15;
-}
-
-  .menu-overlay.open {
-    transform: none;
-  }
-
- .menu-content {
-  width: 100%;
-  text-align: center;
-}
-
-  .site-title h1 {
-    font-size: 2.2rem;
-  }
-
-  .greek-title {
-    font-size: 3.5rem;
-  }
-
-   .menu-button {
-    top: 1.3rem;
-    right: 1.3rem;
-  }
-
-  .menu-content a {
-  font-size: 1.35rem;
-  margin: 1rem auto;
-}
-
-  .concert-seasons a {
-    font-size: 1rem;
-    margin: 0.6rem 0;
-  }
+      text-align: center;
+    }
 
 
-  /* FOOTER */
- footer {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  font-size: 0.85rem;
-}}
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .hero {
+        height: 100svh;
+      }
+
+      .background-image {
+        height: 100svh;
+      }
+
+      .site-title {
+        top: 2rem;
+      }
+
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
+
+      .greek-title {
+        top: -20px;
+        font-size: 3.5rem;
+      }
+
+
+      /* HAMBURGER */
+
+      .menu-button {
+        top: 1.3rem;
+        right: 1.3rem;
+      }
+
+
+      /* FULL SCREEN FROSTED MENU */
+
+      .menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        width: 100vw;
+        height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 2rem;
+
+        background: rgba(255, 255, 255, 0.18);
+
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        border: none;
+
+        transform: none;
+
+        z-index: 25;
+      }
+
+      .menu-overlay.open {
+        transform: none;
+      }
+
+      .menu-content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .menu-content a {
+        font-size: 1.35rem;
+        margin: 1rem auto;
+      }
+
+      .concert-seasons a {
+        font-size: 1rem;
+        margin: 0.6rem auto;
+      }
+
+      .menu-button.open span {
+        background: #8b5e3c;
+      }
+
+
+      /* CONTENT */
+
+      .content-section {
+        padding:
+          3rem
+          1rem
+          4rem;
+      }
+
+
+      /* INTRO */
+
+      .trio-intro {
+        margin-bottom: 3rem;
+
+        padding:
+          2.5rem
+          1.5rem;
+      }
+
+      .trio-intro h2 {
+        font-size: 2.3rem;
+
+        margin-bottom: 1.5rem;
+      }
+
+      .trio-intro p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .trio-intro p::first-letter {
+        font-size: 4.4rem;
+      }
+
+
+      /* MUSICIANS */
+
+      .musician,
+      .musician:nth-of-type(even) {
+        display: block;
+
+        max-width: 600px;
+
+        margin: 0 auto 3rem;
+
+        padding: 1.5rem;
+
+        text-align: left;
+      }
+
+      .musician:nth-of-type(even) .musician-photo {
+        order: initial;
+      }
+
+      .musician-photo {
+        width: 100%;
+        max-width: 360px;
+
+        margin:
+          0
+          auto
+          2.5rem;
+      }
+
+      .musician-info h3 {
+        font-size: 1.8rem;
+      }
+
+      .musician-instrument {
+        margin-bottom: 1.5rem;
+      }
+
+      .musician-info p {
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        margin-top: 3rem;
+
+        padding:
+          1.5rem
+          1rem;
+
+        font-size: 0.85rem;
+      }
+
+    }
 
   </style>
 
@@ -506,272 +692,441 @@ footer {
 
 <body>
 
-<section class="hero">
 
-  <picture>
+  <!-- ===================================================
+       FIXED BACKGROUND
+       =================================================== -->
 
-    <!-- Portrait phones & portrait tablets -->
-    <source
-  media="(orientation: portrait) and (max-width: 1024px)"
-  srcset="HomeMobile.JPG">
-    <!-- Landscape phones, landscape tablets & desktop -->
-    <img src="TrioHome.JPG" alt="Trio Callistó">
+  <div class="background-image">
 
-  </picture>
+    <picture>
 
+      <source
+        media="(orientation: portrait) and (max-width: 1024px)"
+        srcset="HomeMobile.JPG">
 
-  <!-- TITLE -->
-  <div class="site-title">
-    <div class="greek-title">Τρίο Καλλιστώ</div>
-    <h1>Trio Callistó</h1>
+      <img
+        src="TrioHome.JPG"
+        alt="Trio Callistó">
+
+    </picture>
+
   </div>
 
 
-    <!-- HAMBURGER BUTTON -->
+  <!-- ===================================================
+       OPENING HERO
+       =================================================== -->
 
-  <button class="menu-button" id="menu-button" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <section class="hero">
 
 
-  <!-- MENU OVERLAY -->
+    <!-- TITLE -->
 
-  <div class="menu-overlay" id="menu-overlay">
+    <div class="site-title">
 
-    <div class="menu-content">
-
-      <a href="home.html" class="active">Home</a>
-      <a href="media.html">Media</a>
-
-      <a href="#" class="menu-concerts-toggle" id="concerts-toggle">
-        Concerts
-      </a>
-
-      <div class="concert-seasons" id="concert-seasons">
-        <a href="concerts-2026-2027.html">2026–2027</a>
-        <a href="concerts-2025-2026.html">2025–2026</a>
+      <div class="greek-title">
+        Τρίο Καλλιστώ
       </div>
 
-      <a href="contact.html">Contact</a>
+      <h1>
+        Trio Callistó
+      </h1>
 
     </div>
 
-  </div>
 
-</section>
+    <!-- HAMBURGER -->
 
-<section class="content-section">
+    <button
+      class="menu-button"
+      id="menu-button"
+      aria-label="Open menu">
 
-  <!-- INTRO -->
-  <main>
+      <span></span>
+      <span></span>
+      <span></span>
 
-  <section class="trio-intro">
-
-    <h2>About the Trio</h2>
-
-    <p>
-      Formed in Tallinn, Estonia, in 2025, Trio Callistó is an exciting new ensemble with a fresh approach to piano trio performance and programming. Their name, evoking Jupiter’s moon Callisto, Greek mythology, and the idea of beauty, reflects their artistic ethos. The trio frequently programme lesser-known and contemporary works, including new commissions, alongside established classics of the repertoire, seeking to communicate their passion for music to every audience. In addition to their work as an ensemble, each member maintains an active career as a soloist, chamber musician, and collaborative artist.
-    </p>
-
-  </section>
+    </button>
 
 
-  <div class="musicians-divider"></div>
+    <!-- MENU -->
 
+    <div
+      class="menu-overlay"
+      id="menu-overlay">
 
-  <section class="musician">
+      <div class="menu-content">
 
-    <img
-      class="musician-photo"
-      src="Merx.jpg"
-      alt="Merily Leotoots, violinist">
+        <a
+          href="home.html"
+          class="active">
+          Home
+        </a>
 
-    <div class="musician-info">
+        <a href="media.html">
+          Media
+        </a>
 
-      <h3>Merily Leotoots</h3>
-      <div class="musician-instrument">Violin</div>
+        <a
+          href="#"
+          class="menu-concerts-toggle"
+          id="concerts-toggle">
+          Concerts
+        </a>
 
-      <p>
-        Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.
-      </p>
+        <div
+          class="concert-seasons"
+          id="concert-seasons">
 
-      <p>
-        She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.
-      </p>
+          <a href="concerts-2026-2027.html">
+            2026–2027
+          </a>
 
-      <p>
-        She has also studied at distinguished institutions such as the Guildhall School of Music and Drama in London under Professor Ofer Falk and the Musik und Kunst Privatuniversität der Stadt Wien with Lidia Baich. Merily has participated in numerous masterclasses led by acclaimed professors including Kolja Blacher, Pavel Berman, Petru Munteanu, Natalia Lomeiko, and Sophia Jaffé. In 2025 she was selected for the prestigious Sarasate Academy in Spain, which invites outstanding string players from around the world. She has also refined her skills in Italy through the Young Classic Europe courses.
-      </p>
+          <a href="concerts-2025-2026.html">
+            2025–2026
+          </a>
 
-      <p>
-        Chamber music lies at the heart of her artistic identity. She performs actively with several ensembles, including the violin–cello Duo EnPassant, a violin–piano duo with Joonatan Jürgenson, the piano trio Trio Callistó, and the piano quartet Quattuor Artium. With the latter, she appeared in February 2025 at the renowned Wye Valley Chamber Music Festival in England, giving the world premiere of Estonian composer Artur Lemba’s Piano Quartet. Her development as a chamber musician has been shaped by distinguished mentors such as Marje Lohuaru, Evgeny Sinaisky, Matthew Jones, and Jacqueline Ross.
-      </p>
+        </div>
 
-      <p>
-        Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.
-      </p>
+        <a href="contact.html">
+          Contact
+        </a>
 
-      <p>
-        Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <section class="musician">
-
-    <img
-      class="musician-photo"
-      src="Anja.jpg"
-      alt="Anna Ryland-Jones, cellist">
-
-    <div class="musician-info">
-
-      <h3>Anna Ryland-Jones</h3>
-      <div class="musician-instrument">Cello</div>
-
-      <p>
-        Anna Ryland-Jones is a versatile cellist whose performances unite warmth of tone with refined musical insight. Known for her expressive phrasing and natural communicative presence, she brings both poise and imagination to the stage. Equally at home in chamber music and orchestral repertoire, she combines technical finesse with a deep sense of artistic collaboration. In addition to her work with Duo EnPassant and Quattuor Artium, she performs regularly with the piano trio Trio Callistó.
-      </p>
-
-      <p>
-        Anna began cello studies under the guidance of her mother before continuing at the Royal Northern College of Music, where her principal teachers were Emma Ferrand and Petr Prause. She went on to complete her master’s degree at the Guildhall School of Music and Drama in the class of Tim Lowe. She has further developed her artistry in masterclasses with renowned musicians such as István Várdai, Adrian Brendel, Pierre Doumenge, Indrek Leivategija, and Maria Kliegel.
-      </p>
-
-      <p>
-        Chamber music has long formed the heart of Anna’s musical identity. She was a founding member of the Elgar Ensemble in the United Kingdom, giving regular performances in London and Malvern for more than two years. With this ensemble she took part in the Wye Valley Chamber Music Festival’s summer course in 2022 and returned in 2023 as an invited artist. As cellist of Quattuor Artium, she performed at the 2025 Wye Valley Festival, presenting the world premiere of Artur Lemba’s Piano Quartet.
-      </p>
-
-      <p>
-        Anna also performs with the Kings Chamber Orchestra, appearing throughout the United Kingdom, including the Île Joyeuse Summer Festival on Jersey in 2022. In recent seasons she has worked as a freelance musician with several Estonian orchestras and has appeared in chamber collaborations with Estonian artists including Merily Leotoots, Hans Christian Aavik, Marten Meibaum, and Joonatan Jürgenson.
-      </p>
-
-      <p>
-        Dividing her time between London and Tallinn, Anna maintains an active and expanding career across the United Kingdom, Estonia, and Finland.
-      </p>
+      </div>
 
     </div>
 
   </section>
 
 
-  <section class="musician">
+  <!-- ===================================================
+       CONTENT
+       =================================================== -->
 
-    <img
-      class="musician-photo"
-      src="Eliza.jpg"
-      alt="Eliza Agajeva, pianist">
+  <section class="content-section">
 
-    <div class="musician-info">
+    <main>
 
-      <h3>Eliza Agajeva</h3>
-      <div class="musician-instrument">Piano</div>
 
-      <p>
-        Eliza Agajeva is a pianist whose playing is characterised by elegance, precision, and subtlety. Her interpretations combine a clear sense of form with a refined attention to detail, highlighting the inner drama and colour of the music.
-      </p>
+      <!-- INTRO -->
 
-      <p>
-        She began piano studies at the age of seven at the Tallinn Music High School with Ira Floss. In 2013, she continued her education at the Amadeus International School Vienna, studying in the piano class of Austrian pianist Paul Gulda. After successfully graduating in 2017, Agajeva pursued further studies at the Musik und Kunst Privatuniversität Wien with Professor Dr. Johannes Kropfitsch, earning both her bachelor’s and master’s degrees under the guidance of Johannes Kropfitsch and Gerhard Geretschläger.
-      </p>
+      <section class="trio-intro glass-panel">
 
-      <p>
-        In addition, she obtained a bachelor’s degree in instrumental and vocal pedagogy at the Universität für Musik und darstellende Kunst Wien with Konstantin Semilakov. She is currently studying piano duo at the Universität für Musik und darstellende Kunst Graz under Professors Gil Garburg and Sivan Silver-Garburg.
-      </p>
+        <h2>
+          About the Trio
+        </h2>
 
-      <p>
-        Masterclasses and collaborations with prominent musicians, including Till Fellner, Anne Queffélec, Amandine Savary, Evgeny Sinaiski, Ivari Ilja, and Arturs Cingujevs, have played a significant role in her development. As a concert pianist, Agajeva has performed at prestigious venues, including Tokyo’s Suntory Hall, Munich’s Gasteig, and the Vienna Musikverein.
-      </p>
+        <p>
+          Formed in Tallinn, Estonia, in 2025, Trio Callistó is an exciting new ensemble with a fresh approach to piano trio performance and programming. Their name, evoking Jupiter’s moon Callisto, Greek mythology, and the idea of beauty, reflects their artistic ethos. The trio frequently programme lesser-known and contemporary works, including new commissions, alongside established classics of the repertoire, seeking to communicate their passion for music to every audience. In addition to their work as an ensemble, each member maintains an active career as a soloist, chamber musician, and collaborative artist.
+        </p>
 
-    </div>
+      </section>
+
+
+      <!-- MERILY -->
+
+      <section class="musician glass-panel">
+
+        <img
+          class="musician-photo"
+          src="Merx.jpg"
+          alt="Merily Leotoots, violinist">
+
+        <div class="musician-info">
+
+          <h3>
+            Merily Leotoots
+          </h3>
+
+          <div class="musician-instrument">
+            Violin
+          </div>
+
+          <p>
+            Merily Leotoots is a violinist whose playing combines technical clarity with expressive depth. She is known for her dynamic presence and thoughtful interpretations that balance sensitivity and intensity. As both a soloist and chamber musician, she brings precision, imagination, and a distinctive sense of style to her performances.
+          </p>
+
+          <p>
+            She began her musical journey at the Keila Music School, where she studied violin under Leena Laas. In 2014 she graduated from the Tallinn Music High School in the class of Professor Mari Tampere-Bezrodny and Sigrid Kuulmann. She continued her studies at the Estonian Academy of Music and Theatre, earning a master’s degree under Professor Tampere-Bezrodny. At present she pursues private studies with the world-renowned violinist and pedagogue Professor Pierre Amoyal.
+          </p>
+
+          <p>
+            She has also studied at distinguished institutions such as the Guildhall School of Music and Drama in London under Professor Ofer Falk and the Musik und Kunst Privatuniversität der Stadt Wien with Lidia Baich. Merily has participated in numerous masterclasses led by acclaimed professors including Kolja Blacher, Pavel Berman, Petru Munteanu, Natalia Lomeiko, and Sophia Jaffé. In 2025 she was selected for the prestigious Sarasate Academy in Spain, which invites outstanding string players from around the world. She has also refined her skills in Italy through the Young Classic Europe courses.
+          </p>
+
+          <p>
+            Chamber music lies at the heart of her artistic identity. She performs actively with several ensembles, including the violin–cello Duo EnPassant, a violin–piano duo with Joonatan Jürgenson, the piano trio Trio Callistó, and the piano quartet Quattuor Artium. With the latter, she appeared in February 2025 at the renowned Wye Valley Chamber Music Festival in England, giving the world premiere of Estonian composer Artur Lemba’s Piano Quartet. Her development as a chamber musician has been shaped by distinguished mentors such as Marje Lohuaru, Evgeny Sinaisky, Matthew Jones, and Jacqueline Ross.
+          </p>
+
+          <p>
+            Merily also performs with the Kiili Early Music Ensemble, with whom she has toured Estonia, Spain, Greece, and Ireland, presenting early music in historically informed style. As a soloist and chamber musician she has appeared in France, Austria, Germany, the United Kingdom, Greece, and throughout Europe.
+          </p>
+
+          <p>
+            Merily’s artistic vision bridges historical awareness with a modern interpretive voice. She is particularly drawn to projects that connect narrative and performance, exploring links between literature, history, and music. Alongside her concert activity, she continues to develop creative initiatives that bring classical music to new audiences through innovative formats and collaborations.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ANNA -->
+
+      <section class="musician glass-panel">
+
+        <img
+          class="musician-photo"
+          src="Anja.jpg"
+          alt="Anna Ryland-Jones, cellist">
+
+        <div class="musician-info">
+
+          <h3>
+            Anna Ryland-Jones
+          </h3>
+
+          <div class="musician-instrument">
+            Cello
+          </div>
+
+          <p>
+            Anna Ryland-Jones is a versatile cellist whose performances unite warmth of tone with refined musical insight. Known for her expressive phrasing and natural communicative presence, she brings both poise and imagination to the stage. Equally at home in chamber music and orchestral repertoire, she combines technical finesse with a deep sense of artistic collaboration. In addition to her work with Duo EnPassant and Quattuor Artium, she performs regularly with the piano trio Trio Callistó.
+          </p>
+
+          <p>
+            Anna began cello studies under the guidance of her mother before continuing at the Royal Northern College of Music, where her principal teachers were Emma Ferrand and Petr Prause. She went on to complete her master’s degree at the Guildhall School of Music and Drama in the class of Tim Lowe. She has further developed her artistry in masterclasses with renowned musicians such as István Várdai, Adrian Brendel, Pierre Doumenge, Indrek Leivategija, and Maria Kliegel.
+          </p>
+
+          <p>
+            Chamber music has long formed the heart of Anna’s musical identity. She was a founding member of the Elgar Ensemble in the United Kingdom, giving regular performances in London and Malvern for more than two years. With this ensemble she took part in the Wye Valley Chamber Music Festival’s summer course in 2022 and returned in 2023 as an invited artist. As cellist of Quattuor Artium, she performed at the 2025 Wye Valley Festival, presenting the world premiere of Artur Lemba’s Piano Quartet.
+          </p>
+
+          <p>
+            Anna also performs with the Kings Chamber Orchestra, appearing throughout the United Kingdom, including the Île Joyeuse Summer Festival on Jersey in 2022. In recent seasons she has worked as a freelance musician with several Estonian orchestras and has appeared in chamber collaborations with Estonian artists including Merily Leotoots, Hans Christian Aavik, Marten Meibaum, and Joonatan Jürgenson.
+          </p>
+
+          <p>
+            Dividing her time between London and Tallinn, Anna maintains an active and expanding career across the United Kingdom, Estonia, and Finland.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ELIZA -->
+
+      <section class="musician glass-panel">
+
+        <img
+          class="musician-photo"
+          src="Eliza.jpg"
+          alt="Eliza Agajeva, pianist">
+
+        <div class="musician-info">
+
+          <h3>
+            Eliza Agajeva
+          </h3>
+
+          <div class="musician-instrument">
+            Piano
+          </div>
+
+          <p>
+            Eliza Agajeva is a pianist whose playing is characterised by elegance, precision, and subtlety. Her interpretations combine a clear sense of form with a refined attention to detail, highlighting the inner drama and colour of the music.
+          </p>
+
+          <p>
+            She began piano studies at the age of seven at the Tallinn Music High School with Ira Floss. In 2013, she continued her education at the Amadeus International School Vienna, studying in the piano class of Austrian pianist Paul Gulda. After successfully graduating in 2017, Agajeva pursued further studies at the Musik und Kunst Privatuniversität Wien with Professor Dr. Johannes Kropfitsch, earning both her bachelor’s and master’s degrees under the guidance of Johannes Kropfitsch and Gerhard Geretschläger.
+          </p>
+
+          <p>
+            In addition, she obtained a bachelor’s degree in instrumental and vocal pedagogy at the Universität für Musik und darstellende Kunst Wien with Konstantin Semilakov. She is currently studying piano duo at the Universität für Musik und darstellende Kunst Graz under Professors Gil Garburg and Sivan Silver-Garburg.
+          </p>
+
+          <p>
+            Masterclasses and collaborations with prominent musicians, including Till Fellner, Anne Queffélec, Amandine Savary, Evgeny Sinaiski, Ivari Ilja, and Arturs Cingujevs, have played a significant role in her development. As a concert pianist, Agajeva has performed at prestigious venues, including Tokyo’s Suntory Hall, Munich’s Gasteig, and the Vienna Musikverein.
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="glass-panel">
+      © 2026 Trio Callistó – All Rights Reserved
+    </footer>
 
   </section>
 
-</main>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Trio Callistó – All Rights Reserved
-  </footer>
+  <!-- ===================================================
+       SCRIPT
+       =================================================== -->
 
-</section>
+  <script>
 
-<script>
+    const menuButton =
+      document.getElementById('menu-button');
 
-const menuButton = document.getElementById('menu-button');
-const menuOverlay = document.getElementById('menu-overlay');
+    const menuOverlay =
+      document.getElementById('menu-overlay');
 
-const concertsToggle = document.getElementById('concerts-toggle');
-const concertSeasons = document.getElementById('concert-seasons');
+    const concertsToggle =
+      document.getElementById('concerts-toggle');
 
-
-/* OPEN / CLOSE MAIN MENU */
-
-menuButton.addEventListener('click', () => {
-  menuOverlay.classList.toggle('open');
-  menuButton.classList.toggle('open');
-
-  if (menuOverlay.classList.contains('open')) {
-    menuButton.setAttribute('aria-label', 'Close menu');
-  } else {
-    menuButton.setAttribute('aria-label', 'Open menu');
-    concertSeasons.classList.remove('open');
-  }
-});
-
-  /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES IT */
-
-menuOverlay.addEventListener('mouseleave', () => {
-  if (window.innerWidth > 600) {
-    menuOverlay.classList.remove('open');
-    menuButton.classList.remove('open');
-    concertSeasons.classList.remove('open');
-    menuButton.setAttribute('aria-label', 'Open menu');
-  }
-});
+    const concertSeasons =
+      document.getElementById('concert-seasons');
 
 
-/* OPEN / CLOSE CONCERT SEASONS */
+    /* OPEN / CLOSE MAIN MENU */
 
-concertsToggle.addEventListener('click', (e) => {
-  e.preventDefault();
-  concertSeasons.classList.toggle('open');
-});
+    menuButton.addEventListener('click', () => {
+
+      menuOverlay.classList.toggle('open');
+      menuButton.classList.toggle('open');
+
+      if (menuOverlay.classList.contains('open')) {
+
+        menuButton.setAttribute(
+          'aria-label',
+          'Close menu'
+        );
+
+      } else {
+
+        menuButton.setAttribute(
+          'aria-label',
+          'Open menu'
+        );
+
+        concertSeasons.classList.remove('open');
+
+      }
+
+    });
 
 
-/* CLOSE MENU WHEN A PAGE LINK IS SELECTED */
+    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES */
 
-const menuLinks = menuOverlay.querySelectorAll(
-  'a:not(#concerts-toggle)'
-);
+    menuOverlay.addEventListener(
+      'mouseleave',
+      () => {
 
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menuOverlay.classList.remove('open');
-    menuButton.classList.remove('open');
-  });
-});
-  function updateMenuButtonColour() {
-  const hero = document.querySelector('.hero');
-  const heroBottom = hero.getBoundingClientRect().bottom;
-  const buttonRect = menuButton.getBoundingClientRect();
-  const buttonMiddle = buttonRect.top + (buttonRect.height / 2);
+        if (window.innerWidth > 600) {
 
-  if (buttonMiddle > heroBottom) {
-    menuButton.classList.add('dark');
-  } else {
-    menuButton.classList.remove('dark');
-  }
-}
+          menuOverlay.classList.remove('open');
 
-window.addEventListener('scroll', updateMenuButtonColour);
-window.addEventListener('resize', updateMenuButtonColour);
-updateMenuButtonColour();
-</script>
-  
+          menuButton.classList.remove('open');
+
+          concertSeasons.classList.remove('open');
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* OPEN / CLOSE CONCERT SEASONS */
+
+    concertsToggle.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        concertSeasons.classList.toggle('open');
+
+      }
+    );
+
+
+    /* CLOSE MENU WHEN PAGE LINK SELECTED */
+
+    const menuLinks =
+      menuOverlay.querySelectorAll(
+        'a:not(#concerts-toggle)'
+      );
+
+    menuLinks.forEach(link => {
+
+      link.addEventListener(
+        'click',
+        () => {
+
+          menuOverlay.classList.remove('open');
+
+          menuButton.classList.remove('open');
+
+          concertSeasons.classList.remove('open');
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+      );
+
+    });
+
+
+    /* CHANGE HAMBURGER COLOUR AFTER HERO */
+
+    function updateMenuButtonColour() {
+
+      const hero =
+        document.querySelector('.hero');
+
+      const heroBottom =
+        hero.getBoundingClientRect().bottom;
+
+      const buttonRect =
+        menuButton.getBoundingClientRect();
+
+      const buttonMiddle =
+        buttonRect.top +
+        (buttonRect.height / 2);
+
+      if (buttonMiddle > heroBottom) {
+
+        menuButton.classList.add('dark');
+
+      } else {
+
+        menuButton.classList.remove('dark');
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      updateMenuButtonColour
+    );
+
+    window.addEventListener(
+      'resize',
+      updateMenuButtonColour
+    );
+
+    updateMenuButtonColour();
+
+  </script>
+
 </body>
+
 </html>
