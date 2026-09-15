@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Concerts 2025–2026 – Trio Callistó</title>
 
   <!-- FAVICON -->
@@ -11,10 +14,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="icon" href="favicon.ico" sizes="any">
 
   <!-- GFS Didot -->
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"
+    rel="stylesheet">
 
   <style>
 
@@ -22,37 +26,182 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'GFS Didot', serif;
       margin: 0;
-      padding: 2rem;
-      background: #f7f3eb;
-      color: #1e1e1e;
+
+      font-family: 'GFS Didot', serif;
+
+      color: white;
       text-align: center;
+
+      overflow-x: hidden;
+
+      background: #171513;
     }
 
 
-    /* HAMBURGER MENU */
+    /* =====================================================
+       FIXED BACKGROUND IMAGE
+       ===================================================== */
+
+    .background-image {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100vh;
+
+      z-index: -3;
+
+      background: #171513;
+    }
+
+    .background-image picture {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .background-image img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* subtle darkening over photograph */
+
+    .background-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.12);
+
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       OPENING HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      width: 100%;
+      height: 100vh;
+    }
+
+
+    /* =====================================================
+       SITE TITLE
+       ===================================================== */
+
+    .site-title {
+      position: absolute;
+
+      top: 3rem;
+      left: 0;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+
+      text-align: center;
+
+      z-index: 2;
+    }
+
+    .site-title h1 {
+      position: relative;
+
+      margin: -0.4rem 0 0;
+
+      font-size: 3rem;
+      font-weight: normal;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    .greek-title {
+      position: absolute;
+
+      top: -35px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 5rem;
+
+      color: rgba(255, 255, 255, 0.15);
+
+      white-space: nowrap;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
 
     .menu-button {
       position: fixed;
+
       top: 2rem;
       right: 2rem;
-      width: 38px;
-      height: 38px;
-      padding: 0;
-      border: none;
-      background: transparent;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 2px;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
       cursor: pointer;
+
       z-index: 30;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
     }
 
     .menu-button span {
       display: block;
+
       width: 28px;
       height: 1px;
+
       margin: 6px auto;
-      background: #8b5e3c;
+
+      background: white;
+
       transition:
         transform 0.3s ease,
         opacity 0.3s ease,
@@ -60,7 +209,9 @@
     }
 
     .menu-button.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
+      transform:
+        translateY(7px)
+        rotate(45deg);
     }
 
     .menu-button.open span:nth-child(2) {
@@ -68,26 +219,44 @@
     }
 
     .menu-button.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
+      transform:
+        translateY(-7px)
+        rotate(-45deg);
     }
 
 
-    /* MENU PANEL */
+    /* =====================================================
+       FROSTED MENU
+       ===================================================== */
 
     .menu-overlay {
       position: fixed;
+
       top: 5.8rem;
       right: 2rem;
+
       width: 175px;
 
-      background: rgba(139, 94, 60, 0.45);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background:
+        rgba(255, 255, 255, 0.16);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.30);
 
       padding: 1.2rem 1.25rem;
 
       opacity: 0;
       visibility: hidden;
+
       transform: translateY(-8px);
 
       transition:
@@ -101,6 +270,7 @@
     .menu-overlay.open {
       opacity: 1;
       visibility: visible;
+
       transform: translateY(0);
     }
 
@@ -113,23 +283,35 @@
 
     .menu-content a {
       display: block;
+
       width: max-content;
-      color: white;
-      text-decoration: none;
-      font-size: 1.15rem;
+
       margin: 0.8rem 0;
+
       position: relative;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 1.15rem;
     }
 
     .menu-content a::after {
       content: "";
+
       position: absolute;
+
       left: 50%;
       bottom: -5px;
+
       width: 0;
       height: 1px;
+
       background: white;
+
       transform: translateX(-50%);
+
       transition: width 0.3s ease;
     }
 
@@ -147,6 +329,7 @@
 
     .concert-seasons {
       display: none;
+
       margin: -0.3rem 0 1rem;
     }
 
@@ -156,191 +339,593 @@
 
     .concert-seasons a {
       font-size: 0.95rem;
+
       margin: 0.55rem 0;
-      opacity: 0.8;
+
+      opacity: 0.75;
     }
 
-    /* CONCERTS BANNER */
 
-.concerts-banner {
-  width: calc(100% + 4rem);
-  margin-left: -2rem;
-  margin-top: -2rem;
+    /* =====================================================
+       SCROLL ARROW
+       ===================================================== */
 
-  min-height: 320px;
+    .scroll-arrow {
+      position: absolute;
 
-  background: rgba(139, 94, 60, 0.72);
+      left: 50%;
+      bottom: 1.8rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+      width: 20px;
+      height: 20px;
 
-  position: relative;
-}
-    .banner-eyebrow {
-  position: absolute;
-  left: 4rem;
-  bottom: 9.2rem;
+      z-index: 5;
 
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
+      border-right:
+        1px solid
+        rgba(255, 255, 255, 0.75);
 
-    .concerts-banner::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 100%;
-  height: 1px;
-  background: #8b5e3c;
-}
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.75);
 
-  .banner-page-title {
-  position: absolute;
-  left: 4rem;
-  bottom: 2rem;
+      transform:
+        translateX(-50%)
+        rotate(45deg);
 
-  margin: 0;
-  color: rgba(255, 255, 255, 0.22);
-  font-size: 5.5rem;
-  font-weight: normal;
-  line-height: 1;
-  letter-spacing: 0;
-}
-    
-   /* TITLE */
+      animation:
+        scrollHint
+        2.2s
+        ease-in-out
+        infinite;
+    }
 
-.site-title {
-  position: relative;
-  text-align: center;
-  padding: 2rem 1rem;
-}
+    @keyframes scrollHint {
 
-.site-title h1 {
-  font-size: 3rem;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-  font-weight: normal;
-  color: white;
-}
+      0%,
+      100% {
+        transform:
+          translateX(-50%)
+          translateY(0)
+          rotate(45deg);
 
-.greek-title {
-  font-size: 5rem;
-  color: rgba(255,255,255,0.15);
-  position: absolute;
-  top: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-}
-    /* CONCERT LIST */
+        opacity: 0.45;
+      }
 
-    .concerts-container {
-  max-width: 800px;
-  margin: 4.5rem auto 3rem;
+      50% {
+        transform:
+          translateX(-50%)
+          translateY(6px)
+          rotate(45deg);
+
+        opacity: 0.8;
+      }
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .content-section {
+      position: relative;
+
+      width: 100%;
+
+      padding:
+        5rem
+        2rem
+        6rem;
+
+      background: transparent;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    main {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      padding: 0;
+    }
+
+
+    /* =====================================================
+       GLASS PANELS
+       ===================================================== */
+
+    .glass-panel {
+      background:
+        rgba(255, 255, 255, 0.20);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.36);
+
+      box-shadow:
+        0
+        12px
+        35px
+        rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =====================================================
+       CONCERTS INTRO
+       ===================================================== */
+
+    .concerts-intro {
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        5rem;
+
+      padding:
+        3.5rem
+        4rem;
+
       text-align: center;
-      font-size: 1.25rem;
-      line-height: 1.8;
     }
 
-    .concerts-container h2 {
-  font-size: 3rem;
-  font-weight: normal;
-  margin: 0 0 3.5rem;
-  letter-spacing: 0;
-}
+    #concerts {
+      scroll-margin-top: 2rem;
+    }
+
+    .concerts-intro h2 {
+      margin:
+        0
+        0
+        0.6rem;
+
+      font-size: 4.6rem;
+      font-weight: normal;
+
+      letter-spacing: 0.015em;
+
+      line-height: 1;
+    }
+
+    .season-title {
+      margin: 0;
+
+      font-size: 1.45rem;
+      font-weight: normal;
+
+      letter-spacing: 0.08em;
+
+      color:
+        rgba(255, 255, 255, 0.75);
+    }
+
+
+    /* =====================================================
+       CONCERT PROGRAMME PANEL
+       ===================================================== */
+
+    .concerts-panel {
+      width: 100%;
+
+      max-width: 1150px;
+
+      margin:
+        0
+        auto
+        5rem;
+
+      padding:
+        1rem
+        3.5rem;
+    }
+
+
+    /* =====================================================
+       INDIVIDUAL CONCERT ROW
+       ===================================================== */
 
     .concert-item {
-      margin-bottom: 2.2rem;
+      display: grid;
+
+      grid-template-columns:
+        230px
+        minmax(0, 1fr)
+        190px;
+
+      gap: 3rem;
+
+      align-items: center;
+
+      width: 100%;
+
+      padding:
+        3.2rem
+        0;
+
+      text-align: left;
+
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
+
+      transform: translateY(24px);
+
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
     }
 
     .concert-item.show {
       opacity: 1;
+
       transform: translateY(0);
     }
 
+    .concert-item:not(:last-child) {
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+    }
+
+
+    /* =====================================================
+       DATE
+       ===================================================== */
+
     .concert-date {
-      font-weight: bold;
-      font-size: 1.2rem;
+      display: flex;
+
+      align-items: center;
+
+      gap: 1.1rem;
+    }
+
+    .concert-day {
+      display: block;
+
+      min-width: 78px;
+
+      font-size: 4.3rem;
+      font-weight: normal;
+
+      line-height: 0.9;
+
+      color:
+        rgba(224, 194, 169, 0.95);
+    }
+
+    .concert-date-details {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 0.1rem;
+    }
+
+    .concert-month {
+      font-size: 1.15rem;
+
+      line-height: 1.2;
+
+      letter-spacing: 0.04em;
+    }
+
+    .concert-year {
+      font-size: 1rem;
+
+      line-height: 1.2;
+
+      color:
+        rgba(255, 255, 255, 0.62);
+    }
+
+
+    /* =====================================================
+       CONCERT INFORMATION
+       ===================================================== */
+
+    .concert-info {
+      min-width: 0;
     }
 
     .concert-venue {
-      margin: 0.3rem 0;
+      margin:
+        0
+        0
+        0.5rem;
+
+      font-size: 1.45rem;
+      font-weight: normal;
+
+      line-height: 1.35;
+    }
+
+    .concert-location {
+      margin:
+        0
+        0
+        0.7rem;
+
+      font-size: 1.05rem;
+
+      color:
+        rgba(255, 255, 255, 0.75);
+    }
+
+    .concert-time {
+      margin: 0;
+
+      font-size: 1.05rem;
+
       font-style: italic;
+
+      color:
+        rgba(255, 255, 255, 0.82);
     }
 
-    .concert-item a {
-      color: #8b5e3c;
+
+    /* =====================================================
+       CONCERT LINKS
+       ===================================================== */
+
+    .concert-links {
+      text-align: right;
+    }
+
+    .concert-links a {
+      display: inline-block;
+
+      position: relative;
+
+      margin:
+        0.25rem
+        0
+        0.45rem;
+
+      color:
+        rgba(224, 194, 169, 0.95);
+
       text-decoration: none;
+
+      font-size: 1.05rem;
     }
 
-    .concert-item a:hover {
-      text-decoration: underline;
+    .concert-links a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -3px;
+
+      width: 100%;
+      height: 1px;
+
+      background:
+        rgba(224, 194, 169, 0.65);
+
+      transform: scaleX(0);
+
+      transform-origin: right;
+
+      transition:
+        transform
+        0.3s
+        ease;
+    }
+
+    .concert-links a:hover::after {
+      transform: scaleX(1);
+
+      transform-origin: left;
+    }
+
+    .tickets-tba {
+      display: inline-block;
+
+      margin:
+        0.25rem
+        0
+        0.45rem;
+
+      font-size: 1rem;
+
+      font-style: italic;
+
+      color:
+        rgba(255, 255, 255, 0.52);
     }
 
 
-    /* FOOTER */
+    /* PROGRAMME LINKS */
+
+    .programme-links {
+      margin-top: 0.7rem;
+
+      font-size: 0.95rem;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+    }
+
+    .programme-links span {
+      display: block;
+
+      margin-bottom: 0.2rem;
+    }
+
+    .programme-links a {
+      margin:
+        0
+        0.15rem;
+
+      font-size: 0.95rem;
+    }
+
+    .programme-separator {
+      display: inline;
+
+      margin:
+        0
+        0.15rem;
+
+      color:
+        rgba(255, 255, 255, 0.45);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
 
     footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      position: relative;
+
+      width: 100%;
+      max-width: 1100px;
+
+      margin:
+        4rem
+        auto
+        0;
+
+      padding:
+        2rem
+        1rem;
+
       font-size: 0.95rem;
-      color: #6a6a6a;
-      border-top: 1px solid #d4cec6;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+
+      text-align: center;
+
+      background: transparent;
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.35);
     }
 
 
-    /* MOBILE */
+    /* =====================================================
+       TABLETS
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .concerts-panel {
+        padding:
+          1rem
+          2rem;
+      }
+
+      .concert-item {
+        grid-template-columns:
+          190px
+          minmax(0, 1fr)
+          140px;
+
+        gap: 2rem;
+      }
+
+      .concert-day {
+        min-width: 65px;
+
+        font-size: 3.7rem;
+      }
+
+      .concert-venue {
+        font-size: 1.3rem;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
 
     @media (max-width: 600px) {
 
-      .greek-title {
-        font-size: 3.5rem;
-        top: -10px;
+      .hero {
+        height: 100svh;
+      }
+
+      .background-image {
+        height: 100svh;
+      }
+
+
+      /* TITLE */
+
+      .site-title {
+        top: 2rem;
       }
 
       .site-title h1 {
         font-size: 2.2rem;
       }
 
-      .banner-page-title {
-  left: 2rem;
-  bottom: 2rem;
-  font-size: 2.4rem;
-}
+      .greek-title {
+        top: -20px;
+
+        font-size: 3.5rem;
+      }
+
+
+      /* HAMBURGER */
 
       .menu-button {
         top: 1.3rem;
         right: 1.3rem;
       }
 
+
+      /* FULL SCREEN FROSTED MENU */
+
       .menu-overlay {
         position: fixed;
+
         inset: 0;
+
         width: 100vw;
         height: 100dvh;
 
-        background: rgba(139, 94, 60, 0.45);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
         display: flex;
+
         justify-content: center;
         align-items: center;
 
         padding: 2rem;
 
+        background:
+          rgba(255, 255, 255, 0.18);
+
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        border: none;
+
         transform: none;
+
         z-index: 25;
       }
 
@@ -350,16 +935,19 @@
 
       .menu-content {
         width: 100%;
+
         text-align: center;
       }
 
       .menu-content a {
         font-size: 1.35rem;
+
         margin: 1rem auto;
       }
 
       .concert-seasons a {
         font-size: 1rem;
+
         margin: 0.6rem auto;
       }
 
@@ -367,218 +955,936 @@
         background: white;
       }
 
-      .concerts-container {
+
+      /* CONTENT */
+
+      .content-section {
+        padding:
+          3rem
+          1rem
+          4rem;
+      }
+
+
+      /* CONCERTS INTRO */
+
+      .concerts-intro {
+        margin-bottom: 3rem;
+
+        padding:
+          2.8rem
+          1.5rem;
+      }
+
+      .concerts-intro h2 {
+        margin-bottom: 0.7rem;
+
+        font-size: 3.2rem;
+      }
+
+      .season-title {
+        font-size: 1.15rem;
+      }
+
+
+      /* CONCERTS PANEL */
+
+      .concerts-panel {
+        margin-bottom: 3rem;
+
+        padding:
+          0
+          1.5rem;
+      }
+
+
+      /* CONCERT ROWS */
+
+      .concert-item {
+        display: block;
+
+        padding:
+          2.8rem
+          0;
+
+        text-align: left;
+      }
+
+
+      /* DATE */
+
+      .concert-date {
+        margin-bottom: 1.8rem;
+
+        gap: 1rem;
+      }
+
+      .concert-day {
+        min-width: 72px;
+
+        font-size: 4rem;
+      }
+
+      .concert-month {
+        font-size: 1.15rem;
+      }
+
+      .concert-year {
+        font-size: 0.95rem;
+      }
+
+
+      /* INFO */
+
+      .concert-info {
+        margin-bottom: 1.7rem;
+      }
+
+      .concert-venue {
+        margin-bottom: 0.4rem;
+
+        font-size: 1.35rem;
+      }
+
+      .concert-location {
+        font-size: 1rem;
+      }
+
+      .concert-time {
+        font-size: 1rem;
+      }
+
+
+      /* LINKS */
+
+      .concert-links {
+        text-align: left;
+      }
+
+      .concert-links a {
         font-size: 1.05rem;
       }
+
+      .programme-links {
+        margin-top: 0.8rem;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        margin-top: 3rem;
+
+        padding:
+          1.5rem
+          1rem;
+
+        font-size: 0.85rem;
+      }
+
     }
 
   </style>
+
 </head>
 
 
 <body>
 
- <!-- CONCERTS BANNER -->
 
-<section class="concerts-banner">
+  <!-- ===================================================
+       FIXED BACKGROUND
+       =================================================== -->
 
-  <div class="site-title">
-    <div class="greek-title">Τρίο Καλλιστώ</div>
-    <h1>Trio Callistó</h1>
-  </div>
+  <div class="background-image">
 
-  <div class="banner-eyebrow">TRIO CALLISTÓ</div>
-  <h2 class="banner-page-title">Concerts</h2>
+    <picture>
 
-</section>
+      <source
+        media="(orientation: portrait) and (max-width: 1024px)"
+        srcset="TrioConcerts.JPG">
 
+      <img
+        src="TrioConcerts.JPG"
+        alt="Trio Callistó">
 
-  <!-- HAMBURGER BUTTON -->
-
-  <button class="menu-button" id="menu-button" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-
-  <!-- MENU OVERLAY -->
-
-  <div class="menu-overlay" id="menu-overlay">
-
-    <div class="menu-content">
-
-      <a href="home.html">Home</a>
-      <a href="media.html">Media</a>
-
-      <a href="#" class="menu-concerts-toggle active" id="concerts-toggle">
-        Concerts
-      </a>
-
-      <div class="concert-seasons" id="concert-seasons">
-        <a href="concerts-2026-2027.html">2026–2027</a>
-        <a href="concerts-2025-2026.html" class="active">2025–2026</a>
-      </div>
-
-      <a href="contact.html">Contact</a>
-
-    </div>
+    </picture>
 
   </div>
 
 
-  <!-- CONCERTS SECTION -->
+  <!-- ===================================================
+       HERO
+       =================================================== -->
 
-  <div class="concerts-container">
+  <section class="hero">
 
-    <h2>2025–2026 Season</h2>
 
-    <div class="concert-item">
-      <div class="concert-date">19 December 2025</div>
-      <div class="concert-time">16:00</div>
-      <div class="concert-venue">Tartu Jaani Kirik, Estonia</div>
-      <div>
-        <a href="https://piletikeskus.ee/et/e/9w2l6n" target="_blank" rel="noopener">
-          Tickets
+    <!-- TITLE -->
+
+    <div class="site-title">
+
+      <div class="greek-title">
+        Τρίο Καλλιστώ
+      </div>
+
+      <h1>
+        Trio Callistó
+      </h1>
+
+    </div>
+
+
+    <!-- HAMBURGER -->
+
+    <button
+      class="menu-button"
+      id="menu-button"
+      aria-label="Open menu">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <!-- MENU -->
+
+    <div
+      class="menu-overlay"
+      id="menu-overlay">
+
+      <div class="menu-content">
+
+        <a href="home.html">
+          Home
         </a>
-      </div>
-    </div>
 
-    <div class="concert-item">
-      <div class="concert-date">20 December 2025</div>
-      <div class="concert-time">15:00</div>
-      <div class="concert-venue">Südalinna Raamatukogu Saal, Tallinn, Estonia</div>
-      <div>
-        <a href="#">Tickets</a>
-      </div>
-    </div>
-
-    <div class="concert-item">
-      <div class="concert-date">11 March 2026</div>
-      <div class="concert-time">15:00</div>
-      <div class="concert-venue">Postimees, Tallinn</div>
-      <div>
-        <a href="#">Tickets</a>
-      </div>
-    </div>
-
-    <div class="concert-item">
-      <div class="concert-date">13 March 2026</div>
-      <div class="concert-time">18:00</div>
-      <div class="concert-venue">Rootsi-Mihkli kirik, Tallinn</div>
-
-      <div>
-        <a href="https://piletikeskus.ee/et/e/oh1rva" target="_blank" rel="noopener">
-          Tickets
+        <a href="media.html">
+          Media
         </a>
-      </div>
 
-      <div>
-        Vajuta
-        <a href="Viini-varjud-ja-valgus-programme-eesti-keeles.pdf" target="_blank" rel="noopener">
-          siia
-        </a>,
-        et näha kava
-      </div>
-
-      <div>
-        Click
-        <a href="Viini-varjud-ja-valgus-programme-english.pdf" target="_blank" rel="noopener">
-          here
+        <a
+          href="#"
+          class="menu-concerts-toggle active"
+          id="concerts-toggle">
+          Concerts
         </a>
-        to read the programme
+
+        <div
+          class="concert-seasons"
+          id="concert-seasons">
+
+          <a href="concerts-2026-2027.html">
+            2026–2027
+          </a>
+
+          <a
+            href="concerts-2025-2026.html"
+            class="active">
+            2025–2026
+          </a>
+
+        </div>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
       </div>
+
     </div>
 
-  </div>
+
+    <!-- SCROLL ARROW -->
+
+    <a
+      href="#concerts"
+      class="scroll-arrow"
+      aria-label="Scroll to Concerts">
+    </a>
+
+  </section>
 
 
-  <!-- FOOTER -->
+  <!-- ===================================================
+       CONTENT
+       =================================================== -->
 
-  <footer>
-    © 2026 Trio Callistó – All Rights Reserved
-  </footer>
+  <section class="content-section">
+
+    <main>
 
 
-  <!-- SCRIPT -->
+      <!-- CONCERTS TITLE -->
+
+      <section
+        class="concerts-intro glass-panel"
+        id="concerts">
+
+        <h2>
+          Concerts
+        </h2>
+
+        <p class="season-title">
+          2025–2026 Season
+        </p>
+
+      </section>
+
+
+      <!-- =================================================
+           CONCERT LIST
+           ================================================= -->
+
+      <section class="concerts-panel glass-panel">
+
+
+        <!-- 19 DECEMBER -->
+
+        <article class="concert-item">
+
+
+          <div class="concert-date">
+
+            <span class="concert-day">
+              19
+            </span>
+
+            <div class="concert-date-details">
+
+              <span class="concert-month">
+                December
+              </span>
+
+              <span class="concert-year">
+                2025
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="concert-info">
+
+            <h3 class="concert-venue">
+              Tartu Jaani Kirik
+            </h3>
+
+            <p class="concert-location">
+              Tartu, Estonia
+            </p>
+
+            <p class="concert-time">
+              16:00
+            </p>
+
+          </div>
+
+
+          <div class="concert-links">
+
+            <a
+              href="https://piletikeskus.ee/et/e/9w2l6n"
+              target="_blank"
+              rel="noopener">
+              Tickets
+            </a>
+
+          </div>
+
+
+        </article>
+
+
+        <!-- 20 DECEMBER -->
+
+        <article class="concert-item">
+
+
+          <div class="concert-date">
+
+            <span class="concert-day">
+              20
+            </span>
+
+            <div class="concert-date-details">
+
+              <span class="concert-month">
+                December
+              </span>
+
+              <span class="concert-year">
+                2025
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="concert-info">
+
+            <h3 class="concert-venue">
+              Südalinna Raamatukogu Saal
+            </h3>
+
+            <p class="concert-location">
+              Tallinn, Estonia
+            </p>
+
+            <p class="concert-time">
+              15:00
+            </p>
+
+          </div>
+
+
+          <div class="concert-links">
+
+            <span class="tickets-tba">
+              Tickets TBA
+            </span>
+
+          </div>
+
+
+        </article>
+
+
+        <!-- 11 MARCH -->
+
+        <article class="concert-item">
+
+
+          <div class="concert-date">
+
+            <span class="concert-day">
+              11
+            </span>
+
+            <div class="concert-date-details">
+
+              <span class="concert-month">
+                March
+              </span>
+
+              <span class="concert-year">
+                2026
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="concert-info">
+
+            <h3 class="concert-venue">
+              Postimees
+            </h3>
+
+            <p class="concert-location">
+              Tallinn, Estonia
+            </p>
+
+            <p class="concert-time">
+              15:00
+            </p>
+
+          </div>
+
+
+          <div class="concert-links">
+
+            <span class="tickets-tba">
+              Tickets TBA
+            </span>
+
+          </div>
+
+
+        </article>
+
+
+        <!-- 13 MARCH -->
+
+        <article class="concert-item">
+
+
+          <div class="concert-date">
+
+            <span class="concert-day">
+              13
+            </span>
+
+            <div class="concert-date-details">
+
+              <span class="concert-month">
+                March
+              </span>
+
+              <span class="concert-year">
+                2026
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="concert-info">
+
+            <h3 class="concert-venue">
+              Rootsi-Mihkli kirik
+            </h3>
+
+            <p class="concert-location">
+              Tallinn, Estonia
+            </p>
+
+            <p class="concert-time">
+              18:00
+            </p>
+
+          </div>
+
+
+          <div class="concert-links">
+
+            <a
+              href="https://piletikeskus.ee/et/e/oh1rva"
+              target="_blank"
+              rel="noopener">
+              Tickets
+            </a>
+
+
+            <div class="programme-links">
+
+              <span>
+                Programme
+              </span>
+
+              <a
+                href="Viini-varjud-ja-valgus-programme-eesti-keeles.pdf"
+                target="_blank"
+                rel="noopener">
+                Eesti
+              </a>
+
+              <span class="programme-separator">
+                |
+              </span>
+
+              <a
+                href="Viini-varjud-ja-valgus-programme-english.pdf"
+                target="_blank"
+                rel="noopener">
+                English
+              </a>
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+
+      </section>
+
+    </main>
+
+
+    <!-- ===================================================
+         FOOTER
+         =================================================== -->
+
+    <footer>
+      © 2026 Trio Callistó – All Rights Reserved
+    </footer>
+
+  </section>
+
+
+  <!-- ===================================================
+       SCRIPT
+       =================================================== -->
 
   <script>
 
-    /* FADE-IN CONCERT ITEMS */
 
-    const items = document.querySelectorAll('.concert-item');
+    /* ===================================================
+       FADE-IN CONCERT ITEMS
+       =================================================== */
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+    const items =
+      document.querySelectorAll(
+        '.concert-item'
+      );
+
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  'show'
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.15
         }
-      });
-    }, { threshold: 0.2 });
-
-    items.forEach(item => observer.observe(item));
+      );
 
 
-    /* HAMBURGER MENU */
+    items.forEach(
+      item => {
 
-    const menuButton = document.getElementById('menu-button');
-    const menuOverlay = document.getElementById('menu-overlay');
+        observer.observe(
+          item
+        );
 
-    const concertsToggle = document.getElementById('concerts-toggle');
-    const concertSeasons = document.getElementById('concert-seasons');
+      }
+    );
+
+
+    /* ===================================================
+       HAMBURGER MENU
+       =================================================== */
+
+    const menuButton =
+      document.getElementById(
+        'menu-button'
+      );
+
+    const menuOverlay =
+      document.getElementById(
+        'menu-overlay'
+      );
+
+    const concertsToggle =
+      document.getElementById(
+        'concerts-toggle'
+      );
+
+    const concertSeasons =
+      document.getElementById(
+        'concert-seasons'
+      );
 
 
     /* OPEN / CLOSE MAIN MENU */
 
-    menuButton.addEventListener('click', () => {
-      menuOverlay.classList.toggle('open');
-      menuButton.classList.toggle('open');
+    menuButton.addEventListener(
+      'click',
+      () => {
 
-      if (menuOverlay.classList.contains('open')) {
-        menuButton.setAttribute('aria-label', 'Close menu');
-      } else {
-        menuButton.setAttribute('aria-label', 'Open menu');
-        concertSeasons.classList.remove('open');
+        menuOverlay.classList.toggle(
+          'open'
+        );
+
+        menuButton.classList.toggle(
+          'open'
+        );
+
+
+        if (
+          menuOverlay.classList.contains(
+            'open'
+          )
+        ) {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Close menu'
+          );
+
+        } else {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+        }
+
       }
-    });
+    );
 
 
-    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES IT */
+    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES */
 
-    menuOverlay.addEventListener('mouseleave', () => {
-      if (window.innerWidth > 600) {
-        menuOverlay.classList.remove('open');
-        menuButton.classList.remove('open');
-        concertSeasons.classList.remove('open');
-        menuButton.setAttribute('aria-label', 'Open menu');
+    menuOverlay.addEventListener(
+      'mouseleave',
+      () => {
+
+        if (
+          window.innerWidth > 600
+        ) {
+
+          menuOverlay.classList.remove(
+            'open'
+          );
+
+          menuButton.classList.remove(
+            'open'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
       }
-    });
+    );
+
+
+    /* CLOSE MOBILE MENU WHEN TAPPING FROSTED BACKGROUND */
+
+    menuOverlay.addEventListener(
+      'click',
+      e => {
+
+        if (
+          window.innerWidth <= 600 &&
+          e.target === menuOverlay
+        ) {
+
+          menuOverlay.classList.remove(
+            'open'
+          );
+
+          menuButton.classList.remove(
+            'open'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
+      }
+    );
 
 
     /* OPEN / CLOSE CONCERT SEASONS */
 
-    concertsToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      concertSeasons.classList.toggle('open');
-    });
+    concertsToggle.addEventListener(
+      'click',
+      e => {
 
+        e.preventDefault();
 
-    /* CLOSE MENU WHEN A PAGE LINK IS SELECTED */
+        concertSeasons.classList.toggle(
+          'open'
+        );
 
-    const menuLinks = menuOverlay.querySelectorAll(
-      'a:not(#concerts-toggle)'
+      }
     );
 
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuOverlay.classList.remove('open');
-        menuButton.classList.remove('open');
-        concertSeasons.classList.remove('open');
-        menuButton.setAttribute('aria-label', 'Open menu');
-      });
-    });
+
+    /* CLOSE MENU WHEN LINK SELECTED */
+
+    const menuLinks =
+      menuOverlay.querySelectorAll(
+        'a:not(#concerts-toggle)'
+      );
+
+
+    menuLinks.forEach(
+      link => {
+
+        link.addEventListener(
+          'click',
+          () => {
+
+            menuOverlay.classList.remove(
+              'open'
+            );
+
+            menuButton.classList.remove(
+              'open'
+            );
+
+            concertSeasons.classList.remove(
+              'open'
+            );
+
+            menuButton.setAttribute(
+              'aria-label',
+              'Open menu'
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    /* ===================================================
+       SLOW SMOOTH SCROLL TO CONCERTS
+       =================================================== */
+
+    const scrollArrowLink =
+      document.querySelector(
+        '.scroll-arrow'
+      );
+
+
+    scrollArrowLink.addEventListener(
+      'click',
+      e => {
+
+        e.preventDefault();
+
+
+        const target =
+          document.getElementById(
+            'concerts'
+          );
+
+
+        const startPosition =
+          window.scrollY;
+
+
+        const scrollMargin =
+          parseFloat(
+            getComputedStyle(
+              target
+            ).scrollMarginTop
+          ) || 0;
+
+
+        const targetPosition =
+          target
+            .getBoundingClientRect()
+            .top
+          + window.scrollY
+          - scrollMargin;
+
+
+        const distance =
+          targetPosition
+          - startPosition;
+
+
+        const duration = 1200;
+
+        let startTime = null;
+
+
+        function animation(
+          currentTime
+        ) {
+
+          if (
+            startTime === null
+          ) {
+
+            startTime =
+              currentTime;
+
+          }
+
+
+          const timeElapsed =
+            currentTime
+            - startTime;
+
+
+          const progress =
+            Math.min(
+              timeElapsed
+              / duration,
+              1
+            );
+
+
+          const ease =
+            progress < 0.5
+              ? 4
+                * progress
+                * progress
+                * progress
+              : 1
+                - Math.pow(
+                    -2
+                    * progress
+                    + 2,
+                    3
+                  )
+                  / 2;
+
+
+          window.scrollTo(
+            0,
+            startPosition
+            + distance
+            * ease
+          );
+
+
+          if (
+            progress < 1
+          ) {
+
+            requestAnimationFrame(
+              animation
+            );
+
+          }
+
+        }
+
+
+        requestAnimationFrame(
+          animation
+        );
+
+      }
+    );
 
   </script>
 
 </body>
+
 </html>
