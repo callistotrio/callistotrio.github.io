@@ -1690,6 +1690,28 @@
       }
     );
 
+    /* CLOSE MOBILE MENU WHEN TAPPING FROSTED BACKGROUND */
+
+menuOverlay.addEventListener('click', (e) => {
+
+  if (
+    window.innerWidth <= 600 &&
+    e.target === menuOverlay
+  ) {
+
+    menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
+    concertSeasons.classList.remove('open');
+
+    menuButton.setAttribute(
+      'aria-label',
+      'Open menu'
+    );
+
+  }
+
+});
+
 
     /* OPEN / CLOSE CONCERT SEASONS */
 
