@@ -338,58 +338,50 @@
        SCROLL ARROW
        ===================================================== */
 
-    .scroll-arrow {
-      position: absolute;
-
-      left: 50%;
-      bottom: 1.8rem;
-
-      width: 20px;
-      height: 20px;
-
-      z-index: 5;
-
-      border-right:
-        1px solid rgba(255, 255, 255, 0.75);
-
-      border-bottom:
-        1px solid rgba(255, 255, 255, 0.75);
-
-      transform:
-        translateX(-50%)
-        rotate(45deg);
-
-      animation:
-        scrollHint
-        2.2s
-        ease-in-out
-        infinite;
-    }
-
     @keyframes scrollHint {
 
-      0%,
-      100% {
-        transform:
-          translateX(-50%)
-          translateY(0)
-          rotate(45deg);
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0)
+      rotate(45deg);
 
-        opacity: 0.45;
-      }
+    opacity: 0.7;
+  }
 
-      50% {
-        transform:
-          translateX(-50%)
-          translateY(6px)
-          rotate(45deg);
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(8px)
+      rotate(45deg);
 
-        opacity: 0.8;
-      }
+    opacity: 1;
+  }
 
-    }
+}
+   @keyframes scrollHint {
 
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0)
+      rotate(45deg);
 
+    opacity: 0.7;
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(8px)
+      rotate(45deg);
+
+    opacity: 1;
+  }
+
+}
     /* =====================================================
        CONTENT
        ===================================================== */
