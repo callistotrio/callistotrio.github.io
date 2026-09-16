@@ -338,27 +338,37 @@
        SCROLL ARROW
        ===================================================== */
 
-    @keyframes scrollHint {
+   .scroll-arrow {
+  position: absolute;
 
-  0%,
-  100% {
-    transform:
-      translateX(-50%)
-      translateY(0)
-      rotate(45deg);
+  left: 50%;
+  bottom: 2rem;
 
-    opacity: 0.7;
-  }
+  width: 26px;
+  height: 26px;
 
-  50% {
-    transform:
-      translateX(-50%)
-      translateY(8px)
-      rotate(45deg);
+  z-index: 5;
 
-    opacity: 1;
-  }
+  border-right:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
 
+  border-bottom:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
+
+  filter:
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  animation:
+    scrollHint
+    2.2s
+    ease-in-out
+    infinite;
 }
    @keyframes scrollHint {
 
