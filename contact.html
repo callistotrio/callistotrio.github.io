@@ -1,220 +1,1337 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Contact – Trio Callistó</title>
 
   <!-- FAVICON -->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- Load GFS Didot -->
-  <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+  <!-- GFS Didot -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"
+    rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- FONT AWESOME -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    body {
-      font-family: 'GFS Didot', serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f8f6f2;
-      color: #1e1e1e;
-      text-align: center;
+
+    * {
+      box-sizing: border-box;
     }
 
-    /* NAVIGATION */
-    nav {
-      margin-bottom: 2rem;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      font-family: 'GFS Didot', serif;
+
+      color: white;
       text-align: center;
+
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          #342b25 0%,
+          #211c18 38%,
+          #171513 72%
+        );
+
+      min-height: 100vh;
     }
-    nav a {
-      margin: 0 0.8rem;
-      text-decoration: none;
-      color: #1e1e1e;
-      font-size: 1.1rem;
+
+
+    /* =====================================================
+       COMPACT TOP AREA
+       ===================================================== */
+
+    .hero {
       position: relative;
-      padding-bottom: 3px;
-      transition: color 0.2s ease;
+
+      width: 100%;
+      height: 180px;
     }
-    nav a::after {
-      content: "";
+
+
+    /* =====================================================
+       SITE TITLE
+       ===================================================== */
+
+    .site-title {
       position: absolute;
+
+      top: 3rem;
       left: 0;
-      bottom: -2px;
-      width: 0%;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+
+      text-align: center;
+
+      z-index: 2;
+    }
+
+    .site-title h1 {
+      position: relative;
+
+      margin: -0.4rem 0 0;
+
+      font-size: 3rem;
+      font-weight: normal;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    .greek-title {
+      position: absolute;
+
+      top: -35px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 5rem;
+
+      color: rgba(255, 255, 255, 0.15);
+
+      white-space: nowrap;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
+
+    .menu-button {
+      position: fixed;
+
+      top: 2rem;
+      right: 2rem;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 2px;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      cursor: pointer;
+
+      z-index: 30;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .menu-button span {
+      display: block;
+
+      width: 28px;
       height: 1px;
-      background-color: #8b5e3c;
+
+      margin: 6px auto;
+
+      background: white;
+
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .menu-button.open span:nth-child(1) {
+      transform:
+        translateY(7px)
+        rotate(45deg);
+    }
+
+    .menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.open span:nth-child(3) {
+      transform:
+        translateY(-7px)
+        rotate(-45deg);
+    }
+
+
+    /* =====================================================
+       FROSTED MENU
+       ===================================================== */
+
+    .menu-overlay {
+      position: fixed;
+
+      top: 5.8rem;
+      right: 2rem;
+
+      width: 175px;
+
+      background:
+        rgba(255, 255, 255, 0.16);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.30);
+
+      padding: 1.2rem 1.25rem;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+      z-index: 25;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateY(0);
+    }
+
+
+    /* MENU CONTENT */
+
+    .menu-content {
+      text-align: left;
+    }
+
+    .menu-content a {
+      display: block;
+
+      width: max-content;
+
+      margin: 0.8rem 0;
+
+      position: relative;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 1.15rem;
+    }
+
+    .menu-content a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -5px;
+
+      width: 0;
+      height: 1px;
+
+      background: white;
+
+      transform: translateX(-50%);
+
       transition: width 0.3s ease;
     }
-    nav a:hover::after,
-    nav a.active::after {
+
+    .menu-content a:hover::after,
+    .menu-content a.active::after {
       width: 100%;
     }
 
-    /* DROPDOWN (click-to-open) */
-    .dropdown {
-      position: relative;
-      display: inline-block;
+
+    /* CONCERT SEASONS */
+
+    .menu-concerts-toggle {
+      cursor: pointer;
     }
-    .dropdown-content {
+
+    .concert-seasons {
       display: none;
-      position: absolute;
-      left: 0;
-      background-color: #f8f6f2;
-      min-width: 160px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      border-radius: 2px;
-      z-index: 5;
-      text-align: left;
+
+      margin: -0.3rem 0 1rem;
     }
-    .dropdown-content a {
-      display: block;
-      padding: 0.6rem 1rem;
-      color: #1e1e1e;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .dropdown-content a:hover {
-      background-color: #e8e2da;
-    }
-    .dropdown.open .dropdown-content {
+
+    .concert-seasons.open {
       display: block;
     }
 
-    /* TITLE */
-    .site-title {
-      position: relative;
-      padding-top: 2rem;
-      padding-bottom: 1rem;
+    .concert-seasons a {
+      font-size: 0.95rem;
+
+      margin: 0.55rem 0;
+
+      opacity: 0.75;
     }
-    .site-title h1 {
-      font-size: 2.8rem; /* matched with all other pages */
-      margin: 0;
+
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .content-section {
       position: relative;
+
+      width: 100%;
+
+      padding:
+        1rem
+        2rem
+        6rem;
+
+      color: white;
+
       z-index: 2;
     }
-    .greek-title {
-      font-size: 5rem;
-      color: rgba(30,30,30,0.06);
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    @media(max-width:600px){
-      .greek-title{font-size:3.5rem;top:-10px;}
-      .site-title h1{font-size:2.2rem;}
+
+    main {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      padding: 0;
     }
 
-    /* CONTACT TEXT */
-    .contact-container {
-      margin-top: 4rem;
-      line-height: 1.9;
-      font-size: 1.3rem;
+
+    /* =====================================================
+       GLASS PANELS
+       ===================================================== */
+
+    .glass-panel {
+      background:
+        rgba(255, 255, 255, 0.16);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(110%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.30);
+
+      box-shadow:
+        0
+        12px
+        35px
+        rgba(0, 0, 0, 0.08);
     }
-    .contact-container a {
-      color: #8b5e3c;
+
+
+    /* =====================================================
+       CONTACT INTRO
+       ===================================================== */
+
+    .contact-intro {
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        3rem;
+
+      padding:
+        3.5rem
+        4rem;
+
+      text-align: center;
+    }
+
+    .contact-intro h2 {
+      margin: 0;
+
+      font-size: 4.6rem;
+      font-weight: normal;
+
+      letter-spacing: 0.015em;
+
+      line-height: 1;
+    }
+
+
+    /* =====================================================
+       CONTACT PANEL
+       ===================================================== */
+
+    .contact-panel {
+      width: 100%;
+
+      max-width: 1050px;
+
+      margin:
+        0
+        auto
+        5rem;
+
+      padding:
+        4rem
+        4.5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 5rem;
+
+      align-items: start;
+
+      text-align: left;
+    }
+
+
+    /* =====================================================
+       LEFT SIDE
+       ===================================================== */
+
+    .contact-heading {
+      margin:
+        0
+        0
+        1.2rem;
+
+      font-size: 2.4rem;
+      font-weight: normal;
+
+      color:
+        rgba(224, 194, 169, 0.95);
+    }
+
+    .contact-copy {
+      max-width: 420px;
+
+      margin: 0;
+
+      font-size: 1.15rem;
+
+      line-height: 1.8;
+
+      color:
+        rgba(255, 255, 255, 0.76);
+    }
+
+
+    /* =====================================================
+       CONTACT DETAILS
+       ===================================================== */
+
+    .contact-details {
+      padding-top: 0.3rem;
+    }
+
+    .contact-detail {
+      padding:
+        0
+        0
+        1.5rem;
+
+      margin:
+        0
+        0
+        1.5rem;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.22);
+    }
+
+    .contact-detail:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    .contact-label {
+      display: block;
+
+      margin-bottom: 0.4rem;
+
+      font-size: 0.82rem;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255, 255, 255, 0.52);
+    }
+
+    .contact-detail a,
+    .contact-detail span {
+      color: white;
+
       text-decoration: none;
-    }
-    .contact-container a:hover {
-      text-decoration: underline;
+
+      font-size: 1.2rem;
+
+      line-height: 1.6;
     }
 
-    /* ICONS */
+    .contact-detail a {
+      position: relative;
+    }
+
+    .contact-detail a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -3px;
+
+      width: 100%;
+      height: 1px;
+
+      background:
+        rgba(224, 194, 169, 0.65);
+
+      transform: scaleX(0);
+
+      transform-origin: right;
+
+      transition:
+        transform
+        0.3s
+        ease;
+    }
+
+    .contact-detail a:hover::after {
+      transform: scaleX(1);
+
+      transform-origin: left;
+    }
+
+
+    /* =====================================================
+       SOCIAL MEDIA
+       ===================================================== */
+
+    .social-heading {
+      margin:
+        0
+        0
+        1rem;
+
+      font-size: 0.82rem;
+      font-weight: normal;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255, 255, 255, 0.52);
+    }
+
     .social-icons {
-      margin-top: 2.5rem;
-      font-size: 1.9rem;
-    }
-    .social-icons a {
-      color: #1e1e1e;
-      margin: 0 0.8rem;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #8b5e3c;
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 1.2rem;
     }
 
-    /* FOOTER */
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      font-size: 0.95rem;
-      color: #6a6a6a;
-      border-top: 1px solid #d4cec6;
+    .social-icons a {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 42px;
+      height: 42px;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+
+      background:
+        rgba(255, 255, 255, 0.07);
+
+      color:
+        rgba(255, 255, 255, 0.88);
+
+      text-decoration: none;
+
+      font-size: 1.15rem;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
     }
+
+    .social-icons a:hover {
+      background:
+        rgba(255, 255, 255, 0.14);
+
+      border-color:
+        rgba(224, 194, 169, 0.60);
+
+      color:
+        rgba(224, 194, 169, 0.95);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      position: relative;
+
+      width: 100%;
+      max-width: 1100px;
+
+      margin:
+        4rem
+        auto
+        0;
+
+      padding:
+        2rem
+        1rem;
+
+      font-size: 0.95rem;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+
+      text-align: center;
+
+      background: transparent;
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+    }
+
+
+    /* =====================================================
+       TABLETS
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .contact-panel {
+        padding:
+          3.5rem
+          3rem;
+      }
+
+      .contact-grid {
+        gap: 3rem;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+
+      /* COMPACT TOP */
+
+      .hero {
+        height: 145px;
+      }
+
+
+      /* TITLE */
+
+      .site-title {
+        top: 2rem;
+      }
+
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
+
+      .greek-title {
+        top: -20px;
+
+        font-size: 3.5rem;
+      }
+
+
+      /* HAMBURGER */
+
+      .menu-button {
+        top: 1.3rem;
+        right: 1.3rem;
+      }
+
+
+      /* FULL SCREEN FROSTED MENU */
+
+      .menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        width: 100vw;
+        height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 2rem;
+
+        background:
+          rgba(255, 255, 255, 0.18);
+
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        border: none;
+
+        transform: none;
+
+        z-index: 25;
+      }
+
+      .menu-overlay.open {
+        transform: none;
+      }
+
+      .menu-content {
+        width: 100%;
+
+        text-align: center;
+      }
+
+      .menu-content a {
+        font-size: 1.35rem;
+
+        margin: 1rem auto;
+      }
+
+      .concert-seasons a {
+        font-size: 1rem;
+
+        margin: 0.6rem auto;
+      }
+
+      .menu-button.open span {
+        background: white;
+      }
+
+
+      /* CONTENT */
+
+      .content-section {
+        padding:
+          0
+          1rem
+          4rem;
+      }
+
+
+      /* CONTACT TITLE */
+
+      .contact-intro {
+        margin-bottom: 2rem;
+
+        padding:
+          2.8rem
+          1.5rem;
+      }
+
+      .contact-intro h2 {
+        font-size: 3.2rem;
+      }
+
+
+      /* CONTACT PANEL */
+
+      .contact-panel {
+        margin-bottom: 3rem;
+
+        padding:
+          2.7rem
+          1.7rem;
+      }
+
+      .contact-grid {
+        display: block;
+      }
+
+      .contact-heading {
+        font-size: 2rem;
+      }
+
+      .contact-copy {
+        margin-bottom: 3rem;
+
+        font-size: 1.05rem;
+      }
+
+      .contact-detail a,
+      .contact-detail span {
+        font-size: 1.08rem;
+      }
+
+      .social-icons {
+        gap: 0.8rem;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        margin-top: 3rem;
+
+        padding:
+          1.5rem
+          1rem;
+
+        font-size: 0.85rem;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- TITLE -->
-  <div class="site-title">
-    <div class="greek-title">Τρίο Καλλιστώ</div>
-    <h1>Trio Callistó</h1>
-  </div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
+  <!-- ===================================================
+       COMPACT HEADER
+       =================================================== -->
 
-    <div class="dropdown">
-      <a href="#" id="concerts-toggle">Concerts ▾</a>
-      <div class="dropdown-content">
-        <a href="concerts-2026-2027.html">2026–2027</a>
-        <a href="concerts-2025-2026.html">2025–2026</a>
+  <section class="hero">
+
+
+    <!-- SITE TITLE -->
+
+    <div class="site-title">
+
+      <div class="greek-title">
+        Τρίο Καλλιστώ
       </div>
+
+      <h1>
+        Trio Callistó
+      </h1>
+
     </div>
 
-    <a href="media.html">Media</a>
-    <a href="contact.html" class="active">Contact</a>
-  </nav>
 
-  <!-- CONTACT INFO -->
-  <div class="contact-container">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:info@triocallisto.com">info@triocallisto.com</a></p>
-    <p>+372 56944159</p>
-    <p>+44 7901140836</p>
-  </div>
+    <!-- HAMBURGER -->
 
-  <!-- SOCIAL ICONS -->
- <div class="social-icons">
-  <a href="https://www.instagram.com/trio_callisto?igsh=cHJmOXNjbWh3emc4" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.facebook.com/share/19zrsK8uog/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-  <a href="https://youtube.com/@triocallisto?si=ckJd-TCE29LN6FCl" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-  <a href="https://www.patreon.com/cw/TrioCallisto" aria-label="Patreon" target="_blank"><i class="fa-brands fa-patreon"></i></a>
-  <a href="https://www.tiktok.com/@trio_callisto" aria-label="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-</div>
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Trio Callistó – All Rights Reserved
-  </footer>
+    <button
+      class="menu-button"
+      id="menu-button"
+      aria-label="Open menu">
 
-  <!-- DROPDOWN SCRIPT -->
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <!-- MENU -->
+
+    <div
+      class="menu-overlay"
+      id="menu-overlay">
+
+      <div class="menu-content">
+
+        <a href="home.html">
+          Home
+        </a>
+
+        <a href="media.html">
+          Media
+        </a>
+
+        <a
+          href="#"
+          class="menu-concerts-toggle"
+          id="concerts-toggle">
+          Concerts
+        </a>
+
+        <div
+          class="concert-seasons"
+          id="concert-seasons">
+
+          <a href="concerts-2026-2027.html">
+            2026–2027
+          </a>
+
+          <a href="concerts-2025-2026.html">
+            2025–2026
+          </a>
+
+        </div>
+
+        <a
+          href="contact.html"
+          class="active">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       CONTENT
+       =================================================== -->
+
+  <section class="content-section">
+
+    <main>
+
+
+      <!-- CONTACT TITLE -->
+
+      <section class="contact-intro glass-panel">
+
+        <h2>
+          Contact
+        </h2>
+
+      </section>
+
+
+      <!-- CONTACT DETAILS -->
+
+      <section class="contact-panel glass-panel">
+
+        <div class="contact-grid">
+
+
+          <!-- LEFT -->
+
+          <div class="contact-message">
+
+            <h2 class="contact-heading">
+              Get in touch
+            </h2>
+
+            <p class="contact-copy">
+              For concert enquiries, collaborations,
+              bookings and other enquiries, please
+              contact Trio Callistó by email or phone.
+            </p>
+
+          </div>
+
+
+          <!-- RIGHT -->
+
+          <div class="contact-details">
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-detail">
+
+              <span class="contact-label">
+                Email
+              </span>
+
+              <a href="mailto:info@triocallisto.com">
+                info@triocallisto.com
+              </a>
+
+            </div>
+
+
+            <!-- ESTONIA -->
+
+            <div class="contact-detail">
+
+              <span class="contact-label">
+                Estonia
+              </span>
+
+              <a href="tel:+37256944159">
+                +372 56944159
+              </a>
+
+            </div>
+
+
+            <!-- UNITED KINGDOM -->
+
+            <div class="contact-detail">
+
+              <span class="contact-label">
+                United Kingdom
+              </span>
+
+              <a href="tel:+447901140836">
+                +44 7901140836
+              </a>
+
+            </div>
+
+
+            <!-- SOCIAL MEDIA -->
+
+            <div class="social-section">
+
+              <h3 class="social-heading">
+                Follow Trio Callistó
+              </h3>
+
+              <div class="social-icons">
+
+
+                <a
+                  href="https://www.instagram.com/trio_callisto?igsh=cHJmOXNjbWh3emc4"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram">
+
+                  <i class="fa-brands fa-instagram"></i>
+
+                </a>
+
+
+                <a
+                  href="https://www.facebook.com/share/19zrsK8uog/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Facebook">
+
+                  <i class="fa-brands fa-facebook"></i>
+
+                </a>
+
+
+                <a
+                  href="https://youtube.com/@triocallisto?si=ckJd-TCE29LN6FCl"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="YouTube">
+
+                  <i class="fa-brands fa-youtube"></i>
+
+                </a>
+
+
+                <a
+                  href="https://www.patreon.com/cw/TrioCallisto"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Patreon">
+
+                  <i class="fa-brands fa-patreon"></i>
+
+                </a>
+
+
+                <a
+                  href="https://www.tiktok.com/@trio_callisto"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="TikTok">
+
+                  <i class="fa-brands fa-tiktok"></i>
+
+                </a>
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- ===================================================
+         FOOTER
+         =================================================== -->
+
+    <footer>
+      © 2026 Trio Callistó – All Rights Reserved
+    </footer>
+
+  </section>
+
+
+  <!-- ===================================================
+       SCRIPT
+       =================================================== -->
+
   <script>
-    const toggle = document.getElementById('concerts-toggle');
-    const dropdown = toggle.parentElement;
 
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      dropdown.classList.toggle('open');
-    });
 
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
-    });
+    /* ===================================================
+       HAMBURGER MENU
+       =================================================== */
+
+    const menuButton =
+      document.getElementById(
+        'menu-button'
+      );
+
+    const menuOverlay =
+      document.getElementById(
+        'menu-overlay'
+      );
+
+    const concertsToggle =
+      document.getElementById(
+        'concerts-toggle'
+      );
+
+    const concertSeasons =
+      document.getElementById(
+        'concert-seasons'
+      );
+
+
+    /* OPEN / CLOSE MAIN MENU */
+
+    menuButton.addEventListener(
+      'click',
+      () => {
+
+        menuOverlay.classList.toggle(
+          'open'
+        );
+
+        menuButton.classList.toggle(
+          'open'
+        );
+
+
+        if (
+          menuOverlay.classList.contains(
+            'open'
+          )
+        ) {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Close menu'
+          );
+
+        } else {
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES */
+
+    menuOverlay.addEventListener(
+      'mouseleave',
+      () => {
+
+        if (
+          window.innerWidth > 600
+        ) {
+
+          menuOverlay.classList.remove(
+            'open'
+          );
+
+          menuButton.classList.remove(
+            'open'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* CLOSE MOBILE MENU WHEN TAPPING FROSTED BACKGROUND */
+
+    menuOverlay.addEventListener(
+      'click',
+      e => {
+
+        if (
+          window.innerWidth <= 600 &&
+          e.target === menuOverlay
+        ) {
+
+          menuOverlay.classList.remove(
+            'open'
+          );
+
+          menuButton.classList.remove(
+            'open'
+          );
+
+          concertSeasons.classList.remove(
+            'open'
+          );
+
+          menuButton.setAttribute(
+            'aria-label',
+            'Open menu'
+          );
+
+        }
+
+      }
+    );
+
+
+    /* OPEN / CLOSE CONCERT SEASONS */
+
+    concertsToggle.addEventListener(
+      'click',
+      e => {
+
+        e.preventDefault();
+
+        concertSeasons.classList.toggle(
+          'open'
+        );
+
+      }
+    );
+
+
+    /* CLOSE MENU WHEN LINK SELECTED */
+
+    const menuLinks =
+      menuOverlay.querySelectorAll(
+        'a:not(#concerts-toggle)'
+      );
+
+
+    menuLinks.forEach(
+      link => {
+
+        link.addEventListener(
+          'click',
+          () => {
+
+            menuOverlay.classList.remove(
+              'open'
+            );
+
+            menuButton.classList.remove(
+              'open'
+            );
+
+            concertSeasons.classList.remove(
+              'open'
+            );
+
+            menuButton.setAttribute(
+              'aria-label',
+              'Open menu'
+            );
+
+          }
+        );
+
+      }
+    );
+
   </script>
 
 </body>
+
+</html>
