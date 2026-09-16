@@ -506,30 +506,68 @@ footer {
 
 .scroll-arrow {
   position: absolute;
+
   left: 50%;
-  bottom: 1.8rem;
-  width: 20px;
-  height: 20px;
+  bottom: 2rem;
+
+  width: 26px;
+  height: 26px;
+
   z-index: 5;
 
-  border-right: 1px solid rgba(255, 255, 255, 0.75);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  border-right:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
 
-  transform: translateX(-50%) rotate(45deg);
+  border-bottom:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
 
-  animation: scrollHint 2.2s ease-in-out infinite;
+  filter:
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  animation:
+    scrollHint
+    2.2s
+    ease-in-out
+    infinite;
 }
 
-@keyframes scrollHint {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0) rotate(45deg);
-    opacity: 0.45;
-  }
+.scroll-arrow {
+  position: absolute;
 
-  50% {
-    transform: translateX(-50%) translateY(6px) rotate(45deg);
-    opacity: 0.8;
-  }
+  left: 50%;
+  bottom: 2rem;
+
+  width: 26px;
+  height: 26px;
+
+  z-index: 5;
+
+  border-right:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
+
+  border-bottom:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
+
+  filter:
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  animation:
+    scrollHint
+    2.2s
+    ease-in-out
+    infinite;
 }
 
 
