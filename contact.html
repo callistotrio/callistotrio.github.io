@@ -45,27 +45,48 @@
 
       overflow-x: hidden;
 
-      background:
-        radial-gradient(
-          circle at 50% 15%,
-          #342b25 0%,
-          #211c18 38%,
-          #171513 72%
-        );
-
-      min-height: 100vh;
+      background: #171513;
     }
 
 
     /* =====================================================
-       COMPACT TOP AREA
+       FIXED BACKGROUND
+       ===================================================== */
+
+    .background {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100vh;
+
+      z-index: -3;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(139, 94, 60, 0.20) 0%,
+          rgba(80, 55, 40, 0.10) 28%,
+          rgba(23, 21, 19, 0) 58%
+        ),
+        linear-gradient(
+          to bottom,
+          #211b17 0%,
+          #171513 48%,
+          #110f0e 100%
+        );
+    }
+
+
+    /* =====================================================
+       OPENING HERO
        ===================================================== */
 
     .hero {
       position: relative;
 
       width: 100%;
-      height: 180px;
+      height: 100vh;
     }
 
 
@@ -114,13 +135,45 @@
 
       font-size: 5rem;
 
-      color: rgba(255, 255, 255, 0.15);
+      color:
+        rgba(255, 255, 255, 0.15);
 
       white-space: nowrap;
 
       pointer-events: none;
 
       z-index: 1;
+    }
+
+
+    /* =====================================================
+       HERO CENTRE TEXT
+       ===================================================== */
+
+    .hero-contact {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      width: calc(100% - 4rem);
+
+      text-align: center;
+    }
+
+    .hero-contact p {
+      margin: 0;
+
+      font-size: 1rem;
+
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+
+      color:
+        rgba(224, 194, 169, 0.72);
     }
 
 
@@ -313,6 +366,64 @@
 
 
     /* =====================================================
+       SCROLL ARROW
+       ===================================================== */
+
+    .scroll-arrow {
+      position: absolute;
+
+      left: 50%;
+      bottom: 1.8rem;
+
+      width: 20px;
+      height: 20px;
+
+      z-index: 5;
+
+      border-right:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
+      transform:
+        translateX(-50%)
+        rotate(45deg);
+
+      animation:
+        scrollHint
+        2.2s
+        ease-in-out
+        infinite;
+    }
+
+    @keyframes scrollHint {
+
+      0%,
+      100% {
+        transform:
+          translateX(-50%)
+          translateY(0)
+          rotate(45deg);
+
+        opacity: 0.45;
+      }
+
+      50% {
+        transform:
+          translateX(-50%)
+          translateY(6px)
+          rotate(45deg);
+
+        opacity: 0.8;
+      }
+
+    }
+
+
+    /* =====================================================
        CONTENT
        ===================================================== */
 
@@ -322,9 +433,11 @@
       width: 100%;
 
       padding:
-        1rem
+        5rem
         2rem
         6rem;
+
+      background: transparent;
 
       color: white;
 
@@ -348,7 +461,7 @@
 
     .glass-panel {
       background:
-        rgba(255, 255, 255, 0.16);
+        rgba(255, 255, 255, 0.12);
 
       backdrop-filter:
         blur(22px)
@@ -360,7 +473,7 @@
 
       border:
         1px solid
-        rgba(255, 255, 255, 0.30);
+        rgba(255, 255, 255, 0.28);
 
       box-shadow:
         0
@@ -380,13 +493,17 @@
       margin:
         0
         auto
-        3rem;
+        5rem;
 
       padding:
         3.5rem
         4rem;
 
       text-align: center;
+    }
+
+    #contact {
+      scroll-margin-top: 2rem;
     }
 
     .contact-intro h2 {
@@ -416,11 +533,9 @@
         5rem;
 
       padding:
-        4rem
-        4.5rem;
-    }
+        4.5rem
+        5rem;
 
-    .contact-grid {
       display: grid;
 
       grid-template-columns:
@@ -429,79 +544,67 @@
 
       gap: 5rem;
 
-      align-items: start;
-
       text-align: left;
     }
 
 
-    /* =====================================================
-       LEFT SIDE
-       ===================================================== */
+    /* LEFT SIDE */
 
-    .contact-heading {
+    .contact-message {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .contact-message h3 {
       margin:
         0
         0
-        1.2rem;
+        1.4rem;
 
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: normal;
+
+      line-height: 1.2;
 
       color:
         rgba(224, 194, 169, 0.95);
     }
 
-    .contact-copy {
-      max-width: 420px;
+    .contact-message p {
+      max-width: 430px;
 
       margin: 0;
 
-      font-size: 1.15rem;
+      font-size: 1.1rem;
 
       line-height: 1.8;
 
       color:
-        rgba(255, 255, 255, 0.76);
+        rgba(255, 255, 255, 0.72);
     }
 
 
-    /* =====================================================
-       CONTACT DETAILS
-       ===================================================== */
+    /* RIGHT SIDE */
 
     .contact-details {
-      padding-top: 0.3rem;
-    }
+      padding-left: 4rem;
 
-    .contact-detail {
-      padding:
-        0
-        0
-        1.5rem;
-
-      margin:
-        0
-        0
-        1.5rem;
-
-      border-bottom:
+      border-left:
         1px solid
-        rgba(255, 255, 255, 0.22);
-    }
-
-    .contact-detail:last-of-type {
-      margin-bottom: 2rem;
+        rgba(255, 255, 255, 0.25);
     }
 
     .contact-label {
       display: block;
 
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
 
-      font-size: 0.82rem;
+      font-size: 0.8rem;
 
-      letter-spacing: 0.13em;
+      letter-spacing: 0.16em;
 
       text-transform: uppercase;
 
@@ -509,28 +612,30 @@
         rgba(255, 255, 255, 0.52);
     }
 
-    .contact-detail a,
-    .contact-detail span {
-      color: white;
+    .email-block {
+      margin-bottom: 2.5rem;
+    }
+
+    .email-link {
+      display: inline-block;
+
+      position: relative;
+
+      color:
+        rgba(224, 194, 169, 0.95);
 
       text-decoration: none;
 
-      font-size: 1.2rem;
-
-      line-height: 1.6;
+      font-size: 1.35rem;
     }
 
-    .contact-detail a {
-      position: relative;
-    }
-
-    .contact-detail a::after {
+    .email-link::after {
       content: "";
 
       position: absolute;
 
       left: 0;
-      bottom: -3px;
+      bottom: -4px;
 
       width: 100%;
       height: 1px;
@@ -548,40 +653,61 @@
         ease;
     }
 
-    .contact-detail a:hover::after {
+    .email-link:hover::after {
       transform: scaleX(1);
 
       transform-origin: left;
     }
 
 
-    /* =====================================================
-       SOCIAL MEDIA
-       ===================================================== */
+    /* PHONE NUMBERS */
 
-    .social-heading {
+    .phone-block {
+      margin-bottom: 2.7rem;
+    }
+
+    .phone-number {
       margin:
         0
         0
-        1rem;
+        0.4rem;
 
-      font-size: 0.82rem;
-      font-weight: normal;
-
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
+      font-size: 1.15rem;
 
       color:
-        rgba(255, 255, 255, 0.52);
+        rgba(255, 255, 255, 0.82);
+    }
+
+    .phone-number a {
+      color: inherit;
+
+      text-decoration: none;
+    }
+
+    .phone-number a:hover {
+      color:
+        rgba(224, 194, 169, 0.95);
+    }
+
+
+    /* =====================================================
+       SOCIAL LINKS
+       ===================================================== */
+
+    .social-block {
+      margin-top: 0.5rem;
     }
 
     .social-icons {
       display: flex;
 
+      align-items: center;
+
       flex-wrap: wrap;
 
-      gap: 1.2rem;
+      gap: 1.3rem;
+
+      margin-top: 1rem;
     }
 
     .social-icons a {
@@ -590,37 +716,22 @@
       align-items: center;
       justify-content: center;
 
-      width: 42px;
-      height: 42px;
-
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.28);
-
-      background:
-        rgba(255, 255, 255, 0.07);
+      width: 34px;
+      height: 34px;
 
       color:
-        rgba(255, 255, 255, 0.88);
+        rgba(255, 255, 255, 0.78);
 
       text-decoration: none;
 
-      font-size: 1.15rem;
+      font-size: 1.35rem;
 
       transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
         color 0.3s ease,
         transform 0.3s ease;
     }
 
     .social-icons a:hover {
-      background:
-        rgba(255, 255, 255, 0.14);
-
-      border-color:
-        rgba(224, 194, 169, 0.60);
-
       color:
         rgba(224, 194, 169, 0.95);
 
@@ -671,12 +782,14 @@
 
       .contact-panel {
         padding:
-          3.5rem
+          4rem
           3rem;
+
+        gap: 3rem;
       }
 
-      .contact-grid {
-        gap: 3rem;
+      .contact-details {
+        padding-left: 3rem;
       }
 
     }
@@ -688,11 +801,12 @@
 
     @media (max-width: 600px) {
 
-
-      /* COMPACT TOP */
-
       .hero {
-        height: 145px;
+        height: 100svh;
+      }
+
+      .background {
+        height: 100svh;
       }
 
 
@@ -710,6 +824,20 @@
         top: -20px;
 
         font-size: 3.5rem;
+      }
+
+
+      /* HERO TEXT */
+
+      .hero-contact {
+        width:
+          calc(100% - 3rem);
+      }
+
+      .hero-contact p {
+        font-size: 0.8rem;
+
+        letter-spacing: 0.18em;
       }
 
 
@@ -787,16 +915,16 @@
 
       .content-section {
         padding:
-          0
+          3rem
           1rem
           4rem;
       }
 
 
-      /* CONTACT TITLE */
+      /* CONTACT INTRO */
 
       .contact-intro {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
 
         padding:
           2.8rem
@@ -811,34 +939,56 @@
       /* CONTACT PANEL */
 
       .contact-panel {
+        display: block;
+
         margin-bottom: 3rem;
 
         padding:
+          2.8rem
+          1.8rem;
+      }
+
+      .contact-message {
+        padding-bottom: 2.7rem;
+
+        border-bottom:
+          1px solid
+          rgba(255, 255, 255, 0.25);
+      }
+
+      .contact-message h3 {
+        font-size: 1.8rem;
+      }
+
+      .contact-message p {
+        font-size: 1rem;
+
+        line-height: 1.7;
+      }
+
+      .contact-details {
+        padding:
           2.7rem
-          1.7rem;
+          0
+          0;
+
+        border-left: none;
       }
 
-      .contact-grid {
-        display: block;
+      .email-block {
+        margin-bottom: 2.3rem;
       }
 
-      .contact-heading {
-        font-size: 2rem;
+      .email-link {
+        font-size: 1.15rem;
       }
 
-      .contact-copy {
-        margin-bottom: 3rem;
-
+      .phone-number {
         font-size: 1.05rem;
       }
 
-      .contact-detail a,
-      .contact-detail span {
-        font-size: 1.08rem;
-      }
-
       .social-icons {
-        gap: 0.8rem;
+        gap: 1rem;
       }
 
 
@@ -865,13 +1015,20 @@
 
 
   <!-- ===================================================
-       COMPACT HEADER
+       FIXED BACKGROUND
+       =================================================== -->
+
+  <div class="background"></div>
+
+
+  <!-- ===================================================
+       HERO
        =================================================== -->
 
   <section class="hero">
 
 
-    <!-- SITE TITLE -->
+    <!-- TITLE -->
 
     <div class="site-title">
 
@@ -947,6 +1104,26 @@
 
     </div>
 
+
+    <!-- CENTRE TEXT -->
+
+    <div class="hero-contact">
+
+      <p>
+        Trio Callistó
+      </p>
+
+    </div>
+
+
+    <!-- SCROLL ARROW -->
+
+    <a
+      href="#contact"
+      class="scroll-arrow"
+      aria-label="Scroll to Contact">
+    </a>
+
   </section>
 
 
@@ -961,7 +1138,9 @@
 
       <!-- CONTACT TITLE -->
 
-      <section class="contact-intro glass-panel">
+      <section
+        class="contact-intro glass-panel"
+        id="contact">
 
         <h2>
           Contact
@@ -970,151 +1149,159 @@
       </section>
 
 
-      <!-- CONTACT DETAILS -->
+      <!-- =================================================
+           CONTACT DETAILS
+           ================================================= -->
 
       <section class="contact-panel glass-panel">
 
-        <div class="contact-grid">
+
+        <!-- LEFT -->
+
+        <div class="contact-message">
+
+          <h3>
+            Get in touch
+          </h3>
+
+          <p>
+            For concert enquiries, collaborations
+            and other enquiries, please contact
+            Trio Callistó by email or telephone.
+          </p>
+
+        </div>
 
 
-          <!-- LEFT -->
+        <!-- RIGHT -->
 
-          <div class="contact-message">
+        <div class="contact-details">
 
-            <h2 class="contact-heading">
-              Get in touch
-            </h2>
 
-            <p class="contact-copy">
-              For concert enquiries, collaborations,
-              bookings and other enquiries, please
-              contact Trio Callistó by email or phone.
-            </p>
+          <!-- EMAIL -->
+
+          <div class="email-block">
+
+            <span class="contact-label">
+              Email
+            </span>
+
+            <a
+              class="email-link"
+              href="mailto:info@triocallisto.com">
+              info@triocallisto.com
+            </a>
 
           </div>
 
 
-          <!-- RIGHT -->
+          <!-- TELEPHONE -->
 
-          <div class="contact-details">
+          <div class="phone-block">
 
+            <span class="contact-label">
+              Telephone
+            </span>
 
-            <!-- EMAIL -->
-
-            <div class="contact-detail">
-
-              <span class="contact-label">
-                Email
-              </span>
-
-              <a href="mailto:info@triocallisto.com">
-                info@triocallisto.com
-              </a>
-
-            </div>
-
-
-            <!-- ESTONIA -->
-
-            <div class="contact-detail">
-
-              <span class="contact-label">
-                Estonia
-              </span>
+            <p class="phone-number">
 
               <a href="tel:+37256944159">
                 +372 56944159
               </a>
 
-            </div>
+            </p>
 
-
-            <!-- UNITED KINGDOM -->
-
-            <div class="contact-detail">
-
-              <span class="contact-label">
-                United Kingdom
-              </span>
+            <p class="phone-number">
 
               <a href="tel:+447901140836">
                 +44 7901140836
               </a>
 
-            </div>
+            </p>
+
+          </div>
 
 
-            <!-- SOCIAL MEDIA -->
+          <!-- SOCIAL MEDIA -->
 
-            <div class="social-section">
+          <div class="social-block">
 
-              <h3 class="social-heading">
-                Follow Trio Callistó
-              </h3>
+            <span class="contact-label">
+              Follow Trio Callistó
+            </span>
 
-              <div class="social-icons">
-
-
-                <a
-                  href="https://www.instagram.com/trio_callisto?igsh=cHJmOXNjbWh3emc4"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Instagram">
-
-                  <i class="fa-brands fa-instagram"></i>
-
-                </a>
+            <div class="social-icons">
 
 
-                <a
-                  href="https://www.facebook.com/share/19zrsK8uog/?mibextid=wwXIfr"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Facebook">
+              <!-- INSTAGRAM -->
 
-                  <i class="fa-brands fa-facebook"></i>
+              <a
+                href="https://www.instagram.com/trio_callisto?igsh=cHJmOXNjbWh3emc4"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram">
 
-                </a>
+                <i class="fa-brands fa-instagram"></i>
 
-
-                <a
-                  href="https://youtube.com/@triocallisto?si=ckJd-TCE29LN6FCl"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="YouTube">
-
-                  <i class="fa-brands fa-youtube"></i>
-
-                </a>
+              </a>
 
 
-                <a
-                  href="https://www.patreon.com/cw/TrioCallisto"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Patreon">
+              <!-- FACEBOOK -->
 
-                  <i class="fa-brands fa-patreon"></i>
+              <a
+                href="https://www.facebook.com/share/19zrsK8uog/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook">
 
-                </a>
+                <i class="fa-brands fa-facebook"></i>
 
-
-                <a
-                  href="https://www.tiktok.com/@trio_callisto"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="TikTok">
-
-                  <i class="fa-brands fa-tiktok"></i>
-
-                </a>
+              </a>
 
 
-              </div>
+              <!-- YOUTUBE -->
+
+              <a
+                href="https://youtube.com/@triocallisto?si=ckJd-TCE29LN6FCl"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube">
+
+                <i class="fa-brands fa-youtube"></i>
+
+              </a>
+
+
+              <!-- PATREON -->
+
+              <a
+                href="https://www.patreon.com/cw/TrioCallisto"
+                target="_blank"
+                rel="noopener"
+                aria-label="Patreon">
+
+                <i class="fa-brands fa-patreon"></i>
+
+              </a>
+
+
+              <!-- TIKTOK -->
+
+              <a
+                href="https://www.tiktok.com/@trio_callisto"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+              </a>
+
 
             </div>
 
           </div>
+
 
         </div>
 
@@ -1325,6 +1512,131 @@
             );
 
           }
+        );
+
+      }
+    );
+
+
+    /* ===================================================
+       SLOW SMOOTH SCROLL TO CONTACT
+       =================================================== */
+
+    const scrollArrowLink =
+      document.querySelector(
+        '.scroll-arrow'
+      );
+
+
+    scrollArrowLink.addEventListener(
+      'click',
+      e => {
+
+        e.preventDefault();
+
+
+        const target =
+          document.getElementById(
+            'contact'
+          );
+
+
+        const startPosition =
+          window.scrollY;
+
+
+        const scrollMargin =
+          parseFloat(
+            getComputedStyle(
+              target
+            ).scrollMarginTop
+          ) || 0;
+
+
+        const targetPosition =
+          target
+            .getBoundingClientRect()
+            .top
+          + window.scrollY
+          - scrollMargin;
+
+
+        const distance =
+          targetPosition
+          - startPosition;
+
+
+        const duration = 1200;
+
+        let startTime = null;
+
+
+        function animation(
+          currentTime
+        ) {
+
+          if (
+            startTime === null
+          ) {
+
+            startTime =
+              currentTime;
+
+          }
+
+
+          const timeElapsed =
+            currentTime
+            - startTime;
+
+
+          const progress =
+            Math.min(
+              timeElapsed
+              / duration,
+              1
+            );
+
+
+          const ease =
+            progress < 0.5
+              ? 4
+                * progress
+                * progress
+                * progress
+              : 1
+                - Math.pow(
+                    -2
+                    * progress
+                    + 2,
+                    3
+                  )
+                  / 2;
+
+
+          window.scrollTo(
+            0,
+            startPosition
+            + distance
+            * ease
+          );
+
+
+          if (
+            progress < 1
+          ) {
+
+            requestAnimationFrame(
+              animation
+            );
+
+          }
+
+        }
+
+
+        requestAnimationFrame(
+          animation
         );
 
       }
