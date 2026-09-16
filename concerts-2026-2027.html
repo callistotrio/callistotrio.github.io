@@ -360,58 +360,61 @@
        SCROLL ARROW
        ===================================================== */
 
-    .scroll-arrow {
-      position: absolute;
+   .scroll-arrow {
+  position: absolute;
 
-      left: 50%;
-      bottom: 1.8rem;
+  left: 50%;
+  bottom: 2rem;
 
-      width: 20px;
-      height: 20px;
+  width: 26px;
+  height: 26px;
 
-      z-index: 5;
+  z-index: 5;
 
-      border-right:
-        1px solid
-        rgba(255, 255, 255, 0.75);
+  border-right:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
 
-      border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.75);
+  border-bottom:
+    1.5px solid
+    rgba(255, 255, 255, 0.92);
 
-      transform:
-        translateX(-50%)
-        rotate(45deg);
+  filter:
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
 
-      animation:
-        scrollHint
-        2.2s
-        ease-in-out
-        infinite;
-    }
+  transform:
+    translateX(-50%)
+    rotate(45deg);
 
-    @keyframes scrollHint {
+  animation:
+    scrollHint
+    2.2s
+    ease-in-out
+    infinite;
+}
 
-      0%,
-      100% {
-        transform:
-          translateX(-50%)
-          translateY(0)
-          rotate(45deg);
+   @keyframes scrollHint {
 
-        opacity: 0.45;
-      }
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0)
+      rotate(45deg);
 
-      50% {
-        transform:
-          translateX(-50%)
-          translateY(6px)
-          rotate(45deg);
+    opacity: 0.7;
+  }
 
-        opacity: 0.8;
-      }
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(8px)
+      rotate(45deg);
 
-    }
+    opacity: 1;
+  }
+
+}
 
 
     /* =====================================================
