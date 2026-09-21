@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Anna Ryland-Jones | Cellist | Trio Callistó</title>
+
+  <meta
+    name="description"
+    content="British-Irish cellist Anna Ryland-Jones, founding member of Trio Callistó. Biography, performances and chamber music work.">
+
+
+  <!-- GFS Didot -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"
+    rel="stylesheet">
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'GFS Didot', serif;
+
+      color: white;
+
+      background: #171513;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       SITE TITLE
+       ===================================================== */
+
+    .site-title {
+      position: absolute;
+
+      top: 3rem;
+      left: 0;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+
+      text-align: center;
+
+      z-index: 10;
+
+      pointer-events: none;
+    }
+
+    .site-title h1 {
+      position: relative;
+
+      margin: -0.4rem 0 0;
+
+      font-size: 3rem;
+      font-weight: normal;
+
+      color: white;
+
+      z-index: 2;
+
+      pointer-events: auto;
+    }
+
+    .site-title h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .greek-title {
+      position: absolute;
+
+      top: -35px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 5rem;
+
+      color: rgba(255, 255, 255, 0.15);
+
+      white-space: nowrap;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
+
+    .menu-button {
+      position: fixed;
+
+      top: 2rem;
+      right: 2rem;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 2px;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      cursor: pointer;
+
+      z-index: 30;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .menu-button span {
+      display: block;
+
+      width: 28px;
+      height: 1px;
+
+      margin: 6px auto;
+
+      background: white;
+
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    }
+
+    .menu-button.open span:nth-child(1) {
+      transform:
+        translateY(7px)
+        rotate(45deg);
+    }
+
+    .menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.open span:nth-child(3) {
+      transform:
+        translateY(-7px)
+        rotate(-45deg);
+    }
+
+
+    /* =====================================================
+       FROSTED MENU
+       ===================================================== */
+
+    .menu-overlay {
+      position: fixed;
+
+      top: 5.8rem;
+      right: 2rem;
+
+      width: 175px;
+
+      background:
+        rgba(255, 255,255, 0.16);
+
+      backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(115%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.30);
+
+      padding: 1.2rem 1.25rem;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+      z-index: 25;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateY(0);
+    }
+
+
+    /* MENU CONTENT */
+
+    .menu-content {
+      text-align: left;
+    }
+
+    .menu-content a {
+      display: block;
+
+      width: max-content;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 1.15rem;
+
+      margin: 0.8rem 0;
+
+      position: relative;
+    }
+
+    .menu-content a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -5px;
+
+      width: 0;
+      height: 1px;
+
+      background: white;
+
+      transform: translateX(-50%);
+
+      transition: width 0.3s ease;
+    }
+
+    .menu-content a:hover::after {
+      width: 100%;
+    }
+
+
+    /* CONCERT SEASONS */
+
+    .menu-concerts-toggle {
+      cursor: pointer;
+    }
+
+    .concert-seasons {
+      display: none;
+
+      margin: -0.3rem 0 1rem;
+    }
+
+    .concert-seasons.open {
+      display: block;
+    }
+
+    .concert-seasons a {
+      font-size: 0.95rem;
+
+      margin: 0.55rem 0;
+
+      opacity: 0.75;
+    }
+
+
+    /* =====================================================
+       SPLIT BIOGRAPHY PAGE
+       ===================================================== */
+
+    .biography-page {
+      width: 100%;
+
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      background: #171513;
+    }
+
+
+    /* =====================================================
+       LEFT SIDE — FIXED PORTRAIT
+       ===================================================== */
+
+    .portrait-side {
+      position: relative;
+
+      width: 100%;
+      min-width: 0;
+      min-height: 100vh;
+
+      background: #171513;
+    }
+
+    .portrait-side img {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 50vw;
+      height: 100vh;
+
+      display: block;
+
+      object-fit: cover;
+
+      /*
+         Keeps more of the top of the photograph visible
+         and crops more from the bottom.
+      */
+      object-position: center 15%;
+
+      z-index: 0;
+    }
+
+
+    /* =====================================================
+       RIGHT SIDE — BIOGRAPHY
+       ===================================================== */
+
+    .biography-side {
+      position: relative;
+
+      min-width: 0;
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: flex-start;
+      justify-content: center;
+
+      padding:
+        8rem
+        4rem
+        5rem;
+
+      background: #171513;
+    }
+
+
+    /* =====================================================
+       FROSTED BIOGRAPHY PANEL
+       ===================================================== */
+
+    .biography-panel {
+      position: relative;
+
+      width: 100%;
+      max-width: 650px;
+
+      padding:
+        4rem
+        4.5rem;
+
+      background:
+        rgba(255, 255, 255, 0.18);
+
+      backdrop-filter:
+        blur(30px)
+        saturate(105%);
+
+      -webkit-backdrop-filter:
+        blur(30px)
+        saturate(105%);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.34);
+
+      box-shadow:
+        0
+        12px
+        35px
+        rgba(0, 0, 0, 0.10);
+
+      text-align: left;
+
+      z-index: 2;
+    }
+
+
+    /* =====================================================
+       BIOGRAPHY TYPOGRAPHY
+       ===================================================== */
+
+    .musician-role {
+      margin:
+        0
+        0
+        0.7rem;
+
+      font-size: 0.95rem;
+
+      letter-spacing: 0.14em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255, 255, 255, 0.70);
+    }
+
+    .biography-panel h1 {
+      margin:
+        0
+        0
+        2.5rem;
+
+      font-size: 4rem;
+      font-weight: normal;
+
+      line-height: 1;
+
+      letter-spacing: 0.01em;
+
+      color: white;
+    }
+
+    .biography-text p {
+      margin:
+        0
+        0
+        1.4rem;
+
+      font-size: 1.08rem;
+
+      line-height: 1.75;
+
+      color:
+        rgba(255, 255, 255, 0.90);
+    }
+
+    .biography-text p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* =====================================================
+       BACK LINK
+       ===================================================== */
+
+    .back-link {
+      display: inline-block;
+
+      margin-top: 2.5rem;
+
+      position: relative;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 1rem;
+
+      opacity: 0.78;
+
+      transition:
+        opacity 0.3s ease;
+    }
+
+    .back-link::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -5px;
+
+      width: 100%;
+      height: 1px;
+
+      background:
+        rgba(255, 255, 255, 0.55);
+
+      transform: scaleX(0);
+
+      transform-origin: left;
+
+      transition:
+        transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+    }
+
+    .back-link:hover::after {
+      transform: scaleX(1);
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 700px) {
+
+
+      /* SITE TITLE */
+
+      .site-title {
+        position: absolute;
+
+        top: 2rem;
+
+        width: 100%;
+      }
+
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
+
+      .greek-title {
+        top: -20px;
+
+        font-size: 3.5rem;
+      }
+
+
+      /* HAMBURGER */
+
+      .menu-button {
+        top: 4.8rem;
+        right: 1.3rem;
+      }
+
+
+      /* FULL SCREEN FROSTED MENU */
+
+      .menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        width: 100vw;
+        height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 2rem;
+
+        background:
+          rgba(255, 255, 255, 0.18);
+
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
+
+        border: none;
+
+        transform: none;
+
+        z-index: 25;
+      }
+
+      .menu-overlay.open {
+        transform: none;
+      }
+
+      .menu-content {
+        width: 100%;
+
+        text-align: center;
+      }
+
+      .menu-content a {
+        font-size: 1.35rem;
+
+        margin: 1rem auto;
+      }
+
+      .concert-seasons a {
+        font-size: 1rem;
+
+        margin: 0.6rem auto;
+      }
+
+      .menu-button.open span {
+        background: white;
+      }
+
+
+      /* STACK PAGE */
+
+      .biography-page {
+        display: block;
+
+        width: 100%;
+      }
+
+
+      /* PORTRAIT */
+
+      .portrait-side {
+        position: relative;
+
+        width: 100%;
+        height: 100svh;
+
+        min-height: 0;
+
+        overflow: hidden;
+
+        background: #171513;
+      }
+
+      .portrait-side img {
+        position: static;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        /*
+           Bias crop toward top of photograph
+           so her head stays fully visible.
+        */
+        object-position: center 15%;
+      }
+
+
+      /* BIOGRAPHY */
+
+      .biography-side {
+        position: relative;
+
+        width: 100%;
+
+        min-height: 100svh;
+
+        display: flex;
+
+        align-items: flex-start;
+        justify-content: center;
+
+        padding:
+          4rem
+          1rem;
+
+        background: #171513;
+      }
+
+
+      /* GLASS PANEL */
+
+      .biography-panel {
+        position: relative;
+
+        width: 100%;
+        max-width: none;
+
+        padding:
+          3rem
+          1.8rem;
+
+        background:
+          rgba(255, 255, 255, 0.20);
+
+        backdrop-filter:
+          blur(30px)
+          saturate(105%);
+
+        -webkit-backdrop-filter:
+          blur(30px)
+          saturate(105%);
+
+        border:
+          1px solid
+          rgba(255, 255, 255, 0.34);
+
+        z-index: 2;
+      }
+
+
+      /* BIOGRAPHY TEXT */
+
+      .biography-panel h1 {
+        font-size: 3rem;
+
+        margin-bottom: 2rem;
+      }
+
+      .biography-text p {
+        font-size: 1rem;
+
+        line-height: 1.7;
+      }
+
+
+      /* BACK LINK */
+
+      .back-link {
+        margin-top: 2rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       SITE TITLE
+       ===================================================== -->
+
+  <header class="site-title">
+
+    <div class="greek-title">
+      Τρίο Καλλιστώ
+    </div>
+
+    <h1>
+      <a href="home.html">
+        Trio Callistó
+      </a>
+    </h1>
+
+  </header>
+
+
+  <!-- =====================================================
+       HAMBURGER
+       ===================================================== -->
+
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
+  <!-- =====================================================
+       MENU
+       ===================================================== -->
+
+  <nav
+    class="menu-overlay"
+    id="menuOverlay">
+
+    <div class="menu-content">
+
+      <a href="home.html">
+        Home
+      </a>
+
+      <a href="media.html">
+        Media
+      </a>
+
+      <a
+        href="#"
+        class="menu-concerts-toggle"
+        id="concertToggle">
+        Concerts
+      </a>
+
+      <div
+        class="concert-seasons"
+        id="concertSeasons">
+
+        <a href="concerts-2026-2027.html">
+          2026–2027
+        </a>
+
+        <a href="concerts-2025-2026.html">
+          2025–2026
+        </a>
+
+      </div>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =====================================================
+       MAIN BIOGRAPHY
+       ===================================================== -->
+
+  <main class="biography-page">
+
+
+    <!-- LEFT SIDE — FIXED PORTRAIT -->
+
+    <div class="portrait-side">
+
+      <img
+        src="Anja.jpg"
+        alt="Anna Ryland-Jones, British cellist">
+
+    </div>
+
+
+    <!-- RIGHT SIDE — BIOGRAPHY -->
+
+    <section class="biography-side">
+
+      <article class="biography-panel">
+
+
+        <p class="musician-role">
+          Cello
+        </p>
+
+
+        <h1>
+          Anna Ryland-Jones
+        </h1>
+
+
+        <div class="biography-text">
+
+          <p>
+            Merily Leotoots is the best friend of Anna Ryland-Jones and an all-around fabulous person. She's also an Estonian violinist and
+            a founding member of Trio Callistó.
+          </p>
+
+          <p>
+            Merily’s full biography will go here. This can
+            be divided into several paragraphs so that the
+            text remains comfortable to read within the
+            frosted glass panel.
+          </p>
+
+          <p>
+            Further information about her studies,
+            performances, chamber music work and other
+            musical projects can continue here.
+          </p>
+
+        </div>
+
+
+        <a
+          href="home.html"
+          class="back-link">
+          Back to Trio Callistó
+        </a>
+
+
+      </article>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       MENU SCRIPT
+       ===================================================== -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById('menuButton');
+
+    const menuOverlay =
+      document.getElementById('menuOverlay');
+
+    const concertToggle =
+      document.getElementById('concertToggle');
+
+    const concertSeasons =
+      document.getElementById('concertSeasons');
+
+
+    menuButton.addEventListener(
+      'click',
+      function () {
+
+        menuButton.classList.toggle('open');
+
+        menuOverlay.classList.toggle('open');
+
+      }
+    );
+
+
+    concertToggle.addEventListener(
+      'click',
+      function (e) {
+
+        e.preventDefault();
+
+        concertSeasons.classList.toggle('open');
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
