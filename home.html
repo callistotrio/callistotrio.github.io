@@ -481,7 +481,51 @@
 
       font-weight: normal;
     }
+    
+.bio-read-more {
+  display: inline-block;
 
+  position: relative;
+
+  margin-top: 0.8rem;
+
+  color: inherit;
+
+  font-size: 0.95rem;
+  font-style: italic;
+
+  text-decoration: none;
+
+  opacity: 0.72;
+
+  transition: opacity 0.3s ease;
+}
+
+.bio-read-more::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -5px;
+
+  width: 0;
+  height: 1px;
+
+  background: currentColor;
+
+  transform: translateX(-50%);
+
+  transition: width 0.3s ease;
+}
+
+.bio-read-more:hover {
+  opacity: 1;
+}
+
+.bio-read-more:hover::after {
+  width: 100%;
+}
 
     /* =====================================================
        FOOTER
@@ -972,6 +1016,10 @@ footer {
 <p>
   Merily’s concert activity has taken her to Estonia, the United Kingdom, Austria, Germany, Italy, Spain, France, Greece, Ireland and Finland. Alongside chamber music, she continues to develop her work as a soloist through recital projects, masterclasses and international artistic collaborations.
 </p>
+
+          <a href="merily-leotoots.html" class="bio-read-more">
+  Read more
+</a>
 
         </div>
 
