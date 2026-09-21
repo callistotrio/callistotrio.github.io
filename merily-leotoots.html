@@ -193,7 +193,7 @@
       width: 175px;
 
       background:
-        rgba(255, 255, 255, 0.16);
+        rgba(255, 255,255, 0.16);
 
       backdrop-filter:
         blur(22px)
@@ -320,41 +320,44 @@
 
 
     /* =====================================================
-       LEFT SIDE — FULL PORTRAIT
+       LEFT SIDE — FIXED PORTRAIT
        ===================================================== */
 
     .portrait-side {
-  position: relative;
+      position: relative;
 
-  width: 100%;
-  min-width: 0;
-  min-height: 100vh;
+      width: 100%;
+      min-width: 0;
+      min-height: 100vh;
 
-  background: #171513;
-}
+      background: #171513;
+    }
 
-.portrait-side img {
-  position: fixed;
+    .portrait-side img {
+      position: fixed;
 
-  top: 0;
-  left: 0;
+      top: 0;
+      left: 0;
 
-  width: 50vw;
-  height: 100vh;
+      width: 50vw;
+      height: 100vh;
 
-  display: block;
+      display: block;
 
-  object-fit: cover;
+      object-fit: cover;
 
-  /* slightly lower crop to protect her head */
-  object-position: center 35%;
+      /*
+         Keeps more of the top of the photograph visible
+         and crops more from the bottom.
+      */
+      object-position: center 15%;
 
-  z-index: 0;
-}
+      z-index: 0;
+    }
 
 
     /* =====================================================
-       RIGHT SIDE — SECOND COPY OF PHOTO
+       RIGHT SIDE — BIOGRAPHY
        ===================================================== */
 
     .biography-side {
@@ -365,7 +368,7 @@
 
       display: flex;
 
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
 
       padding:
@@ -373,23 +376,7 @@
         4rem
         5rem;
 
-      overflow: hidden;
-
-    }
-
-
-    /* Slight darkening behind glass */
-
-    .biography-side::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        rgba(0, 0, 0, 0.10);
-
-      pointer-events: none;
+      background: #171513;
     }
 
 
@@ -543,249 +530,219 @@
     }
 
 
-   /* =====================================================
-   MOBILE
-   ===================================================== */
+    /* =====================================================
+       MOBILE
+       ===================================================== */
 
-@media (max-width: 700px) {
+    @media (max-width: 700px) {
 
 
-  /* SITE TITLE */
+      /* SITE TITLE */
 
-  .site-title {
-    position: absolute;
+      .site-title {
+        position: absolute;
 
-    top: 2rem;
+        top: 2rem;
 
-    width: 100%;
-  }
+        width: 100%;
+      }
 
-  .site-title h1 {
-    font-size: 2.2rem;
-  }
+      .site-title h1 {
+        font-size: 2.2rem;
+      }
 
-  .greek-title {
-    top: -20px;
+      .greek-title {
+        top: -20px;
 
-    font-size: 3.5rem;
-  }
+        font-size: 3.5rem;
+      }
 
 
-  /* HAMBURGER */
+      /* HAMBURGER */
 
-  .menu-button {
-    top: 4.8rem;
-    right: 1.3rem;
-  }
+      .menu-button {
+        top: 4.8rem;
+        right: 1.3rem;
+      }
 
 
-  /* FULL SCREEN FROSTED MENU */
+      /* FULL SCREEN FROSTED MENU */
 
-  .menu-overlay {
-    position: fixed;
+      .menu-overlay {
+        position: fixed;
 
-    inset: 0;
+        inset: 0;
 
-    width: 100vw;
-    height: 100dvh;
+        width: 100vw;
+        height: 100dvh;
 
-    display: flex;
+        display: flex;
 
-    justify-content: center;
-    align-items: center;
+        justify-content: center;
+        align-items: center;
 
-    padding: 2rem;
+        padding: 2rem;
 
-    background: rgba(255, 255, 255, 0.18);
+        background:
+          rgba(255, 255, 255, 0.18);
 
-    backdrop-filter:
-      blur(24px)
-      saturate(110%);
+        backdrop-filter:
+          blur(24px)
+          saturate(110%);
 
-    -webkit-backdrop-filter:
-      blur(24px)
-      saturate(110%);
+        -webkit-backdrop-filter:
+          blur(24px)
+          saturate(110%);
 
-    border: none;
+        border: none;
 
-    transform: none;
+        transform: none;
 
-    z-index: 25;
-  }
+        z-index: 25;
+      }
 
-  .menu-overlay.open {
-    transform: none;
-  }
+      .menu-overlay.open {
+        transform: none;
+      }
 
-  .menu-content {
-    width: 100%;
+      .menu-content {
+        width: 100%;
 
-    text-align: center;
-  }
+        text-align: center;
+      }
 
-  .menu-content a {
-    font-size: 1.35rem;
+      .menu-content a {
+        font-size: 1.35rem;
 
-    margin: 1rem auto;
-  }
+        margin: 1rem auto;
+      }
 
-  .concert-seasons a {
-    font-size: 1rem;
+      .concert-seasons a {
+        font-size: 1rem;
 
-    margin: 0.6rem auto;
-  }
+        margin: 0.6rem auto;
+      }
 
-  .menu-button.open span {
-    background: white;
-  }
+      .menu-button.open span {
+        background: white;
+      }
 
 
-  /* STACK PAGE VERTICALLY */
+      /* STACK PAGE */
 
-  .biography-page {
-    display: block;
+      .biography-page {
+        display: block;
 
-    width: 100%;
-  }
+        width: 100%;
+      }
 
 
-  /* FIRST SECTION — FULL PORTRAIT */
+      /* PORTRAIT */
 
-  .portrait-side {
-    position: relative;
+      .portrait-side {
+        position: relative;
 
-    width: 100%;
-    height: 100svh;
+        width: 100%;
+        height: 100svh;
 
-    min-height: 0;
+        min-height: 0;
 
-    overflow: hidden;
+        overflow: hidden;
 
-    background: #171513;
-  }
+        background: #171513;
+      }
 
-  .portrait-side img {
-    position: static;
+      .portrait-side img {
+        position: static;
 
-    display: block;
+        display: block;
 
-    width: 100%;
-    height: 100%;
+        width: 100%;
+        height: 100%;
 
-    object-fit: cover;
+        object-fit: cover;
 
-    /* keeps her head comfortably in frame */
-    object-position: center 25%;
-  }
+        /*
+           Bias crop toward top of photograph
+           so her head stays fully visible.
+        */
+        object-position: center 15%;
+      }
 
 
-  /* SECOND SECTION — BIOGRAPHY */
+      /* BIOGRAPHY */
 
-  .biography-side {
-    position: relative;
+      .biography-side {
+        position: relative;
 
-    width: 100%;
+        width: 100%;
 
-    min-height: 100svh;
+        min-height: 100svh;
 
-    display: flex;
+        display: flex;
 
-    align-items: flex-start;
-    justify-content: center;
+        align-items: flex-start;
+        justify-content: center;
 
-    padding:
-      4rem
-      1rem;
+        padding:
+          4rem
+          1rem;
 
-    overflow: hidden;
+        background: #171513;
+      }
 
-    background-image:
-      url("Merx.jpg");
 
-    background-size: cover;
+      /* GLASS PANEL */
 
-    background-position:
-      center 30%;
+      .biography-panel {
+        position: relative;
 
-    background-repeat:
-      no-repeat;
-  }
+        width: 100%;
+        max-width: none;
 
+        padding:
+          3rem
+          1.8rem;
 
-  /* REMOVE DESKTOP FIXED RIGHT-HAND PHOTO */
+        background:
+          rgba(255, 255, 255, 0.20);
 
-  .biography-side::before {
-    content: "";
+        backdrop-filter:
+          blur(30px)
+          saturate(105%);
 
-    position: absolute;
+        -webkit-backdrop-filter:
+          blur(30px)
+          saturate(105%);
 
-    inset: 0;
+        border:
+          1px solid
+          rgba(255, 255, 255, 0.34);
 
-    width: 100%;
-    height: 100%;
+        z-index: 2;
+      }
 
-    background:
-      rgba(0, 0, 0, 0.10);
 
-    pointer-events: none;
+      /* BIOGRAPHY TEXT */
 
-    z-index: 0;
-  }
+      .biography-panel h1 {
+        font-size: 3rem;
 
+        margin-bottom: 2rem;
+      }
 
-  /* FROSTED BIOGRAPHY PANEL */
+      .biography-text p {
+        font-size: 1rem;
 
-  .biography-panel {
-    position: relative;
+        line-height: 1.7;
+      }
 
-    width: 100%;
-    max-width: none;
 
-    padding:
-      3rem
-      1.8rem;
+      /* BACK LINK */
 
-    background:
-      rgba(255, 255, 255, 0.20);
-
-    backdrop-filter:
-      blur(30px)
-      saturate(105%);
-
-    -webkit-backdrop-filter:
-      blur(30px)
-      saturate(105%);
-
-    border:
-      1px solid
-      rgba(255, 255, 255, 0.34);
-
-    z-index: 2;
-  }
-
-
-  /* BIOGRAPHY TEXT */
-
-  .biography-panel h1 {
-    font-size: 3rem;
-
-    margin-bottom: 2rem;
-  }
-
-  .biography-text p {
-    font-size: 1rem;
-
-    line-height: 1.7;
-  }
-
-
-  /* BACK LINK */
-
-  .back-link {
-    margin-top: 2rem;
-  }
-
-}
+      .back-link {
+        margin-top: 2rem;
+      }
 
     }
 
@@ -808,7 +765,7 @@
     </div>
 
     <h1>
-      <a href="index.html">
+      <a href="home.html">
         Trio Callistó
       </a>
     </h1>
@@ -851,6 +808,7 @@
       </a>
 
       <a
+        href="#"
         class="menu-concerts-toggle"
         id="concertToggle">
         Concerts
@@ -886,7 +844,7 @@
   <main class="biography-page">
 
 
-    <!-- LEFT SIDE — FULL PORTRAIT -->
+    <!-- LEFT SIDE — FIXED PORTRAIT -->
 
     <div class="portrait-side">
 
@@ -897,7 +855,7 @@
     </div>
 
 
-    <!-- RIGHT SIDE — PHOTO + GLASS BIOGRAPHY -->
+    <!-- RIGHT SIDE — BIOGRAPHY -->
 
     <section class="biography-side">
 
@@ -985,7 +943,9 @@
 
     concertToggle.addEventListener(
       'click',
-      function () {
+      function (e) {
+
+        e.preventDefault();
 
         concertSeasons.classList.toggle('open');
 
