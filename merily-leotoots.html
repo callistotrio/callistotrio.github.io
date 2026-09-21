@@ -55,7 +55,7 @@
        ===================================================== */
 
     .site-title {
-      position: fixed;
+      position: absolute;
 
       top: 3rem;
       left: 0;
@@ -324,30 +324,33 @@
        ===================================================== */
 
     .portrait-side {
-      position: relative;
+  position: relative;
 
-      min-width: 0;
-      min-height: 100vh;
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
 
-      display: flex;
+  background: #171513;
+}
 
-      align-items: center;
-      justify-content: center;
+.portrait-side img {
+  position: fixed;
 
-      overflow: hidden;
+  top: 0;
+  left: 0;
 
-      background: #171513;
-    }
+  width: 50vw;
+  height: 100vh;
 
-    .portrait-side img {
-      display: block;
+  display: block;
 
-      width: 100%;
-      height: 100vh;
+  object-fit: cover;
 
-      object-fit: contain;
-      object-position: center;
-    }
+  /* slightly lower crop to protect her head */
+  object-position: center 35%;
+
+  z-index: 0;
+}
 
 
     /* =====================================================
@@ -372,12 +375,6 @@
 
       overflow: hidden;
 
-      background-image:
-        url("Merx.jpg");
-
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
 
 
@@ -546,123 +543,249 @@
     }
 
 
-    /* =====================================================
-       MOBILE
-       ===================================================== */
+   /* =====================================================
+   MOBILE
+   ===================================================== */
 
-    @media (max-width: 700px) {
-
-
-      /* SITE TITLE */
-
-      .site-title {
-        position: absolute;
-
-        top: 2rem;
-
-        width: 100%;
-      }
-
-      .site-title h1 {
-        font-size: 2.2rem;
-      }
-
-      .greek-title {
-        top: -20px;
-
-        font-size: 3.5rem;
-      }
+@media (max-width: 700px) {
 
 
-      /* MENU */
+  /* SITE TITLE */
 
-      .menu-button {
-        top: 1.2rem;
-        right: 1.2rem;
-      }
+  .site-title {
+    position: absolute;
 
-      .menu-overlay {
-        top: 4.8rem;
-        right: 1.2rem;
-      }
+    top: 2rem;
 
+    width: 100%;
+  }
 
-      /* STACK THE PAGE */
+  .site-title h1 {
+    font-size: 2.2rem;
+  }
 
-      .biography-page {
-        display: block;
-      }
+  .greek-title {
+    top: -20px;
 
-
-      /* FULL PORTRAIT */
-
-      .portrait-side {
-        width: 100%;
-
-        min-height: 0;
-        height: 100svh;
-      }
-
-      .portrait-side img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: contain;
-        object-position: center;
-      }
+    font-size: 3.5rem;
+  }
 
 
-      /* BIOGRAPHY SECTION */
+  /* HAMBURGER */
 
-      .biography-side {
-        width: 100%;
-
-        min-height: 100svh;
-
-        padding:
-          4rem
-          1rem;
-
-        background-image:
-          url("Merx.jpg");
-
-        background-size: cover;
-        background-position: center;
-      }
+  .menu-button {
+    top: 4.8rem;
+    right: 1.3rem;
+  }
 
 
-      /* GLASS PANEL */
+  /* FULL SCREEN FROSTED MENU */
 
-      .biography-panel {
-        max-width: none;
+  .menu-overlay {
+    position: fixed;
 
-        padding:
-          3rem
-          1.8rem;
+    inset: 0;
 
-        background:
-          rgba(255, 255, 255, 0.20);
+    width: 100vw;
+    height: 100dvh;
 
-        backdrop-filter:
-          blur(30px)
-          saturate(105%);
+    display: flex;
 
-        -webkit-backdrop-filter:
-          blur(30px)
-          saturate(105%);
-      }
+    justify-content: center;
+    align-items: center;
 
-      .biography-panel h1 {
-        font-size: 3rem;
+    padding: 2rem;
 
-        margin-bottom: 2rem;
-      }
+    background: rgba(255, 255, 255, 0.18);
 
-      .biography-text p {
-        font-size: 1rem;
+    backdrop-filter:
+      blur(24px)
+      saturate(110%);
 
-        line-height: 1.7;
-      }
+    -webkit-backdrop-filter:
+      blur(24px)
+      saturate(110%);
+
+    border: none;
+
+    transform: none;
+
+    z-index: 25;
+  }
+
+  .menu-overlay.open {
+    transform: none;
+  }
+
+  .menu-content {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .menu-content a {
+    font-size: 1.35rem;
+
+    margin: 1rem auto;
+  }
+
+  .concert-seasons a {
+    font-size: 1rem;
+
+    margin: 0.6rem auto;
+  }
+
+  .menu-button.open span {
+    background: white;
+  }
+
+
+  /* STACK PAGE VERTICALLY */
+
+  .biography-page {
+    display: block;
+
+    width: 100%;
+  }
+
+
+  /* FIRST SECTION — FULL PORTRAIT */
+
+  .portrait-side {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    background: #171513;
+  }
+
+  .portrait-side img {
+    position: static;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    /* keeps her head comfortably in frame */
+    object-position: center 30%;
+  }
+
+
+  /* SECOND SECTION — BIOGRAPHY */
+
+  .biography-side {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    padding:
+      4rem
+      1rem;
+
+    overflow: hidden;
+
+    background-image:
+      url("Merx.jpg");
+
+    background-size: cover;
+
+    background-position:
+      center 30%;
+
+    background-repeat:
+      no-repeat;
+  }
+
+
+  /* REMOVE DESKTOP FIXED RIGHT-HAND PHOTO */
+
+  .biography-side::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+      rgba(0, 0, 0, 0.10);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+
+  /* FROSTED BIOGRAPHY PANEL */
+
+  .biography-panel {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+
+    padding:
+      3rem
+      1.8rem;
+
+    background:
+      rgba(255, 255, 255, 0.20);
+
+    backdrop-filter:
+      blur(30px)
+      saturate(105%);
+
+    -webkit-backdrop-filter:
+      blur(30px)
+      saturate(105%);
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.34);
+
+    z-index: 2;
+  }
+
+
+  /* BIOGRAPHY TEXT */
+
+  .biography-panel h1 {
+    font-size: 3rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .biography-text p {
+    font-size: 1rem;
+
+    line-height: 1.7;
+  }
+
+
+  /* BACK LINK */
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+}
 
     }
 
