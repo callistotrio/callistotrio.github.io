@@ -443,13 +443,20 @@
         rgba(139, 94, 60, 0.18);
     }
 
-    .musician-info h3 {
-      font-size: 2rem;
-      font-weight: normal;
+    .musician-info .musician-name {
+  margin: 0 0 0.7rem;
 
-      margin: 0 0 0.4rem;
-    }
+  font-size: 4.5rem;
+  font-weight: normal;
 
+  line-height: 0.9;
+
+  letter-spacing: -0.02em;
+}
+
+.musician-name span {
+  display: block;
+}
     .musician-instrument {
       font-size: 1.1rem;
       font-style: italic;
@@ -464,21 +471,6 @@
       line-height: 1.85;
 
       margin: 0 0 1.4rem;
-    }
-
-    .musician-info p:first-of-type::first-letter {
-      float: left;
-
-      font-family: 'GFS Didot', serif;
-      font-size: 4.5rem;
-      line-height: 0.72;
-
-      padding: 0;
-      margin-right: 0.06em;
-
-      color: rgba(224, 194, 169, 0.9);
-
-      font-weight: normal;
     }
     
 .bio-read-more {
@@ -766,9 +758,12 @@ footer {
           2.5rem;
       }
 
-      .musician-info h3 {
-        font-size: 1.8rem;
-      }
+      .musician-info .musician-name {
+  font-size: 3.4rem;
+  line-height: 0.92;
+
+  margin-bottom: 0.7rem;
+}
 
       .musician-instrument {
         margin-bottom: 1.5rem;
@@ -984,9 +979,10 @@ footer {
 
         <div class="musician-info">
 
-          <h3>
-            Merily Leotoots
-          </h3>
+         <h3 class="musician-name">
+  <span>Merily</span>
+  <span>Leotoots</span>
+</h3>
 
           <div class="musician-instrument">
             Violin
@@ -1016,9 +1012,10 @@ footer {
 
         <div class="musician-info">
 
-          <h3>
-            Anna Ryland-Jones
-          </h3>
+          <h3 class="musician-name">
+  <span>Anna</span>
+  <span>Ryland-Jones</span>
+</h3>
 
           <div class="musician-instrument">
             Cello
@@ -1047,9 +1044,10 @@ footer {
 
         <div class="musician-info">
 
-          <h3>
-            Eliza Agajeva
-          </h3>
+          <h3 class="musician-name">
+  <span>Eliza</span>
+  <span>Agajeva</span>
+</h3>
 
           <div class="musician-instrument">
             Piano
