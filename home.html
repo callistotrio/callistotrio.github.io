@@ -393,7 +393,7 @@
 
       font-weight: normal;
 
-      color: rgba(224, 194, 169, 0.9);
+      color: #9b6b4d;
     }
 
 
@@ -453,20 +453,38 @@
 
   letter-spacing: -0.025em;
 
-  color: rgba(224, 194, 169, 0.9);
+  color: #9b6b4d;
 }
 
 .musician-name span {
   display: block;
 }
     .musician-instrument {
-      font-size: 1.1rem;
-      font-style: italic;
+  display: flex;
+  align-items: center;
 
-      margin-bottom: 1.4rem;
+  gap: 1rem;
 
-      color: rgba(255, 255, 255, 0.75);
-    }
+  font-size: 1.05rem;
+  font-style: italic;
+
+  margin-bottom: 1.4rem;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.musician-instrument::before {
+  content: "";
+
+  display: block;
+
+  width: 55px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: #9b6b4d;
+}
 
     .musician-info p {
       font-size: 1.05rem;
