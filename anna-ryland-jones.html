@@ -959,6 +959,28 @@
       }
     );
 
+    /* CLOSE DESKTOP MENU WHEN MOUSE LEAVES */
+
+menuOverlay.addEventListener(
+  'mouseleave',
+  function () {
+
+    if (window.innerWidth > 700) {
+
+      menuOverlay.classList.remove('open');
+      menuButton.classList.remove('open');
+      concertSeasons.classList.remove('open');
+
+      menuButton.setAttribute(
+        'aria-label',
+        'Open menu'
+      );
+
+    }
+
+  }
+);
+
   </script>
 
 
