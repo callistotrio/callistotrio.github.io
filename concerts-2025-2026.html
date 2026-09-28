@@ -879,9 +879,24 @@
     font-size: 1.3rem;
   }
 
-     .scroll-arrow {
-  bottom: calc(3rem + env(safe-area-inset-bottom));
 }
+
+
+/* TABLET HERO / SCROLL ARROW */
+
+@media (min-width: 601px) and (max-width: 1000px) {
+
+  .hero {
+    height: 100svh;
+  }
+
+  .background-image {
+    height: 100svh;
+  }
+
+  .scroll-arrow {
+    bottom: calc(3rem + env(safe-area-inset-bottom));
+  }
 
 }
 
