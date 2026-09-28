@@ -1170,6 +1170,31 @@ footer {
       }
     );
 
+    /* CLOSE MENU WHEN TAPPING OUTSIDE */
+
+document.addEventListener('click', function (e) {
+
+  if (
+    window.innerWidth > 700 &&
+    window.innerWidth <= 1000 &&
+    menuOverlay.classList.contains('open') &&
+    !menuOverlay.contains(e.target) &&
+    !menuButton.contains(e.target)
+  ) {
+
+    menuOverlay.classList.remove('open');
+    menuButton.classList.remove('open');
+    concertSeasons.classList.remove('open');
+
+    menuButton.setAttribute(
+      'aria-label',
+      'Open menu'
+    );
+
+  }
+
+});
+
     /* CLOSE MOBILE MENU WHEN TAPPING FROSTED BACKGROUND */
 
 menuOverlay.addEventListener('click', (e) => {
