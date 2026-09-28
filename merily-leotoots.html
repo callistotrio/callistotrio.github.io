@@ -536,6 +536,80 @@
 
 
     /* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (min-width: 701px) and (max-width: 1000px) {
+
+  /* Give the biography more room than the photograph */
+
+  .biography-page {
+    grid-template-columns:
+      42%
+      58%;
+  }
+
+
+  /* FIXED LEFT PORTRAIT */
+
+  .portrait-side img {
+    width: 42vw;
+    height: 100vh;
+
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+
+  /* RIGHT BIOGRAPHY AREA */
+
+  .biography-side {
+    padding:
+      8rem
+      1.5rem
+      4rem;
+  }
+
+
+  /* GLASS PANEL */
+
+  .biography-panel {
+    width: 100%;
+    max-width: none;
+
+    padding:
+      3rem
+      2.5rem;
+  }
+
+
+  /* NAME */
+
+  .biography-panel h1 {
+    font-size: 3.4rem;
+    line-height: 0.95;
+
+    margin-bottom: 2rem;
+  }
+
+
+  /* BIOGRAPHY */
+
+  .biography-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+
+  /* BACK LINK */
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+}
+
+    /* =====================================================
        MOBILE
        ===================================================== */
 
