@@ -480,61 +480,106 @@
       margin-bottom: 0;
     }
 
+    /* =====================================================
+   TOP BACK ARROW
+   ===================================================== */
+
+.back-arrow-top {
+  display: inline-block;
+
+  margin-bottom: 1.5rem;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 1.4rem;
+  line-height: 1;
+
+  opacity: 0.65;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.back-arrow-top:hover {
+  opacity: 1;
+
+  transform: translateX(-3px);
+}
+
+
 
     /* =====================================================
-       BACK LINK
-       ===================================================== */
+   BACK LINK
+   ===================================================== */
 
-    .back-link {
-      display: inline-block;
+  .back-link {
+  display: inline-flex;
+  align-items: center;
 
-      margin-top: 2.5rem;
+  gap: 0.7rem;
 
-      position: relative;
+  margin-top: 2.5rem;
 
-      color: white;
+  position: relative;
 
-      text-decoration: none;
+  color: white;
 
-      font-size: 1rem;
+  text-decoration: none;
 
-      opacity: 0.78;
+  font-size: 1rem;
 
-      transition:
-        opacity 0.3s ease;
-    }
+  opacity: 0.78;
 
-    .back-link::after {
-      content: "";
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
 
-      position: absolute;
+.back-link::before {
+  content: "←";
 
-      left: 0;
-      bottom: -5px;
+  font-size: 1.15rem;
+  line-height: 1;
 
-      width: 100%;
-      height: 1px;
+  transform: translateY(-1px);
 
-      background:
-        rgba(255, 255, 255, 0.55);
+  opacity: 0.85;
+}
 
-      transform: scaleX(0);
+.back-link::after {
+  content: "";
 
-      transform-origin: left;
+  position: absolute;
 
-      transition:
-        transform 0.3s ease;
-    }
+  left: 1.85rem;
+  bottom: -5px;
 
-    .back-link:hover {
-      opacity: 1;
-    }
+  width: calc(100% - 1.85rem);
+  height: 1px;
 
-    .back-link:hover::after {
-      transform: scaleX(1);
-    }
+  background:
+    rgba(255, 255, 255, 0.55);
 
+  transform: scaleX(0);
 
+  transform-origin: left;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+
+  transform: translateX(-3px);
+}
+
+.back-link:hover::after {
+  transform: scaleX(1);
+}
     /* =====================================================
    TABLET
    ===================================================== */
@@ -939,6 +984,13 @@
     <section class="biography-side">
 
       <article class="biography-panel">
+
+        <a
+  href="home.html#merily"
+  class="back-arrow-top"
+  aria-label="Back to Trio Callistó">
+  ←
+</a>
 
 
         <p class="musician-role">
