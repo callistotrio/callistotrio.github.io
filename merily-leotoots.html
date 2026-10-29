@@ -561,23 +561,23 @@
   transform: translateX(-3px);
 }
 
-  /* =====================================================
+ /* =====================================================
 MERILY’S PERSONAL WEBSITE LINK
 ===================================================== */
 
-.personal-website-link,
-.personal-website-link:visited {
+.external-website a,
+.external-website a:visited {
 display: inline-block;
 margin-top: 1.5rem;
 color: white;
-text-decoration: none;
 font-family: inherit;
 font-size: 1rem;
+text-decoration: none;
 opacity: 0.78;
 transition: opacity 0.3s ease;
 }
 
-.personal-website-link::after {
+.external-website a::after {
 content: “”;
 display: block;
 width: 0;
@@ -587,14 +587,14 @@ background: white;
 transition: width 0.3s ease;
 }
 
-.personal-website-link:hover,
-.personal-website-link:focus-visible {
+.external-website a:hover,
+.external-website a:focus-visible {
 color: white;
 opacity: 1;
 }
 
-.personal-website-link:hover::after,
-.personal-website-link:focus-visible::after {
+.external-website a:hover::after,
+.external-website a:focus-visible::after {
 width: 100%;
 }
 
